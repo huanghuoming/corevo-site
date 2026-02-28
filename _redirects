@@ -2,8 +2,8 @@
 https://www.corevo.co.jp/* https://corevo.co.jp/:splat 301!
 http://corevo.co.jp/* https://corevo.co.jp/:splat 301!
 
-# Pretty URL rewrites
-/contact /contact.html 200
-/thanks /thanks.html 200
-/contact/ /contact.html 200
-/thanks/ /thanks.html 200
+# Explicit page redirects to avoid relative-asset path issues
+/contact https://corevo.co.jp/contact.html 301
+/contact/ https://corevo.co.jp/contact.html 301
+/thanks https://corevo.co.jp/thanks.html 301
+/thanks/ https://corevo.co.jp/thanks.html 301
