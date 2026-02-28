@@ -181,8 +181,40 @@
             <input type="hidden" name="form-name" value="contact" />
             <p style="display:none"><label>Don’t fill this out: <input name="bot-field" /></label></p>
             <input class="input" name="name" data-i18n-placeholder="contact_name" required />
+            <input class="input" name="company" placeholder="Company / 会社名" required />
             <input class="input" type="email" name="email" data-i18n-placeholder="contact_email" required />
+            <select class="input" name="inquiry_type" required>
+              <option value="" selected disabled>Select Inquiry Type / ご相談内容</option>
+              <option value="ses">SES</option>
+              <option value="product">Product Development / 受託開発</option>
+              <option value="global">Global Development / グローバル開発</option>
+              <option value="security">Security / セキュリティ</option>
+              <option value="other">Other / その他</option>
+            </select>
+            <select class="input" name="budget_range">
+              <option value="" selected>Budget (Optional) / ご予算（任意）</option>
+              <option value="lt_500k">&lt; 500,000 JPY</option>
+              <option value="500k_2m">500,000 - 2,000,000 JPY</option>
+              <option value="2m_5m">2,000,000 - 5,000,000 JPY</option>
+              <option value="5m_plus">5,000,000+ JPY</option>
+            </select>
+            <select class="input" name="project_timeline">
+              <option value="" selected>Timeline (Optional) / 開始希望時期（任意）</option>
+              <option value="asap">ASAP / できるだけ早く</option>
+              <option value="1m">Within 1 month / 1か月以内</option>
+              <option value="3m">Within 3 months / 3か月以内</option>
+              <option value="later">Undecided / 未定</option>
+            </select>
+            <select class="input" name="source_channel">
+              <option value="" selected>How did you find us? (Optional) / 流入経路（任意）</option>
+              <option value="google">Google Search / Google検索</option>
+              <option value="referral">Referral / ご紹介</option>
+              <option value="social">Social Media / SNS</option>
+              <option value="news">News / ニュース記事</option>
+              <option value="other">Other / その他</option>
+            </select>
             <textarea name="message" data-i18n-placeholder="contact_message" required></textarea>
+            <label class="help"><input type="checkbox" name="agree_privacy" required /> I agree to the privacy policy / 個人情報の取り扱いに同意します。</label>
             <button class="btn primary" type="submit" data-i18n="contact_submit"></button>
           </form>
         </div>
