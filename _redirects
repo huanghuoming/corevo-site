@@ -1,0 +1,4 @@
+# Canonical host redirects
+https://www.corevo.co.jp/* https://corevo.co.jp/:splat 301!
+http://corevo.co.jp/* https://corevo.co.jp/:splat 301!
+

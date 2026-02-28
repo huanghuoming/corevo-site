@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://corevo.co.jp/sitemap.xml
+
