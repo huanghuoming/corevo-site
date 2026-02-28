@@ -133,7 +133,6 @@
 
       <a class="item" href="security.html" data-i18n="nav_security"></a>
       <a class="item" href="news/index.html" data-i18n="nav_news"></a>
-      <a class="item" href="contact.html" data-i18n="nav_contact"></a>
     </nav>
 
     <div class="actions">
@@ -180,8 +179,40 @@
             <input type="hidden" name="form-name" value="contact" />
             <p style="display:none"><label>Do not fill this out: <input name="bot-field" /></label></p>
             <input class="input" name="name" data-i18n-placeholder="contact_name" required />
+            <input class="input" name="company" placeholder="Company" required />
             <input class="input" type="email" name="email" data-i18n-placeholder="contact_email" required />
+            <select class="input" name="inquiry_type" required>
+              <option value="" selected disabled>Select inquiry type</option>
+              <option value="ses">SES</option>
+              <option value="product">Product Development</option>
+              <option value="global">Global Development</option>
+              <option value="security">Security</option>
+              <option value="other">Other</option>
+            </select>
+            <select class="input" name="budget_range">
+              <option value="" selected>Budget (optional)</option>
+              <option value="lt_500k">&lt; 500,000 JPY</option>
+              <option value="500k_2m">500,000 - 2,000,000 JPY</option>
+              <option value="2m_5m">2,000,000 - 5,000,000 JPY</option>
+              <option value="5m_plus">5,000,000+ JPY</option>
+            </select>
+            <select class="input" name="project_timeline">
+              <option value="" selected>Timeline (optional)</option>
+              <option value="asap">ASAP</option>
+              <option value="1m">Within 1 month</option>
+              <option value="3m">Within 3 months</option>
+              <option value="later">Undecided</option>
+            </select>
+            <select class="input" name="source_channel">
+              <option value="" selected>How did you find us? (optional)</option>
+              <option value="google">Google Search</option>
+              <option value="referral">Referral</option>
+              <option value="social">Social Media</option>
+              <option value="news">News</option>
+              <option value="other">Other</option>
+            </select>
             <textarea name="message" data-i18n-placeholder="contact_message" required></textarea>
+            <label class="help"><input type="checkbox" name="agree_privacy" required /> I agree to the privacy policy.</label>
             <button class="btn primary" type="submit" data-i18n="contact_submit"></button>
           </form>
         </div>
