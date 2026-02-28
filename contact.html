@@ -177,40 +177,40 @@
             <input type="hidden" name="form-name" value="contact" />
             <p style="display:none"><label>Do not fill this out: <input name="bot-field" /></label></p>
             <input class="input" name="name" data-i18n-placeholder="contact_name" required />
-            <input class="input" name="company" data-cf-placeholder="company" required />
+            <input class="input" name="company" placeholder="Company" data-cf-placeholder="company" required />
             <input class="input" type="email" name="email" data-i18n-placeholder="contact_email" required />
             <select class="input" name="inquiry_type" required>
-              <option value="" selected disabled data-cf-i18n="inquiry_type_placeholder"></option>
-              <option value="ses" data-cf-i18n="inquiry_type_ses"></option>
-              <option value="product" data-cf-i18n="inquiry_type_product"></option>
-              <option value="global" data-cf-i18n="inquiry_type_global"></option>
-              <option value="security" data-cf-i18n="inquiry_type_security"></option>
-              <option value="other" data-cf-i18n="inquiry_type_other"></option>
+              <option value="" selected disabled data-cf-i18n="inquiry_type_placeholder">お問い合わせ種別を選択</option>
+              <option value="ses" data-cf-i18n="inquiry_type_ses">SES</option>
+              <option value="product" data-cf-i18n="inquiry_type_product">プロダクト開発</option>
+              <option value="global" data-cf-i18n="inquiry_type_global">グローバル開発</option>
+              <option value="security" data-cf-i18n="inquiry_type_security">セキュリティ</option>
+              <option value="other" data-cf-i18n="inquiry_type_other">その他</option>
             </select>
             <select class="input" name="budget_range">
-              <option value="" selected data-cf-i18n="budget_placeholder"></option>
-              <option value="lt_500k" data-cf-i18n="budget_lt_500k"></option>
-              <option value="500k_2m" data-cf-i18n="budget_500k_2m"></option>
-              <option value="2m_5m" data-cf-i18n="budget_2m_5m"></option>
-              <option value="5m_plus" data-cf-i18n="budget_5m_plus"></option>
+              <option value="" selected data-cf-i18n="budget_placeholder">ご予算（任意）</option>
+              <option value="lt_500k" data-cf-i18n="budget_lt_500k">50万円未満</option>
+              <option value="500k_2m" data-cf-i18n="budget_500k_2m">50万円〜200万円</option>
+              <option value="2m_5m" data-cf-i18n="budget_2m_5m">200万円〜500万円</option>
+              <option value="5m_plus" data-cf-i18n="budget_5m_plus">500万円以上</option>
             </select>
             <select class="input" name="project_timeline">
-              <option value="" selected data-cf-i18n="timeline_placeholder"></option>
-              <option value="asap" data-cf-i18n="timeline_asap"></option>
-              <option value="1m" data-cf-i18n="timeline_1m"></option>
-              <option value="3m" data-cf-i18n="timeline_3m"></option>
-              <option value="later" data-cf-i18n="timeline_later"></option>
+              <option value="" selected data-cf-i18n="timeline_placeholder">開始希望時期（任意）</option>
+              <option value="asap" data-cf-i18n="timeline_asap">できるだけ早く</option>
+              <option value="1m" data-cf-i18n="timeline_1m">1か月以内</option>
+              <option value="3m" data-cf-i18n="timeline_3m">3か月以内</option>
+              <option value="later" data-cf-i18n="timeline_later">未定</option>
             </select>
             <select class="input" name="source_channel">
-              <option value="" selected data-cf-i18n="source_placeholder"></option>
-              <option value="google" data-cf-i18n="source_google"></option>
-              <option value="referral" data-cf-i18n="source_referral"></option>
-              <option value="social" data-cf-i18n="source_social"></option>
-              <option value="news" data-cf-i18n="source_news"></option>
-              <option value="other" data-cf-i18n="source_other"></option>
+              <option value="" selected data-cf-i18n="source_placeholder">流入経路（任意）</option>
+              <option value="google" data-cf-i18n="source_google">Google検索</option>
+              <option value="referral" data-cf-i18n="source_referral">ご紹介</option>
+              <option value="social" data-cf-i18n="source_social">SNS</option>
+              <option value="news" data-cf-i18n="source_news">ニュース記事</option>
+              <option value="other" data-cf-i18n="source_other">その他</option>
             </select>
             <textarea name="message" data-i18n-placeholder="contact_message" required></textarea>
-            <label class="help"><input type="checkbox" name="agree_privacy" required /> <span data-cf-i18n="agree_privacy"></span></label>
+            <label class="help"><input type="checkbox" name="agree_privacy" required /> <span data-cf-i18n="agree_privacy">個人情報の取り扱いに同意します。</span></label>
             <button class="btn primary" type="submit" data-i18n="contact_submit"></button>
           </form>
         </div>
