@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
@@ -179,6 +179,7 @@
             <input class="input" name="name" data-i18n-placeholder="contact_name" required />
             <input class="input" name="company" placeholder="Company" data-cf-placeholder="company" required />
             <input class="input" type="email" name="email" data-i18n-placeholder="contact_email" required />
+
             <select class="input" name="inquiry_type" required>
               <option value="" selected disabled data-cf-i18n="inquiry_type_placeholder">お問い合わせ種別を選択</option>
               <option value="ses" data-cf-i18n="inquiry_type_ses">SES</option>
@@ -187,6 +188,7 @@
               <option value="security" data-cf-i18n="inquiry_type_security">セキュリティ</option>
               <option value="other" data-cf-i18n="inquiry_type_other">その他</option>
             </select>
+
             <select class="input" name="budget_range">
               <option value="" selected data-cf-i18n="budget_placeholder">ご予算（任意）</option>
               <option value="lt_500k" data-cf-i18n="budget_lt_500k">50万円未満</option>
@@ -194,6 +196,7 @@
               <option value="2m_5m" data-cf-i18n="budget_2m_5m">200万円〜500万円</option>
               <option value="5m_plus" data-cf-i18n="budget_5m_plus">500万円以上</option>
             </select>
+
             <select class="input" name="project_timeline">
               <option value="" selected data-cf-i18n="timeline_placeholder">開始希望時期（任意）</option>
               <option value="asap" data-cf-i18n="timeline_asap">できるだけ早く</option>
@@ -201,6 +204,7 @@
               <option value="3m" data-cf-i18n="timeline_3m">3か月以内</option>
               <option value="later" data-cf-i18n="timeline_later">未定</option>
             </select>
+
             <select class="input" name="source_channel">
               <option value="" selected data-cf-i18n="source_placeholder">流入経路（任意）</option>
               <option value="google" data-cf-i18n="source_google">Google検索</option>
@@ -209,8 +213,13 @@
               <option value="news" data-cf-i18n="source_news">ニュース記事</option>
               <option value="other" data-cf-i18n="source_other">その他</option>
             </select>
+
             <textarea name="message" data-i18n-placeholder="contact_message" required></textarea>
-            <label class="help"><input type="checkbox" name="agree_privacy" required /> <span data-cf-i18n="agree_privacy">個人情報の取り扱いに同意します。</span></label>
+            <label class="help">
+              <input type="checkbox" name="agree_privacy" required />
+              <span data-cf-i18n="agree_privacy">個人情報の取り扱いに同意します。</span>
+              <a href="privacy.html" data-cf-i18n="privacy_link" style="text-decoration:underline; margin-left:6px;">個人情報保護方針</a>
+            </label>
             <button class="btn primary" type="submit" data-i18n="contact_submit"></button>
           </form>
         </div>
@@ -233,5 +242,141 @@
 </footer>
 <script>document.getElementById("y").textContent=new Date().getFullYear();</script>
 
+<script>
+  (function(){
+    const CFT = {
+      ja: {
+        company: "会社名",
+        inquiry_type_placeholder: "お問い合わせ種別を選択",
+        inquiry_type_ses: "SES",
+        inquiry_type_product: "プロダクト開発",
+        inquiry_type_global: "グローバル開発",
+        inquiry_type_security: "セキュリティ",
+        inquiry_type_other: "その他",
+        budget_placeholder: "ご予算（任意）",
+        budget_lt_500k: "50万円未満",
+        budget_500k_2m: "50万円〜200万円",
+        budget_2m_5m: "200万円〜500万円",
+        budget_5m_plus: "500万円以上",
+        timeline_placeholder: "開始希望時期（任意）",
+        timeline_asap: "できるだけ早く",
+        timeline_1m: "1か月以内",
+        timeline_3m: "3か月以内",
+        timeline_later: "未定",
+        source_placeholder: "流入経路（任意）",
+        source_google: "Google検索",
+        source_referral: "ご紹介",
+        source_social: "SNS",
+        source_news: "ニュース記事",
+        source_other: "その他",
+        agree_privacy: "個人情報の取り扱いに同意します。",
+        privacy_link: "個人情報保護方針"
+      },
+      en: {
+        company: "Company",
+        inquiry_type_placeholder: "Select inquiry type",
+        inquiry_type_ses: "SES",
+        inquiry_type_product: "Product Development",
+        inquiry_type_global: "Global Development",
+        inquiry_type_security: "Security",
+        inquiry_type_other: "Other",
+        budget_placeholder: "Budget (Optional)",
+        budget_lt_500k: "Under JPY 500k",
+        budget_500k_2m: "JPY 500k - 2m",
+        budget_2m_5m: "JPY 2m - 5m",
+        budget_5m_plus: "Over JPY 5m",
+        timeline_placeholder: "Timeline (Optional)",
+        timeline_asap: "As soon as possible",
+        timeline_1m: "Within 1 month",
+        timeline_3m: "Within 3 months",
+        timeline_later: "Undecided",
+        source_placeholder: "How did you find us? (Optional)",
+        source_google: "Google Search",
+        source_referral: "Referral",
+        source_social: "Social Media",
+        source_news: "News Article",
+        source_other: "Other",
+        agree_privacy: "I agree to the privacy policy.",
+        privacy_link: "Privacy Policy"
+      },
+      zh: {
+        company: "公司名",
+        inquiry_type_placeholder: "请选择咨询类型",
+        inquiry_type_ses: "SES",
+        inquiry_type_product: "产品开发",
+        inquiry_type_global: "全球开发",
+        inquiry_type_security: "安全",
+        inquiry_type_other: "其他",
+        budget_placeholder: "预算（可选）",
+        budget_lt_500k: "50万日元以下",
+        budget_500k_2m: "50万 - 200万日元",
+        budget_2m_5m: "200万 - 500万日元",
+        budget_5m_plus: "500万日元以上",
+        timeline_placeholder: "开始时间（可选）",
+        timeline_asap: "越快越好",
+        timeline_1m: "1个月内",
+        timeline_3m: "3个月内",
+        timeline_later: "未定",
+        source_placeholder: "获客来源（可选）",
+        source_google: "Google 搜索",
+        source_referral: "介绍",
+        source_social: "社交媒体",
+        source_news: "新闻文章",
+        source_other: "其他",
+        agree_privacy: "我同意个人信息处理政策。",
+        privacy_link: "隐私政策"
+      },
+      ko: {
+        company: "회사명",
+        inquiry_type_placeholder: "문의 유형을 선택하세요",
+        inquiry_type_ses: "SES",
+        inquiry_type_product: "제품 개발",
+        inquiry_type_global: "글로벌 개발",
+        inquiry_type_security: "보안",
+        inquiry_type_other: "기타",
+        budget_placeholder: "예산 (선택)",
+        budget_lt_500k: "50만엔 미만",
+        budget_500k_2m: "50만엔 - 200만엔",
+        budget_2m_5m: "200만엔 - 500만엔",
+        budget_5m_plus: "500만엔 이상",
+        timeline_placeholder: "희망 시작 시점 (선택)",
+        timeline_asap: "가능한 빠르게",
+        timeline_1m: "1개월 이내",
+        timeline_3m: "3개월 이내",
+        timeline_later: "미정",
+        source_placeholder: "유입 경로 (선택)",
+        source_google: "Google 검색",
+        source_referral: "소개",
+        source_social: "SNS",
+        source_news: "뉴스 기사",
+        source_other: "기타",
+        agree_privacy: "개인정보 처리방침에 동의합니다.",
+        privacy_link: "개인정보 처리방침"
+      }
+    };
+
+    function applyContactLang(){
+      const lang = document.documentElement.getAttribute("lang") || "ja";
+      const t = CFT[lang] || CFT.ja;
+      document.querySelectorAll("[data-cf-i18n]").forEach(function(el){
+        const k = el.getAttribute("data-cf-i18n");
+        if (t[k]) el.textContent = t[k];
+      });
+      document.querySelectorAll("[data-cf-placeholder]").forEach(function(el){
+        const k = el.getAttribute("data-cf-placeholder");
+        if (t[k]) el.setAttribute("placeholder", t[k]);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", function(){
+      applyContactLang();
+      const mo = new MutationObserver(applyContactLang);
+      mo.observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
+    });
+  })();
+</script>
 </body>
 </html>
+
+
+

@@ -199,8 +199,12 @@ select.input:focus{
   box-shadow: 0 0 0 3px rgba(42,151,255,.16);
 }
 select.input option{
-  background: #101a2e;
-  color: #eaf2ff;
+  background: #f3f5f8;
+  color: #111827;
+}
+select.input option:checked{
+  background: #dbe7ff;
+  color: #0f172a;
 }
 textarea{min-height:120px; resize:vertical}
 .help{color:rgba(234,242,255,.72); font-size:12px}
