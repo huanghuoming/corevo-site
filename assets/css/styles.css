@@ -190,6 +190,18 @@ img{display:block; max-width:100%}
   outline:none;
   font: inherit;
 }
+select.input{
+  background: rgba(8,14,28,.92);
+  color: var(--ink);
+}
+select.input:focus{
+  border-color: rgba(42,151,255,.55);
+  box-shadow: 0 0 0 3px rgba(42,151,255,.16);
+}
+select.input option{
+  background: #101a2e;
+  color: #eaf2ff;
+}
 textarea{min-height:120px; resize:vertical}
 .help{color:rgba(234,242,255,.72); font-size:12px}
 .footer{
