@@ -151,6 +151,46 @@ img{display:block; max-width:100%}
   color:rgba(234,242,255,.80);
   font-weight:1000; letter-spacing:.4px;
 }
+.processgrid{
+  margin-top:16px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+.process{
+  background: rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius: 14px;
+  box-shadow: 0 20px 70px rgba(0,0,0,.28);
+  padding:16px;
+}
+.process .step{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:40px;
+  padding:4px 10px;
+  border-radius:999px;
+  background:rgba(42,151,255,.16);
+  border:1px solid rgba(42,151,255,.32);
+  color:#cfe7ff;
+  font-size:12px;
+  font-weight:1000;
+  letter-spacing:.06em;
+}
+.process h3{
+  margin:10px 0 6px;
+  font-size:18px;
+}
+.process p{
+  margin:0;
+  font-size:13px;
+  color:rgba(234,242,255,.78);
+  line-height:1.55;
+}
+.process-cta{
+  margin-top:14px;
+}
 
 .split{
   margin-top:16px;
@@ -223,8 +263,12 @@ textarea{min-height:120px; resize:vertical}
   .metric:last-child{border-bottom:0}
   .cards3{grid-template-columns:1fr}
   .clients{grid-template-columns:1fr 1fr}
+  .processgrid{grid-template-columns:1fr 1fr}
   .split{grid-template-columns:1fr}
   .postgrid{grid-template-columns:1fr}
+}
+@media (max-width: 640px){
+  .processgrid{grid-template-columns:1fr}
 }
 
 /* Motion (subtle) */

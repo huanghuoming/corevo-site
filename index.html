@@ -239,15 +239,32 @@
       </div>
 
       <div class="section reveal" style="padding:34px 0 0">
-        <h2 data-i18n="sec_clients"></h2>
-        <p data-i18n="sec_clients_sub"></p>
-        <div class="clients">
-          <img class="client" src="assets/img/client-a.svg" alt="Client A"/>
-          <img class="client" src="assets/img/client-b.svg" alt="Client B"/>
-          <img class="client" src="assets/img/client-c.svg" alt="Client C"/>
-          <img class="client" src="assets/img/client-d.svg" alt="Client D"/>
-          <img class="client" src="assets/img/client-e.svg" alt="Client E"/>
-          <img class="client" src="assets/img/client-f.svg" alt="Client F"/>
+        <h2 data-p-i18n="title">ご相談から導入までの流れ</h2>
+        <p data-p-i18n="sub">初回相談から実装・運用まで、最短距離で伴走します。</p>
+        <div class="processgrid">
+          <article class="process">
+            <div class="step">01</div>
+            <h3 data-p-i18n="s1_t">ヒアリング</h3>
+            <p data-p-i18n="s1_d">課題・体制・スケジュールを整理し、優先度を明確化します。</p>
+          </article>
+          <article class="process">
+            <div class="step">02</div>
+            <h3 data-p-i18n="s2_t">ご提案</h3>
+            <p data-p-i18n="s2_d">最適な体制と実行計画を、期間・コストと合わせて提示します。</p>
+          </article>
+          <article class="process">
+            <div class="step">03</div>
+            <h3 data-p-i18n="s3_t">開発・提供</h3>
+            <p data-p-i18n="s3_d">進捗を可視化しながら、品質とスピードを両立して進行します。</p>
+          </article>
+          <article class="process">
+            <div class="step">04</div>
+            <h3 data-p-i18n="s4_t">運用改善</h3>
+            <p data-p-i18n="s4_d">稼働後の課題を継続的に改善し、事業成果につなげます。</p>
+          </article>
+        </div>
+        <div class="process-cta">
+          <a class="btn" href="contact.html" data-p-i18n="cta">30分相談を予約する</a>
         </div>
       </div>
 
@@ -306,5 +323,78 @@
     </div>
   </div>
 </footer>
+<script>
+  (function(){
+    const P = {
+      ja: {
+        title: "ご相談から導入までの流れ",
+        sub: "初回相談から実装・運用まで、最短距離で伴走します。",
+        s1_t: "ヒアリング",
+        s1_d: "課題・体制・スケジュールを整理し、優先度を明確化します。",
+        s2_t: "ご提案",
+        s2_d: "最適な体制と実行計画を、期間・コストと合わせて提示します。",
+        s3_t: "開発・提供",
+        s3_d: "進捗を可視化しながら、品質とスピードを両立して進行します。",
+        s4_t: "運用改善",
+        s4_d: "稼働後の課題を継続的に改善し、事業成果につなげます。",
+        cta: "30分相談を予約する"
+      },
+      en: {
+        title: "How We Work With You",
+        sub: "From first consultation to delivery and operations, we move fast with clarity.",
+        s1_t: "Discovery",
+        s1_d: "We clarify goals, constraints, timeline, and team structure.",
+        s2_t: "Proposal",
+        s2_d: "We present a practical plan with scope, schedule, and cost.",
+        s3_t: "Build & Delivery",
+        s3_d: "We execute with transparent progress tracking and quality control.",
+        s4_t: "Operate & Improve",
+        s4_d: "After launch, we continuously optimize for business outcomes.",
+        cta: "Book a 30-min consultation"
+      },
+      zh: {
+        title: "合作流程",
+        sub: "从首次咨询到交付与运维，我们以最短路径推进落地。",
+        s1_t: "需求沟通",
+        s1_d: "明确课题、体制与时间计划，梳理优先级。",
+        s2_t: "方案提案",
+        s2_d: "提供可执行的体制与计划，并同步周期和成本。",
+        s3_t: "开发交付",
+        s3_d: "在可视化进度下兼顾质量与速度，稳步推进。",
+        s4_t: "运维优化",
+        s4_d: "上线后持续优化，连接到实际业务成果。",
+        cta: "预约30分钟咨询"
+      },
+      ko: {
+        title: "협업 진행 방식",
+        sub: "첫 상담부터 구축과 운영까지, 빠르고 명확하게 진행합니다.",
+        s1_t: "요건 파악",
+        s1_d: "과제, 일정, 팀 구성을 정리하고 우선순위를 확정합니다.",
+        s2_t: "제안",
+        s2_d: "범위, 일정, 비용을 포함한 실행 가능한 계획을 제시합니다.",
+        s3_t: "개발·전달",
+        s3_d: "진행 상황을 투명하게 공유하며 품질과 속도를 함께 확보합니다.",
+        s4_t: "운영·개선",
+        s4_d: "오픈 이후에도 지속 개선하여 성과로 연결합니다.",
+        cta: "30분 상담 예약"
+      }
+    };
+
+    function applyProcessLang(){
+      const lang = document.documentElement.getAttribute("lang") || "ja";
+      const t = P[lang] || P.ja;
+      document.querySelectorAll("[data-p-i18n]").forEach(function(el){
+        const k = el.getAttribute("data-p-i18n");
+        if (t[k]) el.textContent = t[k];
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", function(){
+      applyProcessLang();
+      const mo = new MutationObserver(applyProcessLang);
+      mo.observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
+    });
+  })();
+</script>
 </body>
 </html>
