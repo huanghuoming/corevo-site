@@ -1,382 +1,896 @@
-﻿<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Contact | CoRevo Inc.</title>
-  <meta name="description" content="Contact CoRevo for SES, product development, and global delivery inquiries." />
-  <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://corevo.co.jp/contact.html" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="CoRevo" />
-  <meta property="og:title" content="Contact | CoRevo Inc." />
-  <meta property="og:description" content="Contact CoRevo for SES, product development, and global delivery inquiries." />
-  <meta property="og:url" content="https://corevo.co.jp/contact.html" />
-  <meta property="og:image" content="https://corevo.co.jp/assets/img/hero.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
-  <script defer src="assets/js/main.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせ | AXION Inc.</title>
+  <meta name="description" content="AXIONへのお問い合わせページ。サービスに関するご相談・エンジニア採用・その他ご質問は、こちらのフォームからお気軽にどうぞ。">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ---- Contact-specific styles ---- */
+
+    /* Page hero */
+    .page-hero {
+      padding: 9rem 0 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 50% 60% at 70% 30%, rgba(0,232,255,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 30% 70%, rgba(139,92,246,0.08) 0%, transparent 60%);
+    }
+
+    .page-hero__inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-hero__eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .page-hero__eyebrow::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--cyan);
+    }
+
+    .page-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    .page-hero__title .grad {
+      background: linear-gradient(135deg, #00e8ff 0%, #8b5cf6 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .page-hero__desc {
+      font-size: 1.1rem;
+      color: var(--text-dim);
+      max-width: 52ch;
+      line-height: 1.75;
+    }
+
+    /* Contact layout */
+    .contact-body {
+      padding: 5rem 0 8rem;
+    }
+
+    .contact-body__inner {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    /* Form area */
+    .contact-form-area {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      position: relative;
+    }
+
+    .contact-form-area::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gradient);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+
+    .form-heading {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-sub {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      margin-bottom: 2.5rem;
+    }
+
+    /* Inquiry type tabs */
+    .inquiry-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .inquiry-tab {
+      padding: 0.5rem 1.25rem;
+      border-radius: 2rem;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-family: var(--font-body);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .inquiry-tab:hover,
+    .inquiry-tab.active {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      background: rgba(0,232,255,0.06);
+    }
+
+    /* Form fields */
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group--full {
+      grid-column: 1 / -1;
+    }
+
+    .form-label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 0.6rem;
+    }
+
+    .form-label .required {
+      color: var(--cyan);
+      margin-left: 0.25rem;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      padding: 0.85rem 1rem;
+      color: var(--text);
+      font-size: 0.95rem;
+      font-family: var(--font-body);
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: var(--text-muted);
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--cyan);
+      background: rgba(0,232,255,0.03);
+      box-shadow: 0 0 0 3px rgba(0,232,255,0.08);
+    }
+
+    .form-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2300e8ff' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+      cursor: pointer;
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 140px;
+      line-height: 1.6;
+    }
+
+    .form-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+    }
+
+    /* Privacy consent */
+    .privacy-consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin: 1.5rem 0 2rem;
+      padding: 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      background: rgba(0,232,255,0.02);
+    }
+
+    .privacy-consent input[type="checkbox"] {
+      width: 1.1rem;
+      height: 1.1rem;
+      margin-top: 0.15rem;
+      accent-color: var(--cyan);
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .privacy-consent label {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+      cursor: pointer;
+    }
+
+    .privacy-consent a {
+      color: var(--cyan);
+      text-decoration: underline;
+    }
+
+    /* Submit button */
+    .form-submit-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .form-submit-row .btn {
+      min-width: 200px;
+      padding: 1rem 2rem;
+      font-size: 0.9rem;
+    }
+
+    .form-submit-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Success message */
+    #formSuccess {
+      display: none;
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+
+    .success-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(0,232,255,0.1);
+      border: 2px solid var(--cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 1.75rem;
+    }
+
+    .success-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--cyan);
+      margin-bottom: 0.75rem;
+    }
+
+    .success-desc {
+      font-size: 0.95rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+      max-width: 40ch;
+      margin: 0 auto;
+    }
+
+    /* Sidebar */
+    .contact-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .sidebar-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      transition: border-color var(--transition);
+    }
+
+    .sidebar-card:hover {
+      border-color: rgba(0,232,255,0.25);
+    }
+
+    .sidebar-card__label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 1rem;
+    }
+
+    .sidebar-card__icon {
+      font-size: 1.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .sidebar-card__title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .sidebar-card__desc {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    .sidebar-card__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      color: var(--cyan);
+      margin-top: 0.75rem;
+      text-decoration: none;
+      transition: gap var(--transition);
+    }
+
+    .sidebar-card__link:hover {
+      gap: 0.75rem;
+    }
+
+    /* Direct contact info */
+    .contact-info-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.875rem;
+    }
+
+    .contact-info-item__icon {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 0.375rem;
+      background: rgba(0,232,255,0.08);
+      border: 1px solid rgba(0,232,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .contact-info-item__text {
+      flex: 1;
+    }
+
+    .contact-info-item__label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-info-item__value {
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .contact-info-item__value a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .contact-info-item__value a:hover {
+      color: var(--cyan);
+    }
+
+    /* Hours badge */
+    .hours-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(0,232,255,0.06);
+      border: 1px solid rgba(0,232,255,0.15);
+      border-radius: 2rem;
+      padding: 0.35rem 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--cyan);
+      margin-top: 1rem;
+    }
+
+    .hours-badge__dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 6px rgba(74,222,128,0.5);
+      animation: pulse-green 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-green {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* FAQ shortcut */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .faq-item {
+      display: block;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: all var(--transition);
+      position: relative;
+      padding-right: 2rem;
+    }
+
+    .faq-item::after {
+      content: '→';
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      transition: right var(--transition), color var(--transition);
+    }
+
+    .faq-item:hover {
+      border-color: rgba(0,232,255,0.3);
+      color: var(--text);
+      background: rgba(0,232,255,0.02);
+    }
+
+    .faq-item:hover::after {
+      right: 0.75rem;
+      color: var(--cyan);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .contact-body__inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .contact-sidebar {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-form-area {
+        padding: 1.75rem;
+      }
+
+      .contact-sidebar {
+        grid-template-columns: 1fr;
+      }
+
+      .form-submit-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<header class="header">
-  <div class="container nav">
-    <a class="brand" href="index.html">
-      <img src="assets/img/logo.png" alt="CoRevo">
-      <div>
-        <div class="name">CoRevo</div>
-        <div class="sub">CoRevo Inc.</div>
-      </div>
-    </a>
-
-    <nav class="menu" aria-label="Primary">
-      <a class="item" href="index.html" data-i18n="nav_home"></a>
-
-      <div class="item has-mega" data-mega="services">
-        <button type="button" class="megatoggle" aria-haspopup="true" aria-expanded="false" data-i18n="nav_services"></button>
-        <div class="mega" role="menu">
-          <div class="mega-inner">
-            <div class="mega-col">
-              <div class="mega-h" data-i18n="nav_services"></div>
-              <a class="mega-link" href="services.html#ses">
-                <div class="mega-t" data-i18n="nav_services_ses"></div>
-                <div class="mega-d" data-i18n="svc1_desc"></div>
-              </a>
-              <a class="mega-link" href="services.html#product">
-                <div class="mega-t" data-i18n="nav_services_product"></div>
-                <div class="mega-d" data-i18n="svc2_desc"></div>
-              </a>
-              <a class="mega-link" href="services.html#global">
-                <div class="mega-t" data-i18n="nav_services_global"></div>
-                <div class="mega-d" data-i18n="svc3_desc"></div>
-              </a>
-            </div>
-
-            <div class="mega-col">
-              <div class="mega-h" data-i18n="sec_cases"></div>
-              <a class="mega-link" href="blog/case-aws-ha.html">
-                <div class="mega-t" data-i18n="case1_t"></div>
-                <div class="mega-d" data-i18n="case1_d"></div>
-              </a>
-              <a class="mega-link" href="blog/case-data-platform.html">
-                <div class="mega-t" data-i18n="case2_t"></div>
-                <div class="mega-d" data-i18n="case2_d"></div>
-              </a>
-              <a class="mega-link" href="blog/case-global-delivery.html">
-                <div class="mega-t" data-i18n="case3_t"></div>
-                <div class="mega-d" data-i18n="case3_d"></div>
-              </a>
-            </div>
-
-            <div class="mega-col mega-media">
-              <div class="mega-card">
-                <div class="mega-card-k" data-i18n="sec_scp_title"></div>
-                <div class="mega-card-t" data-i18n="scp_sec"></div>
-                <div class="mega-card-d" data-i18n="scp_sec_desc"></div>
-                <a class="btn small" href="security.html" data-i18n="learn_more"></a>
-              </div>
-              <div class="mega-img">
-                <img src="assets/img/datacenter.jpg" alt="">
-              </div>
-            </div>
-          </div>
+  <!-- ============================================================ Header -->
+  <header class="header">
+    <div class="header__inner">
+      <a href="index.html" class="logo">
+        <div class="logo__mark">
+          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="18,2 34,10 34,26 18,34 2,26 2,10" stroke="#00e8ff" stroke-width="1.5" fill="none"/>
+            <polygon points="18,8 28,13 28,23 18,28 8,23 8,13" stroke="#8b5cf6" stroke-width="1" fill="rgba(0,232,255,0.06)"/>
+            <circle cx="18" cy="18" r="4" fill="#00e8ff"/>
+          </svg>
         </div>
+        <span class="logo__text">AXI<span>ON</span></span>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html"    class="nav__link" data-index="01">TOP</a>
+        <a href="services.html" class="nav__link" data-index="02">SERVICES</a>
+        <a href="recruit.html"  class="nav__link" data-index="03">RECRUIT</a>
+        <a href="about.html"    class="nav__link" data-index="04">ABOUT</a>
+        <a href="contact.html"  class="nav__link" data-index="05">CONTACT</a>
+      </nav>
+
+      <div class="header__cta">
+        <a href="contact.html" class="btn btn--outline">お問い合わせ</a>
       </div>
 
-      <div class="item has-mega" data-mega="company">
-        <button type="button" class="megatoggle" aria-haspopup="true" aria-expanded="false" data-i18n="nav_company"></button>
-        <div class="mega" role="menu">
-          <div class="mega-inner">
-            <div class="mega-col">
-              <div class="mega-h" data-i18n="nav_company"></div>
-              <a class="mega-link" href="about.html">
-                <div class="mega-t" data-i18n="nav_company_about"></div>
-                <div class="mega-d" data-i18n="page_about_title"></div>
-              </a>
-              <a class="mega-link" href="company.html">
-                <div class="mega-t" data-i18n="nav_company_profile"></div>
-                <div class="mega-d" data-i18n="page_company_title"></div>
-              </a>
-              <a class="mega-link" href="security.html">
-                <div class="mega-t" data-i18n="nav_security"></div>
-                <div class="mega-d" data-i18n="sec_scp_sub"></div>
-              </a>
-            </div>
-            <div class="mega-col">
-              <div class="mega-h" data-i18n="nav_news"></div>
-              <a class="mega-link" href="news/index.html">
-                <div class="mega-t" data-i18n="page_news_title"></div>
-                <div class="mega-d" data-i18n="sec_news"></div>
-              </a>
-              <a class="mega-link" href="blog/post-coreconnect.html">
-                <div class="mega-t" data-i18n="news1_title"></div>
-                <div class="mega-d" data-i18n="news1_desc"></div>
-              </a>
-              <a class="mega-link" href="blog/post-ai-iot.html">
-                <div class="mega-t" data-i18n="news2_title"></div>
-                <div class="mega-d" data-i18n="news2_desc"></div>
-              </a>
-            </div>
-            <div class="mega-col mega-media">
-              <div class="mega-card">
-                <div class="mega-card-k" data-i18n="contact_panel_title"></div>
-                <div class="mega-card-d"><a href="contact.html" class="btn small" data-i18n="cta_contact"></a></div>
-              </div>
-              <div class="mega-img">
-                <img src="assets/img/office.jpg" alt="">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <a class="item" href="security.html" data-i18n="nav_security"></a>
-      <a class="item" href="news/index.html" data-i18n="nav_news"></a>
-    </nav>
-
-    <div class="actions">
-      <div class="item langwrap">
-        <a class="langbtn" href="#" data-lang-button>JP v</a>
-        <div class="dropdown" data-lang-menu style="right:0; left:auto; display:none"></div>
-      </div>
-      <a class="btn primary" href="contact.html" data-i18n="cta_contact"></a>
-
-      <button class="hamburger" type="button" aria-label="Menu" data-mobile-toggle>
+      <button class="menu-btn" aria-label="メニュー">
         <span></span><span></span><span></span>
       </button>
     </div>
-  </div>
+  </header>
 
-  <div class="mobilepanel" data-mobile-panel>
-    <a href="index.html" data-i18n="nav_home"></a>
-    <details>
-      <summary data-i18n="nav_services"></summary>
-      <a href="services.html#ses" data-i18n="nav_services_ses"></a>
-      <a href="services.html#product" data-i18n="nav_services_product"></a>
-      <a href="services.html#global" data-i18n="nav_services_global"></a>
-      <a href="security.html" data-i18n="nav_security"></a>
-    </details>
-    <details>
-      <summary data-i18n="nav_company"></summary>
-      <a href="about.html" data-i18n="nav_company_about"></a>
-      <a href="company.html" data-i18n="nav_company_profile"></a>
-      <a href="news/index.html" data-i18n="nav_news"></a>
-    </details>
-    <a href="news/index.html" data-i18n="nav_news"></a>
-    <a href="contact.html" data-i18n="nav_contact"></a>
-  </div>
-</header>
+  <!-- Mobile nav -->
+  <nav class="nav-mobile">
+    <a href="index.html"    class="nav__link" data-index="01">TOP</a>
+    <a href="services.html" class="nav__link" data-index="02">SERVICES</a>
+    <a href="recruit.html"  class="nav__link" data-index="03">RECRUIT</a>
+    <a href="about.html"    class="nav__link" data-index="04">ABOUT</a>
+    <a href="contact.html"  class="nav__link" data-index="05">CONTACT</a>
+    <a href="contact.html" class="btn btn--primary mt-4">お問い合わせ</a>
+  </nav>
 
-<main>
-  <section class="section">
-    <div class="container">
-      <h1 data-i18n="page_contact_title"></h1>
-      <div class="card" style="margin-top:16px">
-        <div class="content" style="padding:16px">
-          <form class="form" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/thanks.html">
-            <input type="hidden" name="form-name" value="contact" />
-            <p style="display:none"><label>Do not fill this out: <input name="bot-field" /></label></p>
-            <input class="input" name="name" data-i18n-placeholder="contact_name" required />
-            <input class="input" name="company" placeholder="Company" data-cf-placeholder="company" required />
-            <input class="input" type="email" name="email" data-i18n-placeholder="contact_email" required />
+  <main>
+    <!-- ============================================================ Page Hero -->
+    <section class="page-hero container">
+      <div class="page-hero__bg"></div>
+      <div class="page-hero__inner reveal">
+        <p class="page-hero__eyebrow">CONTACT US</p>
+        <h1 class="page-hero__title">
+          GET IN<br>
+          <span class="grad">TOUCH.</span>
+        </h1>
+        <p class="page-hero__desc">
+          サービスに関するご相談・お見積り・採用エントリーなど、
+          どんなことでもお気軽にご連絡ください。
+          通常2営業日以内にご返信いたします。
+        </p>
+      </div>
+    </section>
 
-            <select class="input" name="inquiry_type" required>
-              <option value="" selected disabled data-cf-i18n="inquiry_type_placeholder">お問い合わせ種別を選択</option>
-              <option value="ses" data-cf-i18n="inquiry_type_ses">SES</option>
-              <option value="product" data-cf-i18n="inquiry_type_product">プロダクト開発</option>
-              <option value="global" data-cf-i18n="inquiry_type_global">グローバル開発</option>
-              <option value="security" data-cf-i18n="inquiry_type_security">セキュリティ</option>
-              <option value="other" data-cf-i18n="inquiry_type_other">その他</option>
-            </select>
+    <!-- ============================================================ Contact Body -->
+    <section class="contact-body">
+      <div class="container">
+        <div class="contact-body__inner">
 
-            <select class="input" name="budget_range">
-              <option value="" selected data-cf-i18n="budget_placeholder">ご予算（任意）</option>
-              <option value="lt_500k" data-cf-i18n="budget_lt_500k">50万円未満</option>
-              <option value="500k_2m" data-cf-i18n="budget_500k_2m">50万円〜200万円</option>
-              <option value="2m_5m" data-cf-i18n="budget_2m_5m">200万円〜500万円</option>
-              <option value="5m_plus" data-cf-i18n="budget_5m_plus">500万円以上</option>
-            </select>
+          <!-- Form -->
+          <div class="contact-form-area reveal">
+            <h2 class="form-heading">お問い合わせフォーム</h2>
+            <p class="form-sub">
+              <span style="color:var(--cyan)">*</span> のついた項目は必須です
+            </p>
 
-            <select class="input" name="project_timeline">
-              <option value="" selected data-cf-i18n="timeline_placeholder">開始希望時期（任意）</option>
-              <option value="asap" data-cf-i18n="timeline_asap">できるだけ早く</option>
-              <option value="1m" data-cf-i18n="timeline_1m">1か月以内</option>
-              <option value="3m" data-cf-i18n="timeline_3m">3か月以内</option>
-              <option value="later" data-cf-i18n="timeline_later">未定</option>
-            </select>
+            <!-- Inquiry type -->
+            <div style="margin-bottom:2rem">
+              <p class="form-label">お問い合わせ種別</p>
+              <div class="inquiry-tabs" id="inquiryTabs">
+                <button class="inquiry-tab active" data-value="service">サービスについて</button>
+                <button class="inquiry-tab" data-value="estimate">お見積り依頼</button>
+                <button class="inquiry-tab" data-value="recruit">採用について</button>
+                <button class="inquiry-tab" data-value="partner">パートナー提携</button>
+                <button class="inquiry-tab" data-value="other">その他</button>
+              </div>
+              <input type="hidden" id="inquiryType" value="service">
+            </div>
 
-            <select class="input" name="source_channel">
-              <option value="" selected data-cf-i18n="source_placeholder">流入経路（任意）</option>
-              <option value="google" data-cf-i18n="source_google">Google検索</option>
-              <option value="referral" data-cf-i18n="source_referral">ご紹介</option>
-              <option value="social" data-cf-i18n="source_social">SNS</option>
-              <option value="news" data-cf-i18n="source_news">ニュース記事</option>
-              <option value="other" data-cf-i18n="source_other">その他</option>
-            </select>
+            <form id="contactForm" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="name">
+                    お名前 <span class="required">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="form-input"
+                    placeholder="山田 太郎"
+                    required
+                    autocomplete="name"
+                  >
+                </div>
 
-            <textarea name="message" data-i18n-placeholder="contact_message" required></textarea>
-            <label class="help">
-              <input type="checkbox" name="agree_privacy" required />
-              <span data-cf-i18n="agree_privacy">個人情報の取り扱いに同意します。</span>
-              <a href="privacy.html" data-cf-i18n="privacy_link" style="text-decoration:underline; margin-left:6px;">個人情報保護方針</a>
-            </label>
-            <button class="btn primary" type="submit" data-i18n="contact_submit"></button>
-          </form>
+                <div class="form-group">
+                  <label class="form-label" for="company">
+                    会社名 <span class="required">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    class="form-input"
+                    placeholder="株式会社〇〇"
+                    required
+                    autocomplete="organization"
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="email">
+                    メールアドレス <span class="required">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form-input"
+                    placeholder="taro.yamada@example.com"
+                    required
+                    autocomplete="email"
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="phone">電話番号</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    class="form-input"
+                    placeholder="03-0000-0000"
+                    autocomplete="tel"
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="position">役職・部署</label>
+                  <input
+                    type="text"
+                    id="position"
+                    name="position"
+                    class="form-input"
+                    placeholder="開発部 エンジニアリングマネージャー"
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="budget">ご予算感</label>
+                  <select id="budget" name="budget" class="form-select">
+                    <option value="" style="background:var(--bg-1)">選択してください</option>
+                    <option value="under100" style="background:var(--bg-1)">〜100万円/月</option>
+                    <option value="100-300" style="background:var(--bg-1)">100〜300万円/月</option>
+                    <option value="300-500" style="background:var(--bg-1)">300〜500万円/月</option>
+                    <option value="over500" style="background:var(--bg-1)">500万円/月〜</option>
+                    <option value="unknown" style="background:var(--bg-1)">未定・相談したい</option>
+                  </select>
+                </div>
+
+                <div class="form-group form-group--full">
+                  <label class="form-label" for="message">
+                    お問い合わせ内容 <span class="required">*</span>
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    class="form-textarea"
+                    placeholder="例：Javaバックエンドエンジニアを2名、来月から6ヶ月間アサインしていただきたいです。フレームワークはSpring Boot、経験3年以上を希望します。"
+                    required
+                    rows="6"
+                  ></textarea>
+                  <p class="form-note">具体的なご要件（技術スタック・人数・期間・開始時期など）をご記入いただくと、よりスムーズにご提案が可能です。</p>
+                </div>
+              </div>
+
+              <div class="privacy-consent">
+                <input type="checkbox" id="privacy" name="privacy" required>
+                <label for="privacy">
+                  <a href="#" target="_blank">プライバシーポリシー</a>に同意の上、
+                  個人情報の取り扱いについて承諾します。当社は取得した個人情報を
+                  お問い合わせへの回答・サービスのご案内のみに使用いたします。
+                </label>
+              </div>
+
+              <div class="form-submit-row">
+                <button type="submit" class="btn btn--primary">
+                  送信する →
+                </button>
+                <p class="form-submit-note">
+                  通常2営業日以内にご返信します。<br>
+                  急ぎの場合はお電話でもお受けしています。
+                </p>
+              </div>
+            </form>
+
+            <!-- Success state -->
+            <div id="formSuccess">
+              <div class="success-icon">✓</div>
+              <h3 class="success-title">送信完了しました</h3>
+              <p class="success-desc">
+                お問い合わせありがとうございます。<br>
+                担当者より2営業日以内にご連絡いたします。<br>
+                しばらくお待ちください。
+              </p>
+            </div>
+          </div>
+
+          <!-- Sidebar -->
+          <div class="contact-sidebar reveal">
+
+            <!-- Direct contact -->
+            <div class="sidebar-card">
+              <p class="sidebar-card__label">// DIRECT CONTACT</p>
+              <ul class="contact-info-list">
+                <li class="contact-info-item">
+                  <div class="contact-info-item__icon">📧</div>
+                  <div class="contact-info-item__text">
+                    <p class="contact-info-item__label">EMAIL</p>
+                    <p class="contact-info-item__value">
+                      <a href="mailto:info@axion.co.jp">info@axion.co.jp</a>
+                    </p>
+                  </div>
+                </li>
+                <li class="contact-info-item">
+                  <div class="contact-info-item__icon">📞</div>
+                  <div class="contact-info-item__text">
+                    <p class="contact-info-item__label">PHONE</p>
+                    <p class="contact-info-item__value">
+                      <a href="tel:0312345678">03-1234-5678</a>
+                    </p>
+                  </div>
+                </li>
+                <li class="contact-info-item">
+                  <div class="contact-info-item__icon">📍</div>
+                  <div class="contact-info-item__text">
+                    <p class="contact-info-item__label">ADDRESS</p>
+                    <p class="contact-info-item__value">
+                      〒100-0005<br>
+                      東京都千代田区丸の内1-1-1<br>
+                      丸の内ビルディング15F
+                    </p>
+                  </div>
+                </li>
+              </ul>
+              <div class="hours-badge">
+                <div class="hours-badge__dot"></div>
+                平日 9:00〜18:00 対応中
+              </div>
+            </div>
+
+            <!-- Service shortcuts -->
+            <div class="sidebar-card">
+              <p class="sidebar-card__label">// QUICK LINKS</p>
+              <div class="sidebar-card__icon">⚡</div>
+              <h3 class="sidebar-card__title">よく使われるリンク</h3>
+              <div class="faq-list" style="margin-top:1rem">
+                <a href="services.html#ses" class="faq-item">SES / エンジニア派遣について</a>
+                <a href="services.html#dev" class="faq-item">システム受託開発について</a>
+                <a href="services.html#cloud" class="faq-item">クラウド構築について</a>
+                <a href="recruit.html" class="faq-item">エンジニア採用エントリー</a>
+                <a href="about.html" class="faq-item">会社概要・サービス一覧</a>
+              </div>
+            </div>
+
+            <!-- Response time card -->
+            <div class="sidebar-card">
+              <p class="sidebar-card__label">// RESPONSE TIME</p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem">
+                <div style="text-align:center;padding:1rem;background:rgba(0,232,255,0.04);border-radius:0.5rem;border:1px solid rgba(0,232,255,0.1)">
+                  <div style="font-family:var(--font-display);font-size:1.5rem;font-weight:900;color:var(--cyan)">2</div>
+                  <div style="font-size:0.75rem;color:var(--text-muted);margin-top:0.25rem">営業日以内<br>返信</div>
+                </div>
+                <div style="text-align:center;padding:1rem;background:rgba(139,92,246,0.04);border-radius:0.5rem;border:1px solid rgba(139,92,246,0.15)">
+                  <div style="font-family:var(--font-display);font-size:1.5rem;font-weight:900;color:var(--purple-bright)">10</div>
+                  <div style="font-size:0.75rem;color:var(--text-muted);margin-top:0.25rem">営業日以内<br>初回提案</div>
+                </div>
+              </div>
+              <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.75rem;line-height:1.5">
+                お急ぎの場合はお電話にてご連絡ください。
+                即日対応いたします（平日9:00〜18:00）。
+              </p>
+            </div>
+
+          </div>
         </div>
       </div>
+    </section>
+  </main>
+
+  <!-- ============================================================ Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="logo" style="margin-bottom:1rem;display:inline-flex">
+            <span class="logo__text">AXI<span>ON</span></span>
+          </a>
+          <p class="footer__tagline">Deploy Elite Engineers.<br>Build the Future.</p>
+        </div>
+        <div>
+          <p class="footer__heading">COMPANY</p>
+          <ul class="footer__links">
+            <li><a href="about.html">会社概要</a></li>
+            <li><a href="services.html">サービス</a></li>
+            <li><a href="recruit.html">採用情報</a></li>
+            <li><a href="contact.html">お問い合わせ</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__heading">SERVICES</p>
+          <ul class="footer__links">
+            <li><a href="services.html#ses">SES / 派遣</a></li>
+            <li><a href="services.html#dev">受託開発</a></li>
+            <li><a href="services.html#cloud">クラウド</a></li>
+            <li><a href="services.html#consulting">コンサルティング</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__heading">CONTACT</p>
+          <ul class="footer__links">
+            <li><a href="mailto:info@axion.co.jp">info@axion.co.jp</a></li>
+            <li><a href="tel:0312345678">03-1234-5678</a></li>
+            <li style="color:var(--text-muted);font-size:0.85rem">〒100-0000<br>東京都千代田区丸の内1-1-1</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2024 AXION Inc. All rights reserved.</span>
+        <span>Engineered with precision.</span>
+      </div>
     </div>
-  </section>
-</main>
+  </footer>
 
-<footer class="footer">
-  <div class="container footer-row">
-    <div>&copy; <span id="y"></span> <span data-i18n="footer_company"></span></div>
-    <div style="display:flex; gap:12px; flex-wrap:wrap">
-      <a href="services.html" data-i18n="footer_links_services"></a>
-      <a href="company.html" data-i18n="footer_links_company"></a>
-      <a href="security.html" data-i18n="footer_links_security"></a>
-      <a href="news/index.html" data-i18n="footer_links_news"></a>
-      <a href="contact.html" data-i18n="footer_links_contact"></a>
-    </div>
-  </div>
-</footer>
-<script>document.getElementById("y").textContent=new Date().getFullYear();</script>
+  <script src="js/main.js"></script>
+  <script>
+    // ----------------------------------------
+    // Inquiry type tab switching
+    // ----------------------------------------
+    const tabs = document.querySelectorAll('.inquiry-tab');
+    const typeInput = document.getElementById('inquiryType');
 
-<script>
-  (function(){
-    const CFT = {
-      ja: {
-        company: "会社名",
-        inquiry_type_placeholder: "お問い合わせ種別を選択",
-        inquiry_type_ses: "SES",
-        inquiry_type_product: "プロダクト開発",
-        inquiry_type_global: "グローバル開発",
-        inquiry_type_security: "セキュリティ",
-        inquiry_type_other: "その他",
-        budget_placeholder: "ご予算（任意）",
-        budget_lt_500k: "50万円未満",
-        budget_500k_2m: "50万円〜200万円",
-        budget_2m_5m: "200万円〜500万円",
-        budget_5m_plus: "500万円以上",
-        timeline_placeholder: "開始希望時期（任意）",
-        timeline_asap: "できるだけ早く",
-        timeline_1m: "1か月以内",
-        timeline_3m: "3か月以内",
-        timeline_later: "未定",
-        source_placeholder: "流入経路（任意）",
-        source_google: "Google検索",
-        source_referral: "ご紹介",
-        source_social: "SNS",
-        source_news: "ニュース記事",
-        source_other: "その他",
-        agree_privacy: "個人情報の取り扱いに同意します。",
-        privacy_link: "個人情報保護方針"
-      },
-      en: {
-        company: "Company",
-        inquiry_type_placeholder: "Select inquiry type",
-        inquiry_type_ses: "SES",
-        inquiry_type_product: "Product Development",
-        inquiry_type_global: "Global Development",
-        inquiry_type_security: "Security",
-        inquiry_type_other: "Other",
-        budget_placeholder: "Budget (Optional)",
-        budget_lt_500k: "Under JPY 500k",
-        budget_500k_2m: "JPY 500k - 2m",
-        budget_2m_5m: "JPY 2m - 5m",
-        budget_5m_plus: "Over JPY 5m",
-        timeline_placeholder: "Timeline (Optional)",
-        timeline_asap: "As soon as possible",
-        timeline_1m: "Within 1 month",
-        timeline_3m: "Within 3 months",
-        timeline_later: "Undecided",
-        source_placeholder: "How did you find us? (Optional)",
-        source_google: "Google Search",
-        source_referral: "Referral",
-        source_social: "Social Media",
-        source_news: "News Article",
-        source_other: "Other",
-        agree_privacy: "I agree to the privacy policy.",
-        privacy_link: "Privacy Policy"
-      },
-      zh: {
-        company: "公司名",
-        inquiry_type_placeholder: "请选择咨询类型",
-        inquiry_type_ses: "SES",
-        inquiry_type_product: "产品开发",
-        inquiry_type_global: "全球开发",
-        inquiry_type_security: "安全",
-        inquiry_type_other: "其他",
-        budget_placeholder: "预算（可选）",
-        budget_lt_500k: "50万日元以下",
-        budget_500k_2m: "50万 - 200万日元",
-        budget_2m_5m: "200万 - 500万日元",
-        budget_5m_plus: "500万日元以上",
-        timeline_placeholder: "开始时间（可选）",
-        timeline_asap: "越快越好",
-        timeline_1m: "1个月内",
-        timeline_3m: "3个月内",
-        timeline_later: "未定",
-        source_placeholder: "获客来源（可选）",
-        source_google: "Google 搜索",
-        source_referral: "介绍",
-        source_social: "社交媒体",
-        source_news: "新闻文章",
-        source_other: "其他",
-        agree_privacy: "我同意个人信息处理政策。",
-        privacy_link: "隐私政策"
-      },
-      ko: {
-        company: "회사명",
-        inquiry_type_placeholder: "문의 유형을 선택하세요",
-        inquiry_type_ses: "SES",
-        inquiry_type_product: "제품 개발",
-        inquiry_type_global: "글로벌 개발",
-        inquiry_type_security: "보안",
-        inquiry_type_other: "기타",
-        budget_placeholder: "예산 (선택)",
-        budget_lt_500k: "50만엔 미만",
-        budget_500k_2m: "50만엔 - 200만엔",
-        budget_2m_5m: "200만엔 - 500만엔",
-        budget_5m_plus: "500만엔 이상",
-        timeline_placeholder: "희망 시작 시점 (선택)",
-        timeline_asap: "가능한 빠르게",
-        timeline_1m: "1개월 이내",
-        timeline_3m: "3개월 이내",
-        timeline_later: "미정",
-        source_placeholder: "유입 경로 (선택)",
-        source_google: "Google 검색",
-        source_referral: "소개",
-        source_social: "SNS",
-        source_news: "뉴스 기사",
-        source_other: "기타",
-        agree_privacy: "개인정보 처리방침에 동의합니다.",
-        privacy_link: "개인정보 처리방침"
-      }
-    };
-
-    function applyContactLang(){
-      const lang = document.documentElement.getAttribute("lang") || "ja";
-      const t = CFT[lang] || CFT.ja;
-      document.querySelectorAll("[data-cf-i18n]").forEach(function(el){
-        const k = el.getAttribute("data-cf-i18n");
-        if (t[k]) el.textContent = t[k];
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        typeInput.value = tab.dataset.value;
       });
-      document.querySelectorAll("[data-cf-placeholder]").forEach(function(el){
-        const k = el.getAttribute("data-cf-placeholder");
-        if (t[k]) el.setAttribute("placeholder", t[k]);
-      });
-    }
-
-    document.addEventListener("DOMContentLoaded", function(){
-      applyContactLang();
-      const mo = new MutationObserver(applyContactLang);
-      mo.observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
     });
-  })();
-</script>
+  </script>
 </body>
 </html>
-
-
-

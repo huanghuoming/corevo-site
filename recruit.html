@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RECRUIT | AXION Inc.</title>
+  <meta name="description" content="AXIONの採用情報。エンジニア積極採用中。スキルアップ支援・リモート対応・充実した福利厚生でキャリアを加速させませんか。">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ---- Recruit-specific styles ---- */
+
+    .page-hero {
+      padding: 10rem 0 6rem;
+      position: relative;
+    }
+
+    .page-hero__label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--purple-bright);
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .page-hero__label::before {
+      content: '//';
+      color: var(--text-muted);
+    }
+
+    .page-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    .page-hero__desc {
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      color: var(--text-dim);
+      max-width: 56ch;
+      line-height: 1.8;
+    }
+
+    /* Culture metrics */
+    .culture-metrics {
+      padding: 6rem 0;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 4rem;
+    }
+
+    .metric-item {
+      background: var(--bg-card);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: background var(--transition);
+    }
+
+    .metric-item:hover {
+      background: rgba(139, 92, 246, 0.07);
+    }
+
+    .metric-item__num {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .metric-item__label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Values section */
+    .values {
+      padding: 6rem 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(10,20,48,0.5) 50%, transparent 100%);
+    }
+
+    .values__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .value-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .value-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(139,92,246,0.12) 0%, transparent 60%);
+      transition: opacity 0.4s;
+    }
+
+    .value-card:hover::before { opacity: 1; }
+
+    .value-card:hover {
+      border-color: rgba(139, 92, 246, 0.4);
+      transform: translateY(-4px);
+    }
+
+    .value-card__icon {
+      font-size: 2rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .value-card__title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+
+    .value-card__desc {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 1.75;
+    }
+
+    /* Career path */
+    .career {
+      padding: 6rem 0;
+    }
+
+    .career__inner {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 6rem;
+      align-items: start;
+      margin-top: 4rem;
+    }
+
+    .career__path {
+      position: relative;
+    }
+
+    .career-step {
+      display: flex;
+      gap: 1.5rem;
+      position: relative;
+      padding-bottom: 2.5rem;
+    }
+
+    .career-step:last-child {
+      padding-bottom: 0;
+    }
+
+    .career-step__left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .career-step__node {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 900;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      transition: all var(--transition);
+      position: relative;
+      z-index: 1;
+    }
+
+    .career-step--active .career-step__node {
+      border-color: var(--purple-bright);
+      color: var(--purple-bright);
+      background: rgba(139, 92, 246, 0.1);
+    }
+
+    .career-step__line {
+      width: 1px;
+      flex: 1;
+      background: linear-gradient(180deg, var(--border) 0%, var(--border) 100%);
+      margin-top: 4px;
+      min-height: 2rem;
+    }
+
+    .career-step:last-child .career-step__line {
+      display: none;
+    }
+
+    .career-step__content {
+      padding-top: 0.6rem;
+    }
+
+    .career-step__title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 900;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+    }
+
+    .career-step--active .career-step__title {
+      color: var(--purple-bright);
+    }
+
+    .career-step__years {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--cyan);
+      margin-bottom: 0.5rem;
+    }
+
+    .career-step__desc {
+      font-size: 0.88rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    /* Benefits */
+    .benefits__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .benefit-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: border-color var(--transition);
+    }
+
+    .benefit-item:hover {
+      border-color: var(--purple-bright);
+    }
+
+    .benefit-item__icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .benefit-item__name {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .benefit-item__desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Job listings */
+    .jobs {
+      padding: 6rem 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(10,20,48,0.4) 50%, transparent 100%);
+    }
+
+    .jobs__list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 4rem;
+    }
+
+    .job-item {
+      background: var(--bg-card);
+      padding: 2rem 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: center;
+      transition: background var(--transition);
+      text-decoration: none;
+    }
+
+    .job-item:hover {
+      background: rgba(139, 92, 246, 0.06);
+    }
+
+    .job-item__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .job-item__title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: var(--text);
+      letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
+    }
+
+    .job-item:hover .job-item__title {
+      color: var(--purple-bright);
+    }
+
+    .job-item__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .job-item__meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .job-arrow {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      transition: all var(--transition);
+    }
+
+    .job-item:hover .job-arrow {
+      color: var(--purple-bright);
+      transform: translateX(4px);
+    }
+
+    /* Process */
+    .recruit-process {
+      padding: 6rem 0;
+    }
+
+    .recruit-process__steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      position: relative;
+      margin-top: 4rem;
+    }
+
+    .recruit-process__steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(10% + 20px);
+      right: calc(10% + 20px);
+      height: 1px;
+      background: linear-gradient(90deg, var(--purple), var(--cyan));
+    }
+
+    .recruit-step {
+      text-align: center;
+      padding: 0 1rem;
+      position: relative;
+    }
+
+    .recruit-step__node {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin: 0 auto 1.25rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .recruit-step__title {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 900;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .recruit-step__desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 1024px) {
+      .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .values__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .career__inner {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+      }
+      .recruit-process__steps {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+      .recruit-process__steps::before {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .values__grid {
+        grid-template-columns: 1fr;
+      }
+      .benefits__grid {
+        grid-template-columns: 1fr;
+      }
+      .job-item {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+      }
+      .job-arrow { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ============================================================ Header -->
+  <header class="header">
+    <div class="header__inner">
+      <a href="index.html" class="logo">
+        <div class="logo__mark">
+          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="18,2 34,10 34,26 18,34 2,26 2,10" stroke="#00e8ff" stroke-width="1.5" fill="none"/>
+            <polygon points="18,8 28,13 28,23 18,28 8,23 8,13" stroke="#8b5cf6" stroke-width="1" fill="rgba(0,232,255,0.06)"/>
+            <circle cx="18" cy="18" r="4" fill="#00e8ff"/>
+          </svg>
+        </div>
+        <span class="logo__text">AXI<span>ON</span></span>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html"    class="nav__link" data-index="01">TOP</a>
+        <a href="services.html" class="nav__link" data-index="02">SERVICES</a>
+        <a href="recruit.html"  class="nav__link" data-index="03">RECRUIT</a>
+        <a href="about.html"    class="nav__link" data-index="04">ABOUT</a>
+        <a href="contact.html"  class="nav__link" data-index="05">CONTACT</a>
+      </nav>
+
+      <div class="header__cta">
+        <a href="contact.html" class="btn btn--outline">お問い合わせ</a>
+      </div>
+
+      <button class="menu-btn" aria-label="メニュー">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile nav -->
+  <nav class="nav-mobile">
+    <a href="index.html"    class="nav__link" data-index="01">TOP</a>
+    <a href="services.html" class="nav__link" data-index="02">SERVICES</a>
+    <a href="recruit.html"  class="nav__link" data-index="03">RECRUIT</a>
+    <a href="about.html"    class="nav__link" data-index="04">ABOUT</a>
+    <a href="contact.html"  class="nav__link" data-index="05">CONTACT</a>
+    <a href="contact.html" class="btn btn--primary mt-4">お問い合わせ</a>
+  </nav>
+
+  <main>
+    <!-- ============================================================ Page Hero -->
+    <section class="page-hero container">
+      <div class="reveal">
+        <p class="page-hero__label">RECRUIT</p>
+        <h1 class="page-hero__title">あなたの技術が、<br><span class="text-gradient" style="background:linear-gradient(135deg,#8b5cf6,#00e8ff)">世界を動かす</span>。</h1>
+        <p class="page-hero__desc">
+          AXIONは「エンジニアが最も輝ける環境」を追求し続けます。
+          成長・挑戦・自由を軸に、あなたのキャリアを全力でサポートします。
+        </p>
+        <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="#jobs" class="btn btn--purple">求人を見る</a>
+          <a href="contact.html" class="btn btn--ghost">まず相談する</a>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ============================================================ Metrics -->
+    <section class="culture-metrics container">
+      <div class="text-center reveal" style="max-width:640px;margin:0 auto 0">
+        <p class="section-label">NUMBERS</p>
+        <h2 class="section-title">数字で見る<span>AXION</span></h2>
+      </div>
+
+      <div class="metrics-grid">
+        <div class="metric-item reveal">
+          <div class="metric-item__num text-gradient">120<span style="font-size:1.8rem">+</span></div>
+          <div class="metric-item__label">エンジニア在籍数</div>
+        </div>
+        <div class="metric-item reveal" style="animation-delay:0.1s">
+          <div class="metric-item__num text-gradient">92<span style="font-size:1.8rem">%</span></div>
+          <div class="metric-item__label">リモート勤務比率</div>
+        </div>
+        <div class="metric-item reveal" style="animation-delay:0.2s">
+          <div class="metric-item__num text-gradient">48<span style="font-size:1.8rem">h</span></div>
+          <div class="metric-item__label">年間スキルアップ研修</div>
+        </div>
+        <div class="metric-item reveal" style="animation-delay:0.3s">
+          <div class="metric-item__num text-gradient">4.6<span style="font-size:1.8rem">/5</span></div>
+          <div class="metric-item__label">社員満足度スコア</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ============================================================ Values -->
+    <section class="values">
+      <div class="container">
+        <div class="text-center reveal" style="max-width:640px;margin:0 auto 0">
+          <p class="section-label">OUR VALUES</p>
+          <h2 class="section-title">AXIONが大切にする<span>3つの価値観</span></h2>
+        </div>
+
+        <div class="values__grid">
+          <div class="value-card card reveal reveal-delay-1">
+            <div class="value-card__icon">⚡</div>
+            <h3 class="value-card__title">GROW FAST</h3>
+            <p class="value-card__desc">
+              業務時間の10%を学習に充て、資格取得・カンファレンス参加・社内勉強会を全力支援。
+              エンジニアとしての市場価値を高め続ける環境を整備しています。
+            </p>
+          </div>
+          <div class="value-card card reveal reveal-delay-2">
+            <div class="value-card__icon">🎯</div>
+            <h3 class="value-card__title">OWN YOUR WORK</h3>
+            <p class="value-card__desc">
+              プロジェクトの選択・技術選定・働き方まで、自律的に判断できる裁量を付与。
+              管理するのではなく、一人ひとりが主体的に動ける文化を重視しています。
+            </p>
+          </div>
+          <div class="value-card card reveal reveal-delay-3">
+            <div class="value-card__icon">🌐</div>
+            <h3 class="value-card__title">REMOTE FIRST</h3>
+            <p class="value-card__desc">
+              フルリモート前提の働き方設計。非同期コミュニケーションを標準とし、
+              どこにいても最大のパフォーマンスを発揮できる環境・ツールを提供します。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ============================================================ Career & Benefits -->
+    <section class="career container">
+      <div class="text-center reveal" style="max-width:640px;margin:0 auto 0">
+        <p class="section-label">GROWTH</p>
+        <h2 class="section-title">キャリアパスと<span>福利厚生</span></h2>
+      </div>
+
+      <div class="career__inner">
+        <!-- Career path -->
+        <div class="reveal--left">
+          <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:900;letter-spacing:0.04em;color:var(--text-muted);margin-bottom:2rem">CAREER PATH</h3>
+
+          <div class="career-step">
+            <div class="career-step__left">
+              <div class="career-step__node">JR</div>
+              <div class="career-step__line"></div>
+            </div>
+            <div class="career-step__content">
+              <div class="career-step__title">ジュニアエンジニア</div>
+              <div class="career-step__years">〜 2年目</div>
+              <div class="career-step__desc">先輩エンジニアのサポート下でスキルを構築。OJT・メンター制度でスムーズにキャッチアップ。</div>
+            </div>
+          </div>
+
+          <div class="career-step career-step--active">
+            <div class="career-step__left">
+              <div class="career-step__node">MID</div>
+              <div class="career-step__line"></div>
+            </div>
+            <div class="career-step__content">
+              <div class="career-step__title">ミドルエンジニア</div>
+              <div class="career-step__years">3〜5年目</div>
+              <div class="career-step__desc">独力で開発タスクを完遂。プロジェクトの中核として活躍。技術選定に関与するレベルへ。</div>
+            </div>
+          </div>
+
+          <div class="career-step">
+            <div class="career-step__left">
+              <div class="career-step__node">SR</div>
+              <div class="career-step__line"></div>
+            </div>
+            <div class="career-step__content">
+              <div class="career-step__title">シニアエンジニア</div>
+              <div class="career-step__years">5〜8年目</div>
+              <div class="career-step__desc">設計・アーキテクチャリード。後輩育成とコードレビューを通じた品質管理の担い手。</div>
+            </div>
+          </div>
+
+          <div class="career-step">
+            <div class="career-step__left">
+              <div class="career-step__node">LD</div>
+              <div class="career-step__line"></div>
+            </div>
+            <div class="career-step__content">
+              <div class="career-step__title">テックリード / マネージャー</div>
+              <div class="career-step__years">8年目〜</div>
+              <div class="career-step__desc">技術戦略立案・チームビルディング・クライアント折衝。技術と組織の両軸でリード。</div>
+            </div>
+          </div>
+
+          <div class="career-step">
+            <div class="career-step__left">
+              <div class="career-step__node">CTO</div>
+            </div>
+            <div class="career-step__content">
+              <div class="career-step__title">CTO / エグゼクティブ</div>
+              <div class="career-step__years">特例選考</div>
+              <div class="career-step__desc">社内CTO候補・スピンアウト起業支援・専門特化ルートへの転換も積極的に支援。</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Benefits -->
+        <div class="reveal--right">
+          <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:900;letter-spacing:0.04em;color:var(--text-muted);margin-bottom:2rem">BENEFITS</h3>
+
+          <div class="benefits__grid">
+            <div class="benefit-item">
+              <div class="benefit-item__icon">💻</div>
+              <div>
+                <div class="benefit-item__name">機材支給</div>
+                <div class="benefit-item__desc">MacBook Pro / 高スペックPC・モニター・周辺機器を全額支給</div>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-item__icon">🏠</div>
+              <div>
+                <div class="benefit-item__name">フルリモート</div>
+                <div class="benefit-item__desc">出社義務なし。日本全国どこからでも勤務可能</div>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-item__icon">📚</div>
+              <div>
+                <div class="benefit-item__name">学習支援</div>
+                <div class="benefit-item__desc">書籍・Udemy・資格取得費用 月3万円まで会社負担</div>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-item__icon">🏥</div>
+              <div>
+                <div class="benefit-item__name">健康保険</div>
+                <div class="benefit-item__desc">社会保険完備・健康診断・メンタルヘルスサポート</div>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-item__icon">⏰</div>
+              <div>
+                <div class="benefit-item__name">フレックス</div>
+                <div class="benefit-item__desc">コアタイムなし。完全フレックスで自分のリズムで働く</div>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-item__icon">🎉</div>
+              <div>
+                <div class="benefit-item__name">副業OK</div>
+                <div class="benefit-item__desc">OSS活動・個人開発・副業を全面的に認める文化</div>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-item__icon">🏆</div>
+              <div>
+                <div class="benefit-item__name">インセンティブ</div>
+                <div class="benefit-item__desc">資格取得ボーナス・優秀エンジニア賞・技術貢献報酬</div>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-item__icon">✈️</div>
+              <div>
+                <div class="benefit-item__name">年次有給</div>
+                <div class="benefit-item__desc">入社初日から20日付与。有給取得率92%の実績</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ============================================================ Job Listings -->
+    <section id="jobs" class="jobs">
+      <div class="container">
+        <div class="text-center reveal" style="max-width:640px;margin:0 auto 0">
+          <p class="section-label">OPEN POSITIONS</p>
+          <h2 class="section-title">現在の<span>募集ポジション</span></h2>
+        </div>
+
+        <div class="jobs__list">
+          <a href="contact.html" class="job-item reveal">
+            <div>
+              <div class="job-item__tags">
+                <span class="tag">バックエンド</span>
+                <span class="tag">正社員</span>
+                <span class="tag" style="border-color:rgba(0,232,255,0.4);color:var(--cyan)">急募</span>
+              </div>
+              <div class="job-item__title">バックエンドエンジニア（Java / Python）</div>
+              <div class="job-item__meta">
+                <span class="job-item__meta-item">📍 フルリモート</span>
+                <span class="job-item__meta-item">💰 600〜900万円</span>
+                <span class="job-item__meta-item">🕐 経験3年以上</span>
+              </div>
+            </div>
+            <span class="job-arrow">→</span>
+          </a>
+
+          <a href="contact.html" class="job-item reveal">
+            <div>
+              <div class="job-item__tags">
+                <span class="tag">フロントエンド</span>
+                <span class="tag">正社員</span>
+              </div>
+              <div class="job-item__title">フロントエンドエンジニア（React / TypeScript）</div>
+              <div class="job-item__meta">
+                <span class="job-item__meta-item">📍 フルリモート</span>
+                <span class="job-item__meta-item">💰 500〜800万円</span>
+                <span class="job-item__meta-item">🕐 経験2年以上</span>
+              </div>
+            </div>
+            <span class="job-arrow">→</span>
+          </a>
+
+          <a href="contact.html" class="job-item reveal">
+            <div>
+              <div class="job-item__tags">
+                <span class="tag">インフラ</span>
+                <span class="tag">正社員</span>
+                <span class="tag" style="border-color:rgba(139,92,246,0.4);color:var(--purple-bright)">人気</span>
+              </div>
+              <div class="job-item__title">インフラ / クラウドエンジニア（AWS / Terraform）</div>
+              <div class="job-item__meta">
+                <span class="job-item__meta-item">📍 フルリモート / 一部出社</span>
+                <span class="job-item__meta-item">💰 650〜950万円</span>
+                <span class="job-item__meta-item">🕐 経験3年以上</span>
+              </div>
+            </div>
+            <span class="job-arrow">→</span>
+          </a>
+
+          <a href="contact.html" class="job-item reveal">
+            <div>
+              <div class="job-item__tags">
+                <span class="tag">モバイル</span>
+                <span class="tag">正社員</span>
+              </div>
+              <div class="job-item__title">モバイルエンジニア（iOS / Android / Flutter）</div>
+              <div class="job-item__meta">
+                <span class="job-item__meta-item">📍 フルリモート</span>
+                <span class="job-item__meta-item">💰 550〜850万円</span>
+                <span class="job-item__meta-item">🕐 経験2年以上</span>
+              </div>
+            </div>
+            <span class="job-arrow">→</span>
+          </a>
+
+          <a href="contact.html" class="job-item reveal">
+            <div>
+              <div class="job-item__tags">
+                <span class="tag">データ</span>
+                <span class="tag">正社員</span>
+              </div>
+              <div class="job-item__title">データエンジニア / MLエンジニア</div>
+              <div class="job-item__meta">
+                <span class="job-item__meta-item">📍 フルリモート</span>
+                <span class="job-item__meta-item">💰 700〜1,000万円</span>
+                <span class="job-item__meta-item">🕐 経験3年以上</span>
+              </div>
+            </div>
+            <span class="job-arrow">→</span>
+          </a>
+
+          <a href="contact.html" class="job-item reveal">
+            <div>
+              <div class="job-item__tags">
+                <span class="tag">PM</span>
+                <span class="tag">正社員</span>
+              </div>
+              <div class="job-item__title">プロジェクトマネージャー（IT系）</div>
+              <div class="job-item__meta">
+                <span class="job-item__meta-item">📍 フルリモート / 一部出社</span>
+                <span class="job-item__meta-item">💰 700〜1,100万円</span>
+                <span class="job-item__meta-item">🕐 経験5年以上</span>
+              </div>
+            </div>
+            <span class="job-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ============================================================ Process -->
+    <section class="recruit-process container">
+      <div class="text-center reveal" style="max-width:640px;margin:0 auto 0">
+        <p class="section-label">PROCESS</p>
+        <h2 class="section-title">選考<span>フロー</span></h2>
+        <p class="section-desc" style="margin:0 auto">書類選考から内定まで、最短2週間での選考を目指します。</p>
+      </div>
+
+      <div class="recruit-process__steps">
+        <div class="recruit-step reveal reveal-delay-1">
+          <div class="recruit-step__node">📝</div>
+          <div class="recruit-step__title">01 書類選考</div>
+          <div class="recruit-step__desc">履歴書・職務経歴書・ポートフォリオを確認</div>
+        </div>
+        <div class="recruit-step reveal reveal-delay-2">
+          <div class="recruit-step__node">💬</div>
+          <div class="recruit-step__title">02 カジュアル面談</div>
+          <div class="recruit-step__desc">30分のオンライン面談。会社・仕事のことを気軽に話しましょう</div>
+        </div>
+        <div class="recruit-step reveal reveal-delay-3">
+          <div class="recruit-step__node">🔍</div>
+          <div class="recruit-step__title">03 技術面接</div>
+          <div class="recruit-step__desc">技術的な問題解決能力・コードレビュー・設計力を確認</div>
+        </div>
+        <div class="recruit-step reveal reveal-delay-4">
+          <div class="recruit-step__node">🤝</div>
+          <div class="recruit-step__title">04 最終面接</div>
+          <div class="recruit-step__desc">役員との面談。カルチャーフィット・キャリア観を共有</div>
+        </div>
+        <div class="recruit-step reveal reveal-delay-4">
+          <div class="recruit-step__node">🎉</div>
+          <div class="recruit-step__title">05 内定</div>
+          <div class="recruit-step__desc">内定後は入社サポートチームが丁寧にフォロー</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ CTA Strip -->
+    <section class="cta-strip">
+      <div class="container">
+        <p class="section-label" style="justify-content:center;margin-bottom:1.5rem">APPLY NOW</p>
+        <h2 class="cta-strip__title">あなたのエントリーを<br>お待ちしています。</h2>
+        <p class="cta-strip__desc">
+          「まだ転職するか決めていない」という方も、まずはカジュアル面談からどうぞ。
+          あなたのキャリアについて一緒に考えます。
+        </p>
+        <div class="cta-strip__actions">
+          <a href="contact.html" class="btn btn--purple">エントリーする</a>
+          <a href="contact.html" class="btn btn--outline">カジュアル面談を申し込む</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================ Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="logo" style="margin-bottom:1rem;display:inline-flex">
+            <span class="logo__text">AXI<span>ON</span></span>
+          </a>
+          <p class="footer__tagline">Deploy Elite Engineers.<br>Build the Future.</p>
+        </div>
+        <div>
+          <p class="footer__heading">COMPANY</p>
+          <ul class="footer__links">
+            <li><a href="about.html">会社概要</a></li>
+            <li><a href="services.html">サービス</a></li>
+            <li><a href="recruit.html">採用情報</a></li>
+            <li><a href="contact.html">お問い合わせ</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__heading">SERVICES</p>
+          <ul class="footer__links">
+            <li><a href="services.html#ses">SES / 派遣</a></li>
+            <li><a href="services.html#dev">受託開発</a></li>
+            <li><a href="services.html#cloud">クラウド</a></li>
+            <li><a href="services.html#consulting">コンサルティング</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__heading">CONTACT</p>
+          <ul class="footer__links">
+            <li><a href="mailto:info@axion.co.jp">info@axion.co.jp</a></li>
+            <li><a href="tel:0312345678">03-1234-5678</a></li>
+            <li style="color:var(--text-muted);font-size:0.85rem">〒100-0000<br>東京都千代田区丸の内1-1-1</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2024 AXION Inc. All rights reserved.</span>
+        <span>Engineered with precision.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

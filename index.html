@@ -1,400 +1,775 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>CoRevo Inc. | SES, Product, Global Development</title>
-  <meta name="description" content="CoRevo supports business growth through SES, product development, and global delivery." />
-  <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://corevo.co.jp/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="CoRevo" />
-  <meta property="og:title" content="CoRevo Inc. | SES, Product, Global Development" />
-  <meta property="og:description" content="CoRevo supports business growth through SES, product development, and global delivery." />
-  <meta property="og:url" content="https://corevo.co.jp/" />
-  <meta property="og:image" content="https://corevo.co.jp/assets/img/hero.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
-  <script defer src="assets/js/main.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AXION Inc. - Deploy Elite Engineers</title>
+  <meta name="description" content="AXIONは、最高水準のエンジニアをお客様のプロジェクトに展開するSES・ITソリューション企業です。">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ---- Index-specific styles ---- */
+
+    /* Services preview */
+    .services-preview {
+      padding: 7rem 0;
+    }
+
+    .services-preview__header {
+      max-width: 620px;
+      margin-bottom: 4rem;
+    }
+
+    .service-card {
+      position: relative;
+    }
+
+    .service-card__num {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--border);
+      position: absolute;
+      top: 1.5rem;
+      right: 1.75rem;
+      line-height: 1;
+      transition: color var(--transition);
+    }
+
+    .service-card:hover .service-card__num {
+      color: var(--cyan-dim);
+    }
+
+    .service-card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1.25rem;
+    }
+
+    /* About strip */
+    .about-strip {
+      padding: 7rem 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(10, 20, 48, 0.4) 50%, transparent 100%);
+    }
+
+    .about-strip__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-strip__visual {
+      position: relative;
+      aspect-ratio: 4/3;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+    }
+
+    .about-strip__diagram {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    /* Terminal window */
+    .terminal {
+      background: rgba(1, 5, 12, 0.9);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+    }
+
+    .terminal__bar {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1rem;
+      background: rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .terminal__dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .terminal__dot--r { background: #ff5f57; }
+    .terminal__dot--y { background: #ffbd2e; }
+    .terminal__dot--g { background: #28c941; }
+
+    .terminal__title {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      margin-left: auto;
+    }
+
+    .terminal__body {
+      padding: 1.25rem 1.5rem;
+      line-height: 2;
+    }
+
+    .terminal__line { display: block; }
+    .term-prompt { color: var(--purple-bright); }
+    .term-cmd    { color: var(--cyan); }
+    .term-comment{ color: var(--text-muted); }
+    .term-ok     { color: #28c941; }
+    .term-info   { color: var(--text-dim); }
+
+    .about-strip__value-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+
+    .about-strip__value-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .about-strip__value-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--cyan-dim);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .about-strip__value-label {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+
+    .about-strip__value-desc {
+      font-size: 0.88rem;
+      color: var(--text-dim);
+    }
+
+    /* Process section */
+    .process {
+      padding: 7rem 0;
+    }
+
+    .process__steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+      margin-top: 4rem;
+    }
+
+    .process__steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(12.5% + 20px);
+      right: calc(12.5% + 20px);
+      height: 1px;
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+    }
+
+    .process-step {
+      text-align: center;
+      padding: 0 1.5rem;
+      position: relative;
+    }
+
+    .process-step__icon {
+      width: 56px;
+      height: 56px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin: 0 auto 1.5rem;
+      position: relative;
+      z-index: 1;
+      transition: all var(--transition);
+    }
+
+    .process-step:hover .process-step__icon {
+      border-color: var(--cyan);
+      box-shadow: 0 0 20px var(--cyan-glow);
+      background: var(--cyan-dim);
+    }
+
+    .process-step__title {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      margin-bottom: 0.6rem;
+    }
+
+    .process-step__desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Tech logos strip */
+    .tech-strip {
+      padding: 3rem 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .tech-strip__label {
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .tech-strip__track {
+      display: flex;
+      gap: 1rem;
+      animation: scroll-x 30s linear infinite;
+      width: max-content;
+    }
+
+    .tech-strip__track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes scroll-x {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    .tech-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+      white-space: nowrap;
+      transition: all var(--transition);
+    }
+
+    .tech-badge:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    .tech-badge__dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--cyan);
+      flex-shrink: 0;
+    }
+
+    /* Recruit CTA */
+    .recruit-cta {
+      padding: 7rem 0;
+    }
+
+    .recruit-cta__inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: center;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 3.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .recruit-cta__inner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--gradient);
+    }
+
+    .recruit-cta__badge {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--purple-bright);
+      margin-bottom: 0.75rem;
+    }
+
+    .recruit-cta__title {
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+
+    .recruit-cta__desc {
+      font-size: 0.95rem;
+      color: var(--text-dim);
+      max-width: 48ch;
+    }
+
+    .recruit-cta__actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .about-strip__inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .process__steps {
+        grid-template-columns: 1fr 1fr;
+      }
+      .process__steps::before {
+        display: none;
+      }
+      .recruit-cta__inner {
+        grid-template-columns: 1fr;
+        padding: 2.5rem;
+      }
+      .recruit-cta__actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
 </head>
 <body>
-<header class="header">
-  <div class="container nav">
-    <a class="brand" href="index.html">
-      <img src="assets/img/logo.png" alt="CoRevo">
-      <div>
-        <div class="name">CoRevo</div>
-        <div class="sub">CoRevo Inc.</div>
-      </div>
-    </a>
-
-    <nav class="menu" aria-label="Primary">
-      <a class="item" href="index.html" data-i18n="nav_home"></a>
-
-      <div class="item has-mega" data-mega="services">
-        <button type="button" class="megatoggle" aria-haspopup="true" aria-expanded="false" data-i18n="nav_services"></button>
-        <div class="mega" role="menu">
-          <div class="mega-inner">
-            <div class="mega-col">
-              <div class="mega-h" data-i18n="nav_services"></div>
-              <a class="mega-link" href="services.html#ses">
-                <div class="mega-t" data-i18n="nav_services_ses"></div>
-                <div class="mega-d" data-i18n="svc1_desc"></div>
-              </a>
-              <a class="mega-link" href="services.html#product">
-                <div class="mega-t" data-i18n="nav_services_product"></div>
-                <div class="mega-d" data-i18n="svc2_desc"></div>
-              </a>
-              <a class="mega-link" href="services.html#global">
-                <div class="mega-t" data-i18n="nav_services_global"></div>
-                <div class="mega-d" data-i18n="svc3_desc"></div>
-              </a>
-            </div>
-
-            <div class="mega-col">
-              <div class="mega-h" data-i18n="sec_cases"></div>
-              <a class="mega-link" href="blog/case-aws-ha.html">
-                <div class="mega-t" data-i18n="case1_t"></div>
-                <div class="mega-d" data-i18n="case1_d"></div>
-              </a>
-              <a class="mega-link" href="blog/case-data-platform.html">
-                <div class="mega-t" data-i18n="case2_t"></div>
-                <div class="mega-d" data-i18n="case2_d"></div>
-              </a>
-              <a class="mega-link" href="blog/case-global-delivery.html">
-                <div class="mega-t" data-i18n="case3_t"></div>
-                <div class="mega-d" data-i18n="case3_d"></div>
-              </a>
-            </div>
-
-            <div class="mega-col mega-media">
-              <div class="mega-card">
-                <div class="mega-card-k" data-i18n="sec_scp_title"></div>
-                <div class="mega-card-t" data-i18n="scp_sec"></div>
-                <div class="mega-card-d" data-i18n="scp_sec_desc"></div>
-                <a class="btn small" href="security.html" data-i18n="learn_more"></a>
-              </div>
-              <div class="mega-img">
-                <img src="assets/img/datacenter.jpg" alt="">
-              </div>
-            </div>
-          </div>
+  <!-- ============================================================ Header -->
+  <header class="header">
+    <div class="header__inner">
+      <a href="index.html" class="logo">
+        <div class="logo__mark">
+          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="18,2 34,10 34,26 18,34 2,26 2,10" stroke="#00e8ff" stroke-width="1.5" fill="none"/>
+            <polygon points="18,8 28,13 28,23 18,28 8,23 8,13" stroke="#8b5cf6" stroke-width="1" fill="rgba(0,232,255,0.06)"/>
+            <circle cx="18" cy="18" r="4" fill="#00e8ff"/>
+          </svg>
         </div>
+        <span class="logo__text">AXI<span>ON</span></span>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html"    class="nav__link" data-index="01">TOP</a>
+        <a href="services.html" class="nav__link" data-index="02">SERVICES</a>
+        <a href="recruit.html"  class="nav__link" data-index="03">RECRUIT</a>
+        <a href="about.html"    class="nav__link" data-index="04">ABOUT</a>
+        <a href="contact.html"  class="nav__link" data-index="05">CONTACT</a>
+      </nav>
+
+      <div class="header__cta">
+        <a href="contact.html" class="btn btn--outline">お問い合わせ</a>
       </div>
 
-      <div class="item has-mega" data-mega="company">
-        <button type="button" class="megatoggle" aria-haspopup="true" aria-expanded="false" data-i18n="nav_company"></button>
-        <div class="mega" role="menu">
-          <div class="mega-inner">
-            <div class="mega-col">
-              <div class="mega-h" data-i18n="nav_company"></div>
-              <a class="mega-link" href="about.html">
-                <div class="mega-t" data-i18n="nav_company_about"></div>
-                <div class="mega-d" data-i18n="page_about_title"></div>
-              </a>
-              <a class="mega-link" href="company.html">
-                <div class="mega-t" data-i18n="nav_company_profile"></div>
-                <div class="mega-d" data-i18n="page_company_title"></div>
-              </a>
-              <a class="mega-link" href="security.html">
-                <div class="mega-t" data-i18n="nav_security"></div>
-                <div class="mega-d" data-i18n="sec_scp_sub"></div>
-              </a>
-            </div>
-            <div class="mega-col">
-              <div class="mega-h" data-i18n="nav_news"></div>
-              <a class="mega-link" href="news/index.html">
-                <div class="mega-t" data-i18n="page_news_title"></div>
-                <div class="mega-d" data-i18n="sec_news"></div>
-              </a>
-              <a class="mega-link" href="blog/post-coreconnect.html">
-                <div class="mega-t" data-i18n="news1_title"></div>
-                <div class="mega-d" data-i18n="news1_desc"></div>
-              </a>
-              <a class="mega-link" href="blog/post-ai-iot.html">
-                <div class="mega-t" data-i18n="news2_title"></div>
-                <div class="mega-d" data-i18n="news2_desc"></div>
-              </a>
-            </div>
-            <div class="mega-col mega-media">
-              <div class="mega-card">
-                <div class="mega-card-k" data-i18n="contact_panel_title"></div>
-                <div class="mega-card-d"><a href="contact.html" class="btn small" data-i18n="cta_contact"></a></div>
-                <div class="mega-card-d" style="opacity:.9; margin-top:10px"><span data-i18n="contact_email_label"></span>: <a href="mailto:koushinsenji@corevo.co.jp">koushinsenji@corevo.co.jp</a></div>
-              </div>
-              <div class="mega-img">
-                <img src="assets/img/office.jpg" alt="">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <a class="item" href="security.html" data-i18n="nav_security"></a>
-      <a class="item" href="news/index.html" data-i18n="nav_news"></a>
-    </nav>
-
-    <div class="actions">
-      <div class="item langwrap">
-        <a class="langbtn" href="#" data-lang-button>JP v</a>
-        <div class="dropdown" data-lang-menu style="right:0; left:auto; display:none"></div>
-      </div>
-      <a class="btn primary" href="contact.html" data-i18n="cta_contact"></a>
-
-      <button class="hamburger" type="button" aria-label="Menu" data-mobile-toggle>
+      <button class="menu-btn" aria-label="メニュー">
         <span></span><span></span><span></span>
       </button>
     </div>
-  </div>
+  </header>
 
-  <div class="mobilepanel" data-mobile-panel>
-    <a href="index.html" data-i18n="nav_home"></a>
-    <details>
-      <summary data-i18n="nav_services"></summary>
-      <a href="services.html#ses" data-i18n="nav_services_ses"></a>
-      <a href="services.html#product" data-i18n="nav_services_product"></a>
-      <a href="services.html#global" data-i18n="nav_services_global"></a>
-      <a href="security.html" data-i18n="nav_security"></a>
-    </details>
-    <details>
-      <summary data-i18n="nav_company"></summary>
-      <a href="about.html" data-i18n="nav_company_about"></a>
-      <a href="company.html" data-i18n="nav_company_profile"></a>
-      <a href="news/index.html" data-i18n="nav_news"></a>
-    </details>
-    <a href="news/index.html" data-i18n="nav_news"></a>
-    <a href="contact.html" data-i18n="nav_contact"></a>
-  </div>
-</header>
+  <!-- Mobile nav -->
+  <nav class="nav-mobile">
+    <a href="index.html"    class="nav__link" data-index="01">TOP</a>
+    <a href="services.html" class="nav__link" data-index="02">SERVICES</a>
+    <a href="recruit.html"  class="nav__link" data-index="03">RECRUIT</a>
+    <a href="about.html"    class="nav__link" data-index="04">ABOUT</a>
+    <a href="contact.html"  class="nav__link" data-index="05">CONTACT</a>
+    <a href="contact.html" class="btn btn--primary mt-4">お問い合わせ</a>
+  </nav>
 
-<main>
-  <section class="hero">
-    <video class="hero-media" autoplay muted loop playsinline>
-      <source src="assets/video/hero.mp4" type="video/mp4">
-    </video>
+  <main>
+    <!-- ============================================================ Hero -->
+    <section class="hero">
+      <div class="hero__bg">
+        <div class="hero__orb hero__orb--1"></div>
+        <div class="hero__orb hero__orb--2"></div>
+        <div class="hero__orb hero__orb--3"></div>
+      </div>
 
-    <div class="hero-inner">
-      <div class="container reveal">
-        <div class="kicker"><span class="dot"></span><span data-i18n="hero_kicker"></span></div>
-        <div class="h1" style="font-size:26px; color: rgba(234,242,255,.82); margin-top:12px" data-i18n="hero_title_top"></div>
-        <h1 class="h1" data-i18n="hero_title_main"></h1>
-        <p class="lead" data-i18n="hero_sub"></p>
-
-        <div class="pills">
-          <span class="pill" data-i18n="pill_ses"></span>
-          <span class="pill" data-i18n="pill_solutions"></span>
-          <span class="pill" data-i18n="pill_global"></span>
+      <div class="hero__content">
+        <div class="hero__badge">
+          <span class="hero__badge-dot"></span>
+          SES / ITソリューション
         </div>
 
-        <div class="hero-actions">
-          <a class="btn primary" href="services.html" data-i18n="hero_btn"></a>
-          <a class="btn" href="news/index.html" data-i18n="view_all_news"></a>
+        <h1 class="hero__title">
+          DEPLOY<br>
+          <span class="hero__title-line2">ELITE ENGINEERS</span>
+        </h1>
+
+        <div class="hero__terminal">
+          <span class="hero__terminal-prompt">axion@mission:~$</span>
+          <span class="hero__terminal-text" data-words='["エンジニアをあなたの現場へ", "最適なチームを構築します", "技術力で未来を切り拓く", "一緒に挑戦しませんか"]'></span>
+          <span class="hero__terminal-cursor"></span>
+        </div>
+
+        <p class="hero__desc">
+          AXIONは、高度なエンジニアリング能力を持つ技術者を厳選し、
+          お客様のプロジェクトに最適なチームとして展開するSES・ITソリューション企業です。
+          技術の最前線で、あなたのビジネスを加速させます。
+        </p>
+
+        <div class="hero__actions">
+          <a href="services.html" class="btn btn--primary">サービスを見る</a>
+          <a href="recruit.html"  class="btn btn--outline">採用情報</a>
+        </div>
+
+        <div class="hero__stats">
+          <div class="stat">
+            <span class="stat__number" data-target="120" data-suffix="+">0</span>
+            <span class="stat__label">在籍エンジニア</span>
+          </div>
+          <div class="stat">
+            <span class="stat__number" data-target="85" data-suffix="+">0</span>
+            <span class="stat__label">取引企業数</span>
+          </div>
+          <div class="stat">
+            <span class="stat__number" data-target="98">0</span>
+            <span class="stat__label" style="white-space:nowrap">顧客継続率 (%)</span>
+          </div>
+          <div class="stat">
+            <span class="stat__number" data-target="10" data-suffix="年">0</span>
+            <span class="stat__label">設立からの実績</span>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="metrics">
-      <div class="container metrics-inner">
-        <div class="metric"><div class="num">30+</div><div class="label" data-i18n="m_projects"></div></div>
-        <div class="metric"><div class="num">20+</div><div class="label" data-i18n="m_areas"></div></div>
-        <div class="metric"><div class="num">15+</div><div class="label" data-i18n="m_languages"></div></div>
-        <div class="metric"><div class="num">96%</div><div class="label" data-i18n="m_retention"></div></div>
-        <div class="metric"><div class="num">50+</div><div class="label" data-i18n="m_members"></div></div>
+    <!-- ============================================================ Tech Strip -->
+    <section class="tech-strip section--sm">
+      <p class="tech-strip__label">対応技術スタック</p>
+      <div style="overflow:hidden">
+        <div class="tech-strip__track">
+          <!-- Original set -->
+          <span class="tech-badge"><span class="tech-badge__dot"></span>Java</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>Python</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>TypeScript</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>Go</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>Rust</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>React</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>Next.js</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>Vue.js</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>Node.js</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>AWS</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>Azure</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>GCP</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>Kubernetes</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>Docker</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>Terraform</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>PostgreSQL</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>MySQL</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>MongoDB</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>Redis</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>Elasticsearch</span>
+          <!-- Duplicate for seamless loop -->
+          <span class="tech-badge"><span class="tech-badge__dot"></span>Java</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>Python</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>TypeScript</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>Go</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>Rust</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>React</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>Next.js</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>Vue.js</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>Node.js</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>AWS</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>Azure</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>GCP</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>Kubernetes</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>Docker</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>Terraform</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>PostgreSQL</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>MySQL</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>MongoDB</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>Redis</span>
+          <span class="tech-badge"><span class="tech-badge__dot"></span>Elasticsearch</span>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section">
+    <hr class="divider">
+
+    <!-- ============================================================ Services Preview -->
+    <section class="services-preview container">
+      <header class="services-preview__header reveal">
+        <p class="section-label">SERVICES</p>
+        <h2 class="section-title">エンジニアの力で、<br><span>課題を解決する</span></h2>
+        <p class="section-desc">
+          SESから受託開発、ITコンサルティングまで。
+          お客様のフェーズと規模に合わせた最適なソリューションを提供します。
+        </p>
+      </header>
+
+      <div class="grid-3">
+        <div class="card service-card reveal reveal-delay-1">
+          <span class="service-card__num">01</span>
+          <div class="card__icon">⚡</div>
+          <h3 class="card__title">SES / エンジニア派遣</h3>
+          <p class="card__desc">
+            即戦力エンジニアをスピーディに提供。バックエンド・フロントエンド・インフラ・データエンジニアなど、幅広い技術領域に対応します。
+          </p>
+          <div class="service-card__tags">
+            <span class="tag">常駐型</span>
+            <span class="tag">リモート可</span>
+            <span class="tag">短期〜長期</span>
+          </div>
+        </div>
+
+        <div class="card service-card reveal reveal-delay-2">
+          <span class="service-card__num">02</span>
+          <div class="card__icon">🏗️</div>
+          <h3 class="card__title">受託開発</h3>
+          <p class="card__desc">
+            要件定義から設計・開発・運用まで一気通貫で対応。Webアプリ・スマホアプリ・業務システムをワンストップで構築します。
+          </p>
+          <div class="service-card__tags">
+            <span class="tag">Web</span>
+            <span class="tag">スマホ</span>
+            <span class="tag">業務系</span>
+          </div>
+        </div>
+
+        <div class="card service-card reveal reveal-delay-3">
+          <span class="service-card__num">03</span>
+          <div class="card__icon">☁️</div>
+          <h3 class="card__title">クラウド / インフラ</h3>
+          <p class="card__desc">
+            AWS・Azure・GCPを活用したクラウドアーキテクチャ設計と運用自動化。コスト最適化・セキュリティ強化をトータルサポートします。
+          </p>
+          <div class="service-card__tags">
+            <span class="tag">AWS</span>
+            <span class="tag">Azure</span>
+            <span class="tag">GCP</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-4 reveal">
+        <a href="services.html" class="btn btn--outline">すべてのサービスを見る →</a>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ============================================================ About Strip -->
+    <section class="about-strip">
+      <div class="container">
+        <div class="about-strip__inner">
+          <div class="reveal--left">
+            <p class="section-label">ABOUT AXION</p>
+            <h2 class="section-title" style="margin-bottom:1.5rem">技術に誠実に、<br><span>人に真剣に</span></h2>
+            <p style="color:var(--text-dim);font-size:0.97rem;margin-bottom:1.5rem;max-width:44ch">
+              「良いエンジニアと良い仕事をつなぐ」というシンプルな信念のもと設立されたAXION。
+              エンジニアのキャリアを真剣に考え、お客様のビジネスに本気で向き合います。
+            </p>
+            <ul class="about-strip__value-list">
+              <li class="about-strip__value-item">
+                <div class="about-strip__value-icon">🎯</div>
+                <div>
+                  <p class="about-strip__value-label">PRECISION MATCHING</p>
+                  <p class="about-strip__value-desc">スキル・経験・志向性を三次元で分析し、最適なアサインを実現</p>
+                </div>
+              </li>
+              <li class="about-strip__value-item">
+                <div class="about-strip__value-icon">🛡️</div>
+                <div>
+                  <p class="about-strip__value-label">ENGINEER-FIRST</p>
+                  <p class="about-strip__value-desc">エンジニアの成長・キャリアを最優先に考えた案件選定と支援</p>
+                </div>
+              </li>
+              <li class="about-strip__value-item">
+                <div class="about-strip__value-icon">🔗</div>
+                <div>
+                  <p class="about-strip__value-label">LONG-TERM PARTNERSHIP</p>
+                  <p class="about-strip__value-desc">単発の案件提供ではなく、長期的なビジネスパートナーとして伴走</p>
+                </div>
+              </li>
+            </ul>
+            <a href="about.html" class="btn btn--outline mt-4">会社概要を見る</a>
+          </div>
+
+          <div class="reveal--right">
+            <div class="terminal">
+              <div class="terminal__bar">
+                <span class="terminal__dot terminal__dot--r"></span>
+                <span class="terminal__dot terminal__dot--y"></span>
+                <span class="terminal__dot terminal__dot--g"></span>
+                <span class="terminal__title">axion.sh</span>
+              </div>
+              <div class="terminal__body">
+                <span class="terminal__line"><span class="term-prompt">$</span> <span class="term-cmd">axion status</span></span>
+                <span class="terminal__line"><span class="term-ok">✓</span> <span class="term-info">Engineers deployed: 120</span></span>
+                <span class="terminal__line"><span class="term-ok">✓</span> <span class="term-info">Active projects: 93</span></span>
+                <span class="terminal__line"><span class="term-ok">✓</span> <span class="term-info">Client satisfaction: 98%</span></span>
+                <span class="terminal__line">&nbsp;</span>
+                <span class="terminal__line"><span class="term-prompt">$</span> <span class="term-cmd">axion deploy --team</span></span>
+                <span class="terminal__line"><span class="term-comment"># Analyzing requirements...</span></span>
+                <span class="terminal__line"><span class="term-ok">✓</span> <span class="term-info">Skills matched: Java, AWS, React</span></span>
+                <span class="terminal__line"><span class="term-ok">✓</span> <span class="term-info">Team of 3 engineers ready</span></span>
+                <span class="terminal__line"><span class="term-ok">✓</span> <span class="term-info">Onboarding: 2026-04-01</span></span>
+                <span class="terminal__line">&nbsp;</span>
+                <span class="terminal__line"><span class="term-prompt">$</span> <span class="term-cmd">_</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ============================================================ Process -->
+    <section class="process container">
+      <div class="text-center reveal" style="max-width:640px;margin:0 auto 0">
+        <p class="section-label">HOW IT WORKS</p>
+        <h2 class="section-title">最短<span>2週間</span>でアサイン完了</h2>
+        <p class="section-desc" style="margin:0 auto">
+          ご要望ヒアリングからエンジニアのアサインまで、スピーディかつ丁寧に進めます。
+        </p>
+      </div>
+
+      <div class="process__steps">
+        <div class="process-step reveal reveal-delay-1">
+          <div class="process-step__icon">💬</div>
+          <h3 class="process-step__title">01 ヒアリング</h3>
+          <p class="process-step__desc">要件・スケジュール・チーム構成などをヒアリング</p>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="process-step__icon">🔍</div>
+          <h3 class="process-step__title">02 マッチング</h3>
+          <p class="process-step__desc">データベースから最適なエンジニアを選定・提案</p>
+        </div>
+        <div class="process-step reveal reveal-delay-3">
+          <div class="process-step__icon">🤝</div>
+          <h3 class="process-step__title">03 面談・確認</h3>
+          <p class="process-step__desc">エンジニアとお客様の面談を設定・調整をサポート</p>
+        </div>
+        <div class="process-step reveal reveal-delay-4">
+          <div class="process-step__icon">🚀</div>
+          <h3 class="process-step__title">04 アサイン</h3>
+          <p class="process-step__desc">契約締結後、スムーズなオンボーディングを実施</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ Recruit CTA -->
+    <section class="recruit-cta container">
+      <div class="recruit-cta__inner reveal">
+        <div>
+          <p class="recruit-cta__badge">// FOR ENGINEERS</p>
+          <h2 class="recruit-cta__title">あなたの技術を、<br>最高の舞台で活かしてください。</h2>
+          <p class="recruit-cta__desc">
+            AXIONは成長意欲の高いエンジニアを積極採用中です。
+            スキルアップ支援・リモート対応・充実した福利厚生で、
+            エンジニアとしてのキャリアを全力でサポートします。
+          </p>
+        </div>
+        <div class="recruit-cta__actions">
+          <a href="recruit.html" class="btn btn--purple">採用情報を見る</a>
+          <a href="contact.html" class="btn btn--ghost">まず相談する</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ CTA Strip -->
+    <section class="cta-strip">
+      <div class="container">
+        <p class="section-label" style="justify-content:center;margin-bottom:1.5rem">GET STARTED</p>
+        <h2 class="cta-strip__title">エンジニア調達の悩みを、<br>今すぐ解決しませんか？</h2>
+        <p class="cta-strip__desc">
+          まずはお気軽にご相談ください。経験豊富なコンサルタントが、
+          貴社に最適なソリューションをご提案します。
+        </p>
+        <div class="cta-strip__actions">
+          <a href="contact.html" class="btn btn--primary">無料でお問い合わせ</a>
+          <a href="services.html" class="btn btn--outline">サービス詳細</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================ Footer -->
+  <footer class="footer">
     <div class="container">
-      <div class="reveal">
-        <h2 data-i18n="sec_services"></h2>
-        <p data-i18n="sec_services_sub"></p>
-      </div>
-
-      <div class="cards3 reveal" style="transition-delay:.05s">
-        <a class="card" href="services.html#ses">
-          <div class="cover"><img src="assets/img/datacenter.jpg" alt=""></div>
-          <div class="content">
-            <h3><span data-i18n="svc1_title"></span> <span style="opacity:.75; font-weight:800" data-i18n="svc1_sub"></span></h3>
-            <div class="desc" data-i18n="svc1_desc"></div>
-            <div class="more"><span data-i18n="learn_more"></span> <span>→</span></div>
-          </div>
-        </a>
-        <a class="card" href="services.html#product">
-          <div class="cover"><img src="assets/img/office.jpg" alt=""></div>
-          <div class="content">
-            <h3><span data-i18n="svc2_title"></span> <span style="opacity:.75; font-weight:800" data-i18n="svc2_sub"></span></h3>
-            <div class="desc" data-i18n="svc2_desc"></div>
-            <div class="more"><span data-i18n="learn_more"></span> <span>→</span></div>
-          </div>
-        </a>
-        <a class="card" href="services.html#global">
-          <div class="cover"><img src="assets/img/meeting.jpg" alt=""></div>
-          <div class="content">
-            <h3><span data-i18n="svc3_title"></span> <span style="opacity:.75; font-weight:800" data-i18n="svc3_sub"></span></h3>
-            <div class="desc" data-i18n="svc3_desc"></div>
-            <div class="more"><span data-i18n="learn_more"></span> <span>→</span></div>
-          </div>
-        </a>
-      </div>
-
-      <div class="section reveal" style="padding:34px 0 0">
-        <h2 data-p-i18n="title">ご相談から導入までの流れ</h2>
-        <p data-p-i18n="sub">初回相談から実装・運用まで、最短距離で伴走します。</p>
-        <div class="processgrid">
-          <article class="process">
-            <div class="step">01</div>
-            <h3 data-p-i18n="s1_t">ヒアリング</h3>
-            <p data-p-i18n="s1_d">課題・体制・スケジュールを整理し、優先度を明確化します。</p>
-          </article>
-          <article class="process">
-            <div class="step">02</div>
-            <h3 data-p-i18n="s2_t">ご提案</h3>
-            <p data-p-i18n="s2_d">最適な体制と実行計画を、期間・コストと合わせて提示します。</p>
-          </article>
-          <article class="process">
-            <div class="step">03</div>
-            <h3 data-p-i18n="s3_t">開発・提供</h3>
-            <p data-p-i18n="s3_d">進捗を可視化しながら、品質とスピードを両立して進行します。</p>
-          </article>
-          <article class="process">
-            <div class="step">04</div>
-            <h3 data-p-i18n="s4_t">運用改善</h3>
-            <p data-p-i18n="s4_d">稼働後の課題を継続的に改善し、事業成果につなげます。</p>
-          </article>
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="logo" style="margin-bottom:1rem;display:inline-flex">
+            <span class="logo__text">AXI<span>ON</span></span>
+          </a>
+          <p class="footer__tagline">Deploy Elite Engineers.<br>Build the Future.</p>
         </div>
-        <div class="process-cta">
-          <a class="btn" href="contact.html" data-p-i18n="cta">30分相談を予約する</a>
+        <div>
+          <p class="footer__heading">COMPANY</p>
+          <ul class="footer__links">
+            <li><a href="about.html">会社概要</a></li>
+            <li><a href="services.html">サービス</a></li>
+            <li><a href="recruit.html">採用情報</a></li>
+            <li><a href="contact.html">お問い合わせ</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__heading">SERVICES</p>
+          <ul class="footer__links">
+            <li><a href="services.html#ses">SES / 派遣</a></li>
+            <li><a href="services.html#dev">受託開発</a></li>
+            <li><a href="services.html#cloud">クラウド</a></li>
+            <li><a href="services.html#consulting">コンサルティング</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__heading">CONTACT</p>
+          <ul class="footer__links">
+            <li><a href="mailto:info@axion.co.jp">info@axion.co.jp</a></li>
+            <li><a href="tel:0312345678">03-1234-5678</a></li>
+            <li style="color:var(--text-muted);font-size:0.85rem">〒100-0000<br>東京都千代田区丸の内1-1-1</li>
+          </ul>
         </div>
       </div>
-
-      <div class="section reveal" style="padding:34px 0 0">
-        <h2 data-i18n="sec_cases"></h2>
-        <p data-i18n="sec_cases_sub"></p>
-
-        <div class="casegrid">
-          <a class="case" href="blog/case-aws-ha.html">
-            <div class="cover"><img src="assets/img/datacenter.jpg" alt=""></div>
-            <div class="body">
-              <div class="k" data-i18n="case1_k"></div>
-              <div class="t" data-i18n="case1_t"></div>
-              <div class="d" data-i18n="case1_d"></div>
-              <div class="more" style="margin-top:12px"><span data-i18n="read_story"></span> <span>→</span></div>
-            </div>
-          </a>
-          <a class="case" href="blog/case-data-platform.html">
-            <div class="cover"><img src="assets/img/office.jpg" alt=""></div>
-            <div class="body">
-              <div class="k" data-i18n="case2_k"></div>
-              <div class="t" data-i18n="case2_t"></div>
-              <div class="d" data-i18n="case2_d"></div>
-              <div class="more" style="margin-top:12px"><span data-i18n="read_story"></span> <span>→</span></div>
-            </div>
-          </a>
-          <a class="case" href="blog/case-global-delivery.html">
-            <div class="cover"><img src="assets/img/meeting.jpg" alt=""></div>
-            <div class="body">
-              <div class="k" data-i18n="case3_k"></div>
-              <div class="t" data-i18n="case3_t"></div>
-              <div class="d" data-i18n="case3_d"></div>
-              <div class="more" style="margin-top:12px"><span data-i18n="read_story"></span> <span>→</span></div>
-            </div>
-          </a>
-        </div>
+      <div class="footer__bottom">
+        <span>© 2024 AXION Inc. All rights reserved.</span>
+        <span>Engineered with precision.</span>
       </div>
-
-      <!-- Existing split (news + security/contact) from previous build is retained on other pages;
-           here we link to news and keep the sidebar on homepage as before (already in original). -->
     </div>
-  </section>
-</main>
+  </footer>
 
-<footer class="footer">
-  <div class="container footer-row">
-    <div>&copy; <span id="y"></span> <span data-i18n="footer_company"></span></div>
-    <div style="display:flex; gap:12px; flex-wrap:wrap">
-      <a href="services.html" data-i18n="footer_links_services"></a>
-      <a href="company.html" data-i18n="footer_links_company"></a>
-      <a href="security.html" data-i18n="footer_links_security"></a>
-      <a href="news/index.html" data-i18n="footer_links_news"></a>
-      <a href="contact.html" data-i18n="footer_links_contact"></a>
-      <span style="opacity:.55">|</span>
-      <a href="mailto:koushinsenji@corevo.co.jp">koushinsenji@corevo.co.jp</a>
-    </div>
-  </div>
-</footer>
-<script>
-  (function(){
-    const P = {
-      ja: {
-        title: "ご相談から導入までの流れ",
-        sub: "初回相談から実装・運用まで、最短距離で伴走します。",
-        s1_t: "ヒアリング",
-        s1_d: "課題・体制・スケジュールを整理し、優先度を明確化します。",
-        s2_t: "ご提案",
-        s2_d: "最適な体制と実行計画を、期間・コストと合わせて提示します。",
-        s3_t: "開発・提供",
-        s3_d: "進捗を可視化しながら、品質とスピードを両立して進行します。",
-        s4_t: "運用改善",
-        s4_d: "稼働後の課題を継続的に改善し、事業成果につなげます。",
-        cta: "30分相談を予約する"
-      },
-      en: {
-        title: "How We Work With You",
-        sub: "From first consultation to delivery and operations, we move fast with clarity.",
-        s1_t: "Discovery",
-        s1_d: "We clarify goals, constraints, timeline, and team structure.",
-        s2_t: "Proposal",
-        s2_d: "We present a practical plan with scope, schedule, and cost.",
-        s3_t: "Build & Delivery",
-        s3_d: "We execute with transparent progress tracking and quality control.",
-        s4_t: "Operate & Improve",
-        s4_d: "After launch, we continuously optimize for business outcomes.",
-        cta: "Book a 30-min consultation"
-      },
-      zh: {
-        title: "合作流程",
-        sub: "从首次咨询到交付与运维，我们以最短路径推进落地。",
-        s1_t: "需求沟通",
-        s1_d: "明确课题、体制与时间计划，梳理优先级。",
-        s2_t: "方案提案",
-        s2_d: "提供可执行的体制与计划，并同步周期和成本。",
-        s3_t: "开发交付",
-        s3_d: "在可视化进度下兼顾质量与速度，稳步推进。",
-        s4_t: "运维优化",
-        s4_d: "上线后持续优化，连接到实际业务成果。",
-        cta: "预约30分钟咨询"
-      },
-      ko: {
-        title: "협업 진행 방식",
-        sub: "첫 상담부터 구축과 운영까지, 빠르고 명확하게 진행합니다.",
-        s1_t: "요건 파악",
-        s1_d: "과제, 일정, 팀 구성을 정리하고 우선순위를 확정합니다.",
-        s2_t: "제안",
-        s2_d: "범위, 일정, 비용을 포함한 실행 가능한 계획을 제시합니다.",
-        s3_t: "개발·전달",
-        s3_d: "진행 상황을 투명하게 공유하며 품질과 속도를 함께 확보합니다.",
-        s4_t: "운영·개선",
-        s4_d: "오픈 이후에도 지속 개선하여 성과로 연결합니다.",
-        cta: "30분 상담 예약"
-      }
-    };
-
-    function applyProcessLang(){
-      const lang = document.documentElement.getAttribute("lang") || "ja";
-      const t = P[lang] || P.ja;
-      document.querySelectorAll("[data-p-i18n]").forEach(function(el){
-        const k = el.getAttribute("data-p-i18n");
-        if (t[k]) el.textContent = t[k];
-      });
-    }
-
-    document.addEventListener("DOMContentLoaded", function(){
-      applyProcessLang();
-      const mo = new MutationObserver(applyProcessLang);
-      mo.observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
-    });
-  })();
-</script>
+  <script src="js/main.js"></script>
 </body>
 </html>

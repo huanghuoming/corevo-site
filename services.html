@@ -1,221 +1,962 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Services | CoRevo Inc.</title>
-  <meta name="description" content="Explore CoRevo services: SES, product development, and global development support." />
-  <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://corevo.co.jp/services.html" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="CoRevo" />
-  <meta property="og:title" content="Services | CoRevo Inc." />
-  <meta property="og:description" content="Explore CoRevo services: SES, product development, and global development support." />
-  <meta property="og:url" content="https://corevo.co.jp/services.html" />
-  <meta property="og:image" content="https://corevo.co.jp/assets/img/hero.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
-  <script defer src="assets/js/main.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SERVICES | AXION Inc.</title>
+  <meta name="description" content="AXIONのサービスラインナップ。SES・派遣、受託開発、クラウド、コンサルティングで貴社のIT戦略を支援します。">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ---- Services-specific styles ---- */
+
+    .page-hero {
+      padding: 10rem 0 6rem;
+      position: relative;
+    }
+
+    .page-hero__label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--cyan);
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .page-hero__label::before {
+      content: '//';
+      color: var(--text-muted);
+    }
+
+    .page-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    .page-hero__desc {
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      color: var(--text-dim);
+      max-width: 56ch;
+      line-height: 1.8;
+    }
+
+    /* Service section */
+    .service-section {
+      padding: 6rem 0;
+      position: relative;
+    }
+
+    .service-section + .service-section {
+      border-top: 1px solid var(--border);
+    }
+
+    .service-section__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .service-section__inner--reverse {
+      direction: rtl;
+    }
+
+    .service-section__inner--reverse > * {
+      direction: ltr;
+    }
+
+    .service-section__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.3rem 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-section__num {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--cyan);
+    }
+
+    .service-section__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+    }
+
+    .service-section__desc {
+      color: var(--text-dim);
+      line-height: 1.85;
+      margin-bottom: 2rem;
+      font-size: 0.97rem;
+    }
+
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .feature-list__item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.92rem;
+      color: var(--text-dim);
+    }
+
+    .feature-list__item::before {
+      content: '▸';
+      color: var(--cyan);
+      font-size: 0.85rem;
+      margin-top: 0.1em;
+      flex-shrink: 0;
+    }
+
+    /* Visual panel */
+    .service-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .service-panel__header {
+      padding: 1.25rem 1.75rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0,0,0,0.2);
+    }
+
+    .service-panel__title {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+    }
+
+    .service-panel__status {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: #28c941;
+    }
+
+    .service-panel__status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #28c941;
+      animation: pulse-green 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-green {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .service-panel__body {
+      padding: 2rem 1.75rem;
+    }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.6rem;
+    }
+
+    .skill-chip {
+      background: rgba(0, 232, 255, 0.05);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.5rem 0.6rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      text-align: center;
+      transition: all var(--transition);
+    }
+
+    .skill-chip:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      background: rgba(0, 232, 255, 0.08);
+    }
+
+    .skill-chip--hot {
+      border-color: rgba(0, 232, 255, 0.35);
+      color: var(--cyan);
+      background: rgba(0, 232, 255, 0.07);
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 0 0.5rem;
+    }
+
+    .stat-item + .stat-item {
+      border-left: 1px solid var(--border);
+    }
+
+    .stat-item__num {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--cyan);
+      line-height: 1;
+    }
+
+    .stat-item__label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+    }
+
+    /* Cloud diagram */
+    .cloud-diagram {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .cloud-layer {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.75rem 1rem;
+      position: relative;
+    }
+
+    .cloud-layer__label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .cloud-layer__items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .cloud-item {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      background: rgba(139, 92, 246, 0.12);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      color: var(--purple-bright);
+    }
+
+    .cloud-item--aws {
+      background: rgba(255, 153, 0, 0.1);
+      border-color: rgba(255, 153, 0, 0.3);
+      color: #ff9900;
+    }
+
+    .cloud-item--azure {
+      background: rgba(0, 114, 198, 0.12);
+      border-color: rgba(0, 114, 198, 0.3);
+      color: #0072c6;
+    }
+
+    .cloud-item--gcp {
+      background: rgba(66, 133, 244, 0.1);
+      border-color: rgba(66, 133, 244, 0.3);
+      color: #4285f4;
+    }
+
+    /* Consulting flow */
+    .consult-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .consult-step {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      position: relative;
+    }
+
+    .consult-step + .consult-step {
+      border-top: 1px solid var(--border);
+    }
+
+    .consult-step:last-child::after { display: none; }
+
+    .consult-step__num {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 900;
+      color: var(--cyan);
+      letter-spacing: 0.08em;
+      min-width: 28px;
+      padding-top: 0.15rem;
+    }
+
+    .consult-step__name {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+
+    .consult-step__desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Pricing note section */
+    .pricing-note {
+      padding: 6rem 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(10,20,48,0.4) 50%, transparent 100%);
+    }
+
+    .pricing-note__inner {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .pricing-note__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+
+    .pricing-note__desc {
+      color: var(--text-dim);
+      line-height: 1.85;
+      margin-bottom: 2.5rem;
+    }
+
+    /* FAQ */
+    .faq {
+      padding: 6rem 0;
+    }
+
+    .faq__list {
+      max-width: 800px;
+      margin: 3rem auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .faq__item {
+      border-top: 1px solid var(--border);
+    }
+
+    .faq__item:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq__question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      list-style: none;
+    }
+
+    .faq__question::-webkit-details-marker { display: none; }
+
+    .faq__arrow {
+      color: var(--cyan);
+      font-size: 0.9rem;
+      transition: transform var(--transition);
+      flex-shrink: 0;
+    }
+
+    details[open] .faq__arrow {
+      transform: rotate(90deg);
+    }
+
+    .faq__answer {
+      padding-bottom: 1.5rem;
+      color: var(--text-dim);
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 1024px) {
+      .service-section__inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .service-section__inner--reverse {
+        direction: ltr;
+      }
+      .skill-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .skill-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .stat-row {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
 </head>
 <body>
-
-<header class="header">
-  <div class="container nav">
-    <a class="brand" href="index.html">
-      <img src="assets/img/logo.png" alt="CoRevo">
-      <div>
-        <div class="name">CoRevo</div>
-        <div class="sub">CoRevo Inc.</div>
-      </div>
-    </a>
-
-    <nav class="menu" aria-label="Primary">
-      <a class="item" href="index.html" data-i18n="nav_home"></a>
-
-      <div class="item has-mega" data-mega="services">
-        <button type="button" class="megatoggle" aria-haspopup="true" aria-expanded="false" data-i18n="nav_services"></button>
-        <div class="mega" role="menu">
-          <div class="mega-inner">
-            <div class="mega-col">
-              <div class="mega-h" data-i18n="nav_services"></div>
-              <a class="mega-link" href="services.html#ses">
-                <div class="mega-t" data-i18n="nav_services_ses"></div>
-                <div class="mega-d" data-i18n="svc1_desc"></div>
-              </a>
-              <a class="mega-link" href="services.html#product">
-                <div class="mega-t" data-i18n="nav_services_product"></div>
-                <div class="mega-d" data-i18n="svc2_desc"></div>
-              </a>
-              <a class="mega-link" href="services.html#global">
-                <div class="mega-t" data-i18n="nav_services_global"></div>
-                <div class="mega-d" data-i18n="svc3_desc"></div>
-              </a>
-            </div>
-
-            <div class="mega-col">
-              <div class="mega-h" data-i18n="sec_cases"></div>
-              <a class="mega-link" href="blog/case-aws-ha.html">
-                <div class="mega-t" data-i18n="case1_t"></div>
-                <div class="mega-d" data-i18n="case1_d"></div>
-              </a>
-              <a class="mega-link" href="blog/case-data-platform.html">
-                <div class="mega-t" data-i18n="case2_t"></div>
-                <div class="mega-d" data-i18n="case2_d"></div>
-              </a>
-              <a class="mega-link" href="blog/case-global-delivery.html">
-                <div class="mega-t" data-i18n="case3_t"></div>
-                <div class="mega-d" data-i18n="case3_d"></div>
-              </a>
-            </div>
-
-            <div class="mega-col mega-media">
-              <div class="mega-card">
-                <div class="mega-card-k" data-i18n="sec_scp_title"></div>
-                <div class="mega-card-t" data-i18n="scp_sec"></div>
-                <div class="mega-card-d" data-i18n="scp_sec_desc"></div>
-                <a class="btn small" href="security.html" data-i18n="learn_more"></a>
-              </div>
-              <div class="mega-img">
-                <img src="assets/img/datacenter.jpg" alt="">
-              </div>
-            </div>
-          </div>
+  <!-- ============================================================ Header -->
+  <header class="header">
+    <div class="header__inner">
+      <a href="index.html" class="logo">
+        <div class="logo__mark">
+          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="18,2 34,10 34,26 18,34 2,26 2,10" stroke="#00e8ff" stroke-width="1.5" fill="none"/>
+            <polygon points="18,8 28,13 28,23 18,28 8,23 8,13" stroke="#8b5cf6" stroke-width="1" fill="rgba(0,232,255,0.06)"/>
+            <circle cx="18" cy="18" r="4" fill="#00e8ff"/>
+          </svg>
         </div>
+        <span class="logo__text">AXI<span>ON</span></span>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html"    class="nav__link" data-index="01">TOP</a>
+        <a href="services.html" class="nav__link" data-index="02">SERVICES</a>
+        <a href="recruit.html"  class="nav__link" data-index="03">RECRUIT</a>
+        <a href="about.html"    class="nav__link" data-index="04">ABOUT</a>
+        <a href="contact.html"  class="nav__link" data-index="05">CONTACT</a>
+      </nav>
+
+      <div class="header__cta">
+        <a href="contact.html" class="btn btn--outline">お問い合わせ</a>
       </div>
 
-      <div class="item has-mega" data-mega="company">
-        <button type="button" class="megatoggle" aria-haspopup="true" aria-expanded="false" data-i18n="nav_company"></button>
-        <div class="mega" role="menu">
-          <div class="mega-inner">
-            <div class="mega-col">
-              <div class="mega-h" data-i18n="nav_company"></div>
-              <a class="mega-link" href="about.html">
-                <div class="mega-t" data-i18n="nav_company_about"></div>
-                <div class="mega-d" data-i18n="page_about_title"></div>
-              </a>
-              <a class="mega-link" href="company.html">
-                <div class="mega-t" data-i18n="nav_company_profile"></div>
-                <div class="mega-d" data-i18n="page_company_title"></div>
-              </a>
-              <a class="mega-link" href="security.html">
-                <div class="mega-t" data-i18n="nav_security"></div>
-                <div class="mega-d" data-i18n="sec_scp_sub"></div>
-              </a>
-            </div>
-            <div class="mega-col">
-              <div class="mega-h" data-i18n="nav_news"></div>
-              <a class="mega-link" href="news/index.html">
-                <div class="mega-t" data-i18n="page_news_title"></div>
-                <div class="mega-d" data-i18n="sec_news"></div>
-              </a>
-              <a class="mega-link" href="blog/post-coreconnect.html">
-                <div class="mega-t" data-i18n="news1_title"></div>
-                <div class="mega-d" data-i18n="news1_desc"></div>
-              </a>
-              <a class="mega-link" href="blog/post-ai-iot.html">
-                <div class="mega-t" data-i18n="news2_title"></div>
-                <div class="mega-d" data-i18n="news2_desc"></div>
-              </a>
-            </div>
-            <div class="mega-col mega-media">
-              <div class="mega-card">
-                <div class="mega-card-k" data-i18n="contact_panel_title"></div>
-                <div class="mega-card-d"><a href="contact.html" class="btn small" data-i18n="cta_contact"></a></div>
-                <div class="mega-card-d" style="opacity:.9; margin-top:10px"><span data-i18n="contact_email_label"></span>: <a href="mailto:koushinsenji@corevo.co.jp">koushinsenji@corevo.co.jp</a></div>
-              </div>
-              <div class="mega-img">
-                <img src="assets/img/office.jpg" alt="">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <a class="item" href="security.html" data-i18n="nav_security"></a>
-      <a class="item" href="news/index.html" data-i18n="nav_news"></a>
-    </nav>
-
-    <div class="actions">
-      <div class="item langwrap">
-        <a class="langbtn" href="#" data-lang-button>JP v</a>
-        <div class="dropdown" data-lang-menu style="right:0; left:auto; display:none"></div>
-      </div>
-      <a class="btn primary" href="contact.html" data-i18n="cta_contact"></a>
-
-      <button class="hamburger" type="button" aria-label="Menu" data-mobile-toggle>
+      <button class="menu-btn" aria-label="メニュー">
         <span></span><span></span><span></span>
       </button>
     </div>
-  </div>
+  </header>
 
-  <div class="mobilepanel" data-mobile-panel>
-    <a href="index.html" data-i18n="nav_home"></a>
-    <details>
-      <summary data-i18n="nav_services"></summary>
-      <a href="services.html#ses" data-i18n="nav_services_ses"></a>
-      <a href="services.html#product" data-i18n="nav_services_product"></a>
-      <a href="services.html#global" data-i18n="nav_services_global"></a>
-      <a href="security.html" data-i18n="nav_security"></a>
-    </details>
-    <details>
-      <summary data-i18n="nav_company"></summary>
-      <a href="about.html" data-i18n="nav_company_about"></a>
-      <a href="company.html" data-i18n="nav_company_profile"></a>
-      <a href="news/index.html" data-i18n="nav_news"></a>
-    </details>
-    <a href="news/index.html" data-i18n="nav_news"></a>
-    <a href="contact.html" data-i18n="nav_contact"></a>
-  </div>
-</header>
+  <!-- Mobile nav -->
+  <nav class="nav-mobile">
+    <a href="index.html"    class="nav__link" data-index="01">TOP</a>
+    <a href="services.html" class="nav__link" data-index="02">SERVICES</a>
+    <a href="recruit.html"  class="nav__link" data-index="03">RECRUIT</a>
+    <a href="about.html"    class="nav__link" data-index="04">ABOUT</a>
+    <a href="contact.html"  class="nav__link" data-index="05">CONTACT</a>
+    <a href="contact.html" class="btn btn--primary mt-4">お問い合わせ</a>
+  </nav>
 
-<main>
-  <section class="section">
-    <div class="container">
-      <h1 data-i18n="page_services_title"></h1>
-      <p data-i18n="sec_services_sub"></p>
+  <main>
+    <!-- ============================================================ Page Hero -->
+    <section class="page-hero container">
+      <div class="reveal">
+        <p class="page-hero__label">SERVICES</p>
+        <h1 class="page-hero__title">ITの力で、<br><span class="text-gradient">ビジネスを加速</span>する。</h1>
+        <p class="page-hero__desc">
+          AXIONは、SES・受託開発・クラウドインフラ・ITコンサルティングの4領域で、
+          クライアント企業のデジタル戦略を包括的に支援します。
+        </p>
+      </div>
+    </section>
 
-      <div class="cards3" style="margin-top:16px">
-        <div class="card" id="ses">
-          <div class="cover"><img src="assets/img/datacenter.jpg" alt=""></div>
-          <div class="content">
-            <h3 data-i18n="svc1_title"></h3>
-            <div class="desc" data-i18n="svc1_desc"></div>
+    <hr class="divider">
+
+    <!-- ============================================================ SES -->
+    <section id="ses" class="service-section container">
+      <div class="service-section__inner">
+        <div class="reveal--left">
+          <div class="service-section__badge">
+            <span class="service-section__num">01</span>
+            SES / 派遣
           </div>
+          <h2 class="service-section__title">即戦力エンジニアを<br><span class="text-gradient">スピード供給</span></h2>
+          <p class="service-section__desc">
+            貴社のプロジェクトに最適なエンジニアを、最短2週間でアサイン。
+            要件ヒアリングから候補者選定・面談調整まで一貫してサポートします。
+            フロントエンド、バックエンド、インフラ、データエンジニアリングまで幅広い職種に対応。
+          </p>
+          <ul class="feature-list">
+            <li class="feature-list__item">業界平均の2倍速マッチング（平均10日）</li>
+            <li class="feature-list__item">120名以上の登録エンジニアから最適候補を提案</li>
+            <li class="feature-list__item">スキルシート・ポートフォリオの事前提出</li>
+            <li class="feature-list__item">契約後のフォローアップ・定期報告で安心運用</li>
+            <li class="feature-list__item">継続率98%の高い信頼関係を誇る実績</li>
+          </ul>
+          <a href="contact.html" class="btn btn--primary">エンジニア調達を相談する</a>
         </div>
-        <div class="card" id="product">
-          <div class="cover"><img src="assets/img/office.jpg" alt=""></div>
-          <div class="content">
-            <h3 data-i18n="svc2_title"></h3>
-            <div class="desc" data-i18n="svc2_desc"></div>
-          </div>
-        </div>
-        <div class="card" id="global">
-          <div class="cover"><img src="assets/img/meeting.jpg" alt=""></div>
-          <div class="content">
-            <h3 data-i18n="svc3_title"></h3>
-            <div class="desc" data-i18n="svc3_desc"></div>
+
+        <div class="reveal--right">
+          <div class="service-panel">
+            <div class="service-panel__header">
+              <span class="service-panel__title">ENGINEER_DATABASE.sys</span>
+              <span class="service-panel__status">
+                <span class="service-panel__status-dot"></span>
+                LIVE
+              </span>
+            </div>
+            <div class="service-panel__body">
+              <p style="font-family:var(--font-mono);font-size:0.68rem;color:var(--text-muted);letter-spacing:0.1em;margin-bottom:1rem">// 対応スキルセット</p>
+              <div class="skill-grid">
+                <div class="skill-chip skill-chip--hot">Java</div>
+                <div class="skill-chip skill-chip--hot">Python</div>
+                <div class="skill-chip skill-chip--hot">TypeScript</div>
+                <div class="skill-chip skill-chip--hot">React</div>
+                <div class="skill-chip skill-chip--hot">AWS</div>
+                <div class="skill-chip skill-chip--hot">Terraform</div>
+                <div class="skill-chip">Go</div>
+                <div class="skill-chip">Kotlin</div>
+                <div class="skill-chip">Swift</div>
+                <div class="skill-chip">Vue</div>
+                <div class="skill-chip">Docker</div>
+                <div class="skill-chip">K8s</div>
+                <div class="skill-chip">Spring</div>
+                <div class="skill-chip">FastAPI</div>
+                <div class="skill-chip">Next.js</div>
+                <div class="skill-chip">GCP</div>
+                <div class="skill-chip">Azure</div>
+                <div class="skill-chip">CI/CD</div>
+              </div>
+              <div class="stat-row">
+                <div class="stat-item">
+                  <div class="stat-item__num">120<span style="font-size:0.9rem">+</span></div>
+                  <div class="stat-item__label">登録エンジニア</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-item__num">10</div>
+                  <div class="stat-item__label">平均マッチング日数</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-item__num">98<span style="font-size:0.9rem">%</span></div>
+                  <div class="stat-item__label">継続率</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-</main>
+    </section>
 
-<footer class="footer">
-  <div class="container footer-row">
-    <div>&copy; <span id="y"></span> <span data-i18n="footer_company"></span></div>
-    <div style="display:flex; gap:12px; flex-wrap:wrap">
-      <a href="services.html" data-i18n="footer_links_services"></a>
-      <a href="company.html" data-i18n="footer_links_company"></a>
-      <a href="security.html" data-i18n="footer_links_security"></a>
-      <a href="news/index.html" data-i18n="footer_links_news"></a>
-      <a href="contact.html" data-i18n="footer_links_contact"></a>
-      <span style="opacity:.55">|</span>
-      <a href="mailto:koushinsenji@corevo.co.jp">koushinsenji@corevo.co.jp</a>
-    </div>
-  </div>
-</footer>
-<script>document.getElementById("y").textContent=new Date().getFullYear();</script>
+    <hr class="divider">
 
+    <!-- ============================================================ Dev -->
+    <section id="dev" class="service-section container">
+      <div class="service-section__inner service-section__inner--reverse">
+        <div class="reveal--right">
+          <div class="service-section__badge">
+            <span class="service-section__num">02</span>
+            受託開発
+          </div>
+          <h2 class="service-section__title">要件定義から<br><span class="text-gradient">リリースまで</span>一貫対応</h2>
+          <p class="service-section__desc">
+            Webアプリ・モバイルアプリ・業務システムなど、幅広い開発プロジェクトを一括受託。
+            アジャイル開発を基本とし、短いサイクルで価値を届けます。
+            既存システムのリニューアル・モダナイゼーションにも対応可能です。
+          </p>
+          <ul class="feature-list">
+            <li class="feature-list__item">要件定義・設計・実装・テスト・保守まで対応</li>
+            <li class="feature-list__item">2週間スプリントのアジャイル開発で透明性を確保</li>
+            <li class="feature-list__item">専任プロジェクトマネージャーによる進捗管理</li>
+            <li class="feature-list__item">リリース後の保守・運用サポートも継続提供</li>
+            <li class="feature-list__item">レガシーシステムのモダナイゼーション実績多数</li>
+          </ul>
+          <a href="contact.html" class="btn btn--primary">開発案件を相談する</a>
+        </div>
+
+        <div class="reveal--left">
+          <div class="service-panel">
+            <div class="service-panel__header">
+              <span class="service-panel__title">PROJECT_FLOW.sh</span>
+              <span class="service-panel__status">
+                <span class="service-panel__status-dot"></span>
+                RUNNING
+              </span>
+            </div>
+            <div class="service-panel__body" style="padding:0">
+              <div style="padding:1.25rem 1.75rem;border-bottom:1px solid var(--border);font-family:var(--font-mono);font-size:0.68rem;color:var(--text-muted);letter-spacing:0.1em">
+                // 開発フロー（アジャイル）
+              </div>
+              <div class="consult-flow">
+                <div class="consult-step">
+                  <div class="consult-step__num">01</div>
+                  <div>
+                    <div class="consult-step__name">要件定義・設計</div>
+                    <div class="consult-step__desc">ヒアリングをもとにシステム設計・ UI/UX プロトタイプを作成</div>
+                  </div>
+                </div>
+                <div class="consult-step">
+                  <div class="consult-step__num">02</div>
+                  <div>
+                    <div class="consult-step__name">スプリント開発</div>
+                    <div class="consult-step__desc">2週間単位で機能をリリース、フィードバックを即時反映</div>
+                  </div>
+                </div>
+                <div class="consult-step">
+                  <div class="consult-step__num">03</div>
+                  <div>
+                    <div class="consult-step__name">テスト・品質保証</div>
+                    <div class="consult-step__desc">自動テスト・負荷試験・セキュリティ診断で品質を担保</div>
+                  </div>
+                </div>
+                <div class="consult-step">
+                  <div class="consult-step__num">04</div>
+                  <div>
+                    <div class="consult-step__name">リリース・保守</div>
+                    <div class="consult-step__desc">CI/CD による安全なリリースと継続的な運用サポート</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ============================================================ Cloud -->
+    <section id="cloud" class="service-section container">
+      <div class="service-section__inner">
+        <div class="reveal--left">
+          <div class="service-section__badge">
+            <span class="service-section__num">03</span>
+            クラウドインフラ
+          </div>
+          <h2 class="service-section__title">スケーラブルな<br><span class="text-gradient">インフラ設計</span>・構築</h2>
+          <p class="service-section__desc">
+            AWS・Azure・GCPのマルチクラウド環境における設計・構築・運用・最適化を提供。
+            Infrastructure as Code（IaC）による再現性の高い環境構築と、
+            コスト最適化・セキュリティ強化を一体的に推進します。
+          </p>
+          <ul class="feature-list">
+            <li class="feature-list__item">AWS/Azure/GCP 認定エンジニアが対応</li>
+            <li class="feature-list__item">Terraform / CloudFormation による IaC 標準化</li>
+            <li class="feature-list__item">ゼロダウンタイムのマイグレーション支援</li>
+            <li class="feature-list__item">コスト削減・パフォーマンスチューニングの継続改善</li>
+            <li class="feature-list__item">24/7 監視・アラート・障害対応オプションあり</li>
+          </ul>
+          <a href="contact.html" class="btn btn--primary">クラウド相談をする</a>
+        </div>
+
+        <div class="reveal--right">
+          <div class="service-panel">
+            <div class="service-panel__header">
+              <span class="service-panel__title">CLOUD_ARCH.yaml</span>
+              <span class="service-panel__status">
+                <span class="service-panel__status-dot"></span>
+                DEPLOYED
+              </span>
+            </div>
+            <div class="cloud-diagram">
+              <div class="cloud-layer" style="border-color:rgba(255,153,0,0.3);background:rgba(255,153,0,0.04)">
+                <div class="cloud-layer__label">AWS</div>
+                <div class="cloud-layer__items">
+                  <span class="cloud-item cloud-item--aws">EC2</span>
+                  <span class="cloud-item cloud-item--aws">EKS</span>
+                  <span class="cloud-item cloud-item--aws">RDS</span>
+                  <span class="cloud-item cloud-item--aws">S3</span>
+                  <span class="cloud-item cloud-item--aws">Lambda</span>
+                  <span class="cloud-item cloud-item--aws">CloudFront</span>
+                </div>
+              </div>
+              <div class="cloud-layer" style="border-color:rgba(0,114,198,0.3);background:rgba(0,114,198,0.04)">
+                <div class="cloud-layer__label">Azure</div>
+                <div class="cloud-layer__items">
+                  <span class="cloud-item cloud-item--azure">AKS</span>
+                  <span class="cloud-item cloud-item--azure">App Service</span>
+                  <span class="cloud-item cloud-item--azure">Cosmos DB</span>
+                  <span class="cloud-item cloud-item--azure">AD</span>
+                </div>
+              </div>
+              <div class="cloud-layer" style="border-color:rgba(66,133,244,0.3);background:rgba(66,133,244,0.04)">
+                <div class="cloud-layer__label">GCP</div>
+                <div class="cloud-layer__items">
+                  <span class="cloud-item cloud-item--gcp">GKE</span>
+                  <span class="cloud-item cloud-item--gcp">BigQuery</span>
+                  <span class="cloud-item cloud-item--gcp">Cloud Run</span>
+                  <span class="cloud-item cloud-item--gcp">Vertex AI</span>
+                </div>
+              </div>
+              <div class="cloud-layer">
+                <div class="cloud-layer__label">IaC / AUTOMATION</div>
+                <div class="cloud-layer__items">
+                  <span class="cloud-item">Terraform</span>
+                  <span class="cloud-item">Ansible</span>
+                  <span class="cloud-item">GitHub Actions</span>
+                  <span class="cloud-item">ArgoCD</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ============================================================ Consulting -->
+    <section id="consulting" class="service-section container">
+      <div class="service-section__inner service-section__inner--reverse">
+        <div class="reveal--right">
+          <div class="service-section__badge">
+            <span class="service-section__num">04</span>
+            ITコンサルティング
+          </div>
+          <h2 class="service-section__title">戦略立案から<br><span class="text-gradient">実行まで</span>伴走</h2>
+          <p class="service-section__desc">
+            デジタルトランスフォーメーション（DX）推進、IT戦略策定、組織体制構築など、
+            経営視点で技術課題に向き合うコンサルティングサービス。
+            現状診断から始まり、ロードマップ策定・実行・評価まで一貫支援します。
+          </p>
+          <ul class="feature-list">
+            <li class="feature-list__item">DX推進・デジタル戦略の立案と実行支援</li>
+            <li class="feature-list__item">IT組織・エンジニア採用計画の策定</li>
+            <li class="feature-list__item">システム刷新・ベンダー選定のアドバイザリー</li>
+            <li class="feature-list__item">セキュリティリスク診断・改善提言</li>
+            <li class="feature-list__item">技術負債の可視化と段階的解消計画</li>
+          </ul>
+          <a href="contact.html" class="btn btn--primary">コンサルを相談する</a>
+        </div>
+
+        <div class="reveal--left">
+          <div class="service-panel">
+            <div class="service-panel__header">
+              <span class="service-panel__title">DX_ROADMAP.plan</span>
+              <span class="service-panel__status">
+                <span class="service-panel__status-dot"></span>
+                ACTIVE
+              </span>
+            </div>
+            <div class="service-panel__body" style="padding:0">
+              <div style="padding:1.25rem 1.75rem;border-bottom:1px solid var(--border);font-family:var(--font-mono);font-size:0.68rem;color:var(--text-muted);letter-spacing:0.1em">
+                // コンサルティングプロセス
+              </div>
+              <div class="consult-flow">
+                <div class="consult-step">
+                  <div class="consult-step__num">AS-IS</div>
+                  <div>
+                    <div class="consult-step__name">現状分析・課題診断</div>
+                    <div class="consult-step__desc">IT資産・組織・プロセスを多角的に調査・可視化</div>
+                  </div>
+                </div>
+                <div class="consult-step">
+                  <div class="consult-step__num">TO-BE</div>
+                  <div>
+                    <div class="consult-step__name">目標設計・ロードマップ</div>
+                    <div class="consult-step__desc">ビジネス目標に基づいたIT戦略とKPIを策定</div>
+                  </div>
+                </div>
+                <div class="consult-step">
+                  <div class="consult-step__num">EXEC</div>
+                  <div>
+                    <div class="consult-step__name">実行支援・体制構築</div>
+                    <div class="consult-step__desc">プロジェクト推進・人材育成・変革マネジメント</div>
+                  </div>
+                </div>
+                <div class="consult-step">
+                  <div class="consult-step__num">KPI</div>
+                  <div>
+                    <div class="consult-step__name">効果測定・継続改善</div>
+                    <div class="consult-step__desc">定量データで施策の効果を検証しながら継続改善</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ============================================================ Pricing Note -->
+    <section class="pricing-note">
+      <div class="container">
+        <div class="pricing-note__inner reveal">
+          <p class="section-label" style="justify-content:center;margin-bottom:1rem">PRICING</p>
+          <h2 class="pricing-note__title">ご予算に合わせた<br><span class="text-gradient">柔軟なプラン</span></h2>
+          <p class="pricing-note__desc">
+            サービスの規模・期間・要件に応じて、月額固定・時間単価・プロジェクト一括など
+            複数の料金体系をご用意しています。まずはお気軽にご要件をお聞かせください。
+          </p>
+          <a href="contact.html" class="btn btn--primary" style="margin-right:1rem">無料相談・見積もり依頼</a>
+          <a href="contact.html" class="btn btn--ghost">資料ダウンロード</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ FAQ -->
+    <section class="faq container">
+      <div class="text-center reveal" style="max-width:640px;margin:0 auto 0">
+        <p class="section-label">FAQ</p>
+        <h2 class="section-title">よくある<span>ご質問</span></h2>
+      </div>
+
+      <div class="faq__list">
+        <details class="faq__item">
+          <summary class="faq__question">
+            SESと受託開発の違いは何ですか？
+            <span class="faq__arrow">▶</span>
+          </summary>
+          <p class="faq__answer">
+            SES（システムエンジニアリングサービス）はエンジニアを貴社プロジェクトに常駐・参画させるサービスです。
+            受託開発は要件定義から開発・リリースまでAXIONがプロジェクト全体を請け負うサービスです。
+            プロジェクトの性質や社内エンジニアのリソース状況に応じて最適な形をご提案します。
+          </p>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__question">
+            エンジニアのアサインにはどのくらい時間がかかりますか？
+            <span class="faq__arrow">▶</span>
+          </summary>
+          <p class="faq__answer">
+            ご要件のヒアリングから候補者提案まで平均3〜5営業日、面談・条件確認を経て最短10日でのアサインが可能です。
+            お急ぎの場合はご相談ください。急募対応可能なエンジニア枠も確保しています。
+          </p>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__question">
+            スキルや経験年数の指定はできますか？
+            <span class="faq__arrow">▶</span>
+          </summary>
+          <p class="faq__answer">
+            はい、可能です。言語・フレームワーク・業界経験・資格・経験年数など詳細な条件をご指定いただけます。
+            また、技術要件以外に「コミュニケーション能力重視」「チームリーダー経験あり」などのご希望にも対応しています。
+          </p>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__question">
+            契約途中でエンジニアを変更することはできますか？
+            <span class="faq__arrow">▶</span>
+          </summary>
+          <p class="faq__answer">
+            プロジェクトの方向性変更やスキルセットの見直しが必要になった場合、柔軟に対応いたします。
+            担当コンサルタントが定期的にフォローアップを行い、早期に課題を把握・解決できる体制を整えています。
+          </p>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__question">
+            小規模プロジェクト（1〜2名）でも対応可能ですか？
+            <span class="faq__arrow">▶</span>
+          </summary>
+          <p class="faq__answer">
+            もちろんです。1名からのご依頼も歓迎しています。スタートアップ企業やプロジェクト単位でのご依頼も多数実績があります。
+            まずはお気軽にご要件をお聞かせください。
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ============================================================ CTA Strip -->
+    <section class="cta-strip">
+      <div class="container">
+        <p class="section-label" style="justify-content:center;margin-bottom:1.5rem">GET STARTED</p>
+        <h2 class="cta-strip__title">まずは無料相談から<br>始めませんか？</h2>
+        <p class="cta-strip__desc">
+          貴社のご要件・課題をお聞かせいただければ、最適なサービスプランをご提案します。
+          費用は一切かかりません。
+        </p>
+        <div class="cta-strip__actions">
+          <a href="contact.html" class="btn btn--primary">無料でお問い合わせ</a>
+          <a href="recruit.html" class="btn btn--outline">採用情報を見る</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================ Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="logo" style="margin-bottom:1rem;display:inline-flex">
+            <span class="logo__text">AXI<span>ON</span></span>
+          </a>
+          <p class="footer__tagline">Deploy Elite Engineers.<br>Build the Future.</p>
+        </div>
+        <div>
+          <p class="footer__heading">COMPANY</p>
+          <ul class="footer__links">
+            <li><a href="about.html">会社概要</a></li>
+            <li><a href="services.html">サービス</a></li>
+            <li><a href="recruit.html">採用情報</a></li>
+            <li><a href="contact.html">お問い合わせ</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__heading">SERVICES</p>
+          <ul class="footer__links">
+            <li><a href="services.html#ses">SES / 派遣</a></li>
+            <li><a href="services.html#dev">受託開発</a></li>
+            <li><a href="services.html#cloud">クラウド</a></li>
+            <li><a href="services.html#consulting">コンサルティング</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__heading">CONTACT</p>
+          <ul class="footer__links">
+            <li><a href="mailto:info@axion.co.jp">info@axion.co.jp</a></li>
+            <li><a href="tel:0312345678">03-1234-5678</a></li>
+            <li style="color:var(--text-muted);font-size:0.85rem">〒100-0000<br>東京都千代田区丸の内1-1-1</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2024 AXION Inc. All rights reserved.</span>
+        <span>Engineered with precision.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>

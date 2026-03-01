@@ -1,201 +1,1068 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>About | CoRevo Inc.</title>
-  <meta name="description" content="About CoRevo Inc. and our mission as a technology partner." />
-  <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://corevo.co.jp/about.html" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="CoRevo" />
-  <meta property="og:title" content="About | CoRevo Inc." />
-  <meta property="og:description" content="About CoRevo Inc. and our mission as a technology partner." />
-  <meta property="og:url" content="https://corevo.co.jp/about.html" />
-  <meta property="og:image" content="https://corevo.co.jp/assets/img/hero.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
-  <script defer src="assets/js/main.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>会社概要 | AXION Inc.</title>
+  <meta name="description" content="AXIONの会社概要。ミッション・ビジョン・代表メッセージ・会社情報・沿革をご紹介します。">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ---- About-specific styles ---- */
+
+    /* Page hero */
+    .page-hero {
+      padding: 9rem 0 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 40%, rgba(139,92,246,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 70%, rgba(0,232,255,0.06) 0%, transparent 60%);
+    }
+
+    .page-hero__inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-hero__eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .page-hero__eyebrow::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--cyan);
+    }
+
+    .page-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    .page-hero__title .grad {
+      background: linear-gradient(135deg, #8b5cf6 0%, #00e8ff 60%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .page-hero__desc {
+      font-size: 1.1rem;
+      color: var(--text-dim);
+      max-width: 52ch;
+      line-height: 1.75;
+    }
+
+    /* Mission section */
+    .mission {
+      padding: 7rem 0;
+      position: relative;
+    }
+
+    .mission__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .mission__visual {
+      position: relative;
+    }
+
+    .mission__orb-ring {
+      width: 360px;
+      height: 360px;
+      max-width: 100%;
+      border-radius: 50%;
+      border: 1px solid rgba(0,232,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin: 0 auto;
+    }
+
+    .mission__orb-ring::before {
+      content: '';
+      position: absolute;
+      inset: 24px;
+      border-radius: 50%;
+      border: 1px solid rgba(139,92,246,0.2);
+    }
+
+    .mission__orb-ring::after {
+      content: '';
+      position: absolute;
+      inset: 56px;
+      border-radius: 50%;
+      border: 1px dashed rgba(0,232,255,0.1);
+      animation: spin 20s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .mission__orb-core {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, rgba(0,232,255,0.3) 0%, rgba(139,92,246,0.2) 60%, transparent 100%);
+      box-shadow: 0 0 60px rgba(0,232,255,0.15), 0 0 120px rgba(139,92,246,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--cyan);
+      letter-spacing: 0.1em;
+    }
+
+    .mission__tag {
+      position: absolute;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      padding: 0.6rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--cyan);
+      white-space: nowrap;
+    }
+
+    .mission__tag--1 { top: 15%; right: 5%; }
+    .mission__tag--2 { bottom: 20%; left: 2%; }
+    .mission__tag--3 { top: 50%; right: -5%; transform: translateY(-50%); }
+
+    .mission__content h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 1.5rem;
+    }
+
+    .mission__content h2 span {
+      color: var(--cyan);
+    }
+
+    .mission__content p {
+      color: var(--text-dim);
+      line-height: 1.9;
+      margin-bottom: 1rem;
+    }
+
+    /* Vision/Values section */
+    .values {
+      padding: 7rem 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(10,20,48,0.4) 50%, transparent 100%);
+    }
+
+    .values__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .value-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+
+    .value-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gradient);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .value-card:hover {
+      border-color: rgba(0,232,255,0.3);
+      transform: translateY(-4px);
+    }
+
+    .value-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .value-card__icon {
+      font-size: 2rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .value-card__label {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.5rem;
+    }
+
+    .value-card__title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+
+    .value-card__desc {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    /* Message section */
+    .message {
+      padding: 7rem 0;
+    }
+
+    .message__inner {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .message__portrait {
+      width: 260px;
+      flex-shrink: 0;
+    }
+
+    .message__portrait-frame {
+      width: 260px;
+      height: 320px;
+      border-radius: var(--radius-lg);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .message__portrait-frame::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(0,232,255,0.05) 0%, transparent 50%),
+        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(0,232,255,0.04) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(0,232,255,0.04) 40px);
+    }
+
+    .message__portrait-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,232,255,0.2) 0%, rgba(139,92,246,0.15) 100%);
+      border: 2px solid rgba(0,232,255,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--cyan);
+      position: relative;
+      z-index: 1;
+    }
+
+    .message__name {
+      margin-top: 1.25rem;
+      text-align: center;
+    }
+
+    .message__name-ja {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .message__name-title {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--cyan);
+      letter-spacing: 0.1em;
+      margin-top: 0.25rem;
+    }
+
+    .message__quote {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .message__quote::before {
+      content: '"';
+      position: absolute;
+      left: 0;
+      top: -0.25rem;
+      font-family: Georgia, serif;
+      font-size: 3rem;
+      line-height: 1;
+      color: var(--cyan);
+      opacity: 0.5;
+    }
+
+    .message__body {
+      color: var(--text-dim);
+      line-height: 1.9;
+    }
+
+    .message__body p + p {
+      margin-top: 1rem;
+    }
+
+    .message__sig {
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .message__sig-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .message__sig-text {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+    }
+
+    /* Company profile */
+    .profile {
+      padding: 7rem 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(10,20,48,0.4) 50%, transparent 100%);
+    }
+
+    .profile__table-wrap {
+      margin-top: 3rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .profile__table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .profile__table tr {
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition);
+    }
+
+    .profile__table tr:last-child {
+      border-bottom: none;
+    }
+
+    .profile__table tr:hover {
+      background: rgba(0,232,255,0.02);
+    }
+
+    .profile__table th {
+      width: 240px;
+      padding: 1.25rem 2rem;
+      text-align: left;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      background: rgba(0,232,255,0.03);
+      vertical-align: top;
+      white-space: nowrap;
+    }
+
+    .profile__table td {
+      padding: 1.25rem 2rem;
+      font-size: 0.95rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    /* History / Timeline */
+    .history {
+      padding: 7rem 0;
+    }
+
+    .timeline {
+      margin-top: 4rem;
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.75rem;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, var(--cyan) 0%, var(--purple) 50%, transparent 100%);
+    }
+
+    .timeline__item {
+      position: relative;
+      padding: 0 0 3rem 3rem;
+    }
+
+    .timeline__item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline__dot {
+      position: absolute;
+      left: -0.4rem;
+      top: 0.3rem;
+      width: 0.8rem;
+      height: 0.8rem;
+      border-radius: 50%;
+      background: var(--bg-0);
+      border: 2px solid var(--cyan);
+      transition: all 0.3s ease;
+    }
+
+    .timeline__item:hover .timeline__dot {
+      background: var(--cyan);
+      box-shadow: 0 0 12px rgba(0,232,255,0.5);
+    }
+
+    .timeline__year {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: var(--cyan);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline__title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .timeline__desc {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    /* Numbers section */
+    .numbers {
+      padding: 5rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .numbers__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .number-item {
+      text-align: center;
+      padding: 2.5rem 2rem;
+      border-right: 1px solid var(--border);
+      position: relative;
+    }
+
+    .number-item:last-child {
+      border-right: none;
+    }
+
+    .number-item__value {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .number-item__label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* CTA strip */
+    .cta-strip {
+      padding: 5rem 0;
+      text-align: center;
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(0,232,255,0.04) 0%, transparent 70%);
+    }
+
+    .cta-strip__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .cta-strip__desc {
+      color: var(--text-dim);
+      max-width: 48ch;
+      margin: 0 auto 2.5rem;
+      line-height: 1.75;
+    }
+
+    .cta-strip__actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .mission__inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .mission__orb-ring {
+        width: 260px;
+        height: 260px;
+      }
+      .message__inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .message__portrait {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+      .message__portrait-frame {
+        width: 160px;
+        height: 200px;
+        flex-shrink: 0;
+      }
+      .message__name {
+        margin-top: 0;
+        text-align: left;
+      }
+      .values__grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .values__grid {
+        grid-template-columns: 1fr;
+      }
+      .numbers__grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .number-item:nth-child(2) {
+        border-right: none;
+      }
+      .number-item:nth-child(1),
+      .number-item:nth-child(2) {
+        border-bottom: 1px solid var(--border);
+      }
+      .profile__table th {
+        width: 120px;
+        padding: 1rem;
+        font-size: 0.65rem;
+      }
+      .profile__table td {
+        padding: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<header class="header">
-  <div class="container nav">
-    <a class="brand" href="index.html">
-      <img src="assets/img/logo.png" alt="CoRevo">
-      <div>
-        <div class="name">CoRevo</div>
-        <div class="sub">CoRevo Inc.</div>
-      </div>
-    </a>
-
-    <nav class="menu" aria-label="Primary">
-      <a class="item" href="index.html" data-i18n="nav_home"></a>
-
-      <div class="item has-mega" data-mega="services">
-        <button type="button" class="megatoggle" aria-haspopup="true" aria-expanded="false" data-i18n="nav_services"></button>
-        <div class="mega" role="menu">
-          <div class="mega-inner">
-            <div class="mega-col">
-              <div class="mega-h" data-i18n="nav_services"></div>
-              <a class="mega-link" href="services.html#ses">
-                <div class="mega-t" data-i18n="nav_services_ses"></div>
-                <div class="mega-d" data-i18n="svc1_desc"></div>
-              </a>
-              <a class="mega-link" href="services.html#product">
-                <div class="mega-t" data-i18n="nav_services_product"></div>
-                <div class="mega-d" data-i18n="svc2_desc"></div>
-              </a>
-              <a class="mega-link" href="services.html#global">
-                <div class="mega-t" data-i18n="nav_services_global"></div>
-                <div class="mega-d" data-i18n="svc3_desc"></div>
-              </a>
-            </div>
-
-            <div class="mega-col">
-              <div class="mega-h" data-i18n="sec_cases"></div>
-              <a class="mega-link" href="blog/case-aws-ha.html">
-                <div class="mega-t" data-i18n="case1_t"></div>
-                <div class="mega-d" data-i18n="case1_d"></div>
-              </a>
-              <a class="mega-link" href="blog/case-data-platform.html">
-                <div class="mega-t" data-i18n="case2_t"></div>
-                <div class="mega-d" data-i18n="case2_d"></div>
-              </a>
-              <a class="mega-link" href="blog/case-global-delivery.html">
-                <div class="mega-t" data-i18n="case3_t"></div>
-                <div class="mega-d" data-i18n="case3_d"></div>
-              </a>
-            </div>
-
-            <div class="mega-col mega-media">
-              <div class="mega-card">
-                <div class="mega-card-k" data-i18n="sec_scp_title"></div>
-                <div class="mega-card-t" data-i18n="scp_sec"></div>
-                <div class="mega-card-d" data-i18n="scp_sec_desc"></div>
-                <a class="btn small" href="security.html" data-i18n="learn_more"></a>
-              </div>
-              <div class="mega-img">
-                <img src="assets/img/datacenter.jpg" alt="">
-              </div>
-            </div>
-          </div>
+  <!-- ============================================================ Header -->
+  <header class="header">
+    <div class="header__inner">
+      <a href="index.html" class="logo">
+        <div class="logo__mark">
+          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="18,2 34,10 34,26 18,34 2,26 2,10" stroke="#00e8ff" stroke-width="1.5" fill="none"/>
+            <polygon points="18,8 28,13 28,23 18,28 8,23 8,13" stroke="#8b5cf6" stroke-width="1" fill="rgba(0,232,255,0.06)"/>
+            <circle cx="18" cy="18" r="4" fill="#00e8ff"/>
+          </svg>
         </div>
+        <span class="logo__text">AXI<span>ON</span></span>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html"    class="nav__link" data-index="01">TOP</a>
+        <a href="services.html" class="nav__link" data-index="02">SERVICES</a>
+        <a href="recruit.html"  class="nav__link" data-index="03">RECRUIT</a>
+        <a href="about.html"    class="nav__link" data-index="04">ABOUT</a>
+        <a href="contact.html"  class="nav__link" data-index="05">CONTACT</a>
+      </nav>
+
+      <div class="header__cta">
+        <a href="contact.html" class="btn btn--outline">お問い合わせ</a>
       </div>
 
-      <div class="item has-mega" data-mega="company">
-        <button type="button" class="megatoggle" aria-haspopup="true" aria-expanded="false" data-i18n="nav_company"></button>
-        <div class="mega" role="menu">
-          <div class="mega-inner">
-            <div class="mega-col">
-              <div class="mega-h" data-i18n="nav_company"></div>
-              <a class="mega-link" href="about.html">
-                <div class="mega-t" data-i18n="nav_company_about"></div>
-                <div class="mega-d" data-i18n="page_about_title"></div>
-              </a>
-              <a class="mega-link" href="company.html">
-                <div class="mega-t" data-i18n="nav_company_profile"></div>
-                <div class="mega-d" data-i18n="page_company_title"></div>
-              </a>
-              <a class="mega-link" href="security.html">
-                <div class="mega-t" data-i18n="nav_security"></div>
-                <div class="mega-d" data-i18n="sec_scp_sub"></div>
-              </a>
-            </div>
-            <div class="mega-col">
-              <div class="mega-h" data-i18n="nav_news"></div>
-              <a class="mega-link" href="news/index.html">
-                <div class="mega-t" data-i18n="page_news_title"></div>
-                <div class="mega-d" data-i18n="sec_news"></div>
-              </a>
-              <a class="mega-link" href="blog/post-coreconnect.html">
-                <div class="mega-t" data-i18n="news1_title"></div>
-                <div class="mega-d" data-i18n="news1_desc"></div>
-              </a>
-              <a class="mega-link" href="blog/post-ai-iot.html">
-                <div class="mega-t" data-i18n="news2_title"></div>
-                <div class="mega-d" data-i18n="news2_desc"></div>
-              </a>
-            </div>
-            <div class="mega-col mega-media">
-              <div class="mega-card">
-                <div class="mega-card-k" data-i18n="contact_panel_title"></div>
-                <div class="mega-card-d"><a href="contact.html" class="btn small" data-i18n="cta_contact"></a></div>
-                <div class="mega-card-d" style="opacity:.9; margin-top:10px"><span data-i18n="contact_email_label"></span>: <a href="mailto:koushinsenji@corevo.co.jp">koushinsenji@corevo.co.jp</a></div>
-              </div>
-              <div class="mega-img">
-                <img src="assets/img/office.jpg" alt="">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <a class="item" href="security.html" data-i18n="nav_security"></a>
-      <a class="item" href="news/index.html" data-i18n="nav_news"></a>
-    </nav>
-
-    <div class="actions">
-      <div class="item langwrap">
-        <a class="langbtn" href="#" data-lang-button>JP v</a>
-        <div class="dropdown" data-lang-menu style="right:0; left:auto; display:none"></div>
-      </div>
-      <a class="btn primary" href="contact.html" data-i18n="cta_contact"></a>
-
-      <button class="hamburger" type="button" aria-label="Menu" data-mobile-toggle>
+      <button class="menu-btn" aria-label="メニュー">
         <span></span><span></span><span></span>
       </button>
     </div>
-  </div>
+  </header>
 
-  <div class="mobilepanel" data-mobile-panel>
-    <a href="index.html" data-i18n="nav_home"></a>
-    <details>
-      <summary data-i18n="nav_services"></summary>
-      <a href="services.html#ses" data-i18n="nav_services_ses"></a>
-      <a href="services.html#product" data-i18n="nav_services_product"></a>
-      <a href="services.html#global" data-i18n="nav_services_global"></a>
-      <a href="security.html" data-i18n="nav_security"></a>
-    </details>
-    <details>
-      <summary data-i18n="nav_company"></summary>
-      <a href="about.html" data-i18n="nav_company_about"></a>
-      <a href="company.html" data-i18n="nav_company_profile"></a>
-      <a href="news/index.html" data-i18n="nav_news"></a>
-    </details>
-    <a href="news/index.html" data-i18n="nav_news"></a>
-    <a href="contact.html" data-i18n="nav_contact"></a>
-  </div>
-</header>
+  <!-- Mobile nav -->
+  <nav class="nav-mobile">
+    <a href="index.html"    class="nav__link" data-index="01">TOP</a>
+    <a href="services.html" class="nav__link" data-index="02">SERVICES</a>
+    <a href="recruit.html"  class="nav__link" data-index="03">RECRUIT</a>
+    <a href="about.html"    class="nav__link" data-index="04">ABOUT</a>
+    <a href="contact.html"  class="nav__link" data-index="05">CONTACT</a>
+    <a href="contact.html" class="btn btn--primary mt-4">お問い合わせ</a>
+  </nav>
 
-<main>
-  <section class="section">
-    <div class="container">
-      <h1 data-i18n="page_about_title"></h1>
-      <div class="card" style="margin-top:16px">
-        <div class="content" style="padding:16px">
-          <p style="margin:0;color:rgba(234,242,255,.80)">CoReation × REVOlution — build impact through technology.</p>
+  <main>
+    <!-- ============================================================ Page Hero -->
+    <section class="page-hero container">
+      <div class="page-hero__bg"></div>
+      <div class="page-hero__inner reveal">
+        <p class="page-hero__eyebrow">ABOUT AXION</p>
+        <h1 class="page-hero__title">
+          <span class="grad">WE ARE</span><br>
+          AXION.
+        </h1>
+        <p class="page-hero__desc">
+          テクノロジーとエンジニアの力で、日本のビジネスを加速させる。
+          AXIONは2014年の設立以来、ハイレベルなエンジニアリングを武器に
+          数多くのプロジェクトを成功へ導いてきました。
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================ Numbers -->
+    <section class="numbers">
+      <div class="container">
+        <div class="numbers__grid">
+          <div class="number-item reveal">
+            <div class="number-item__value">
+              <span data-target="120" data-suffix="+">0</span>
+            </div>
+            <div class="number-item__label">在籍エンジニア数</div>
+          </div>
+          <div class="number-item reveal">
+            <div class="number-item__value">
+              <span data-target="85" data-suffix="+">0</span>
+            </div>
+            <div class="number-item__label">取引企業数</div>
+          </div>
+          <div class="number-item reveal">
+            <div class="number-item__value">
+              <span data-target="98" data-suffix="%">0</span>
+            </div>
+            <div class="number-item__label">顧客継続率</div>
+          </div>
+          <div class="number-item reveal">
+            <div class="number-item__value">
+              <span data-target="10" data-suffix="年">0</span>
+            </div>
+            <div class="number-item__label">設立からの実績</div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-</main>
+    </section>
 
-<footer class="footer">
-  <div class="container footer-row">
-    <div>&copy; <span id="y"></span> <span data-i18n="footer_company"></span></div>
-    <div style="display:flex; gap:12px; flex-wrap:wrap">
-      <a href="services.html" data-i18n="footer_links_services"></a>
-      <a href="company.html" data-i18n="footer_links_company"></a>
-      <a href="security.html" data-i18n="footer_links_security"></a>
-      <a href="news/index.html" data-i18n="footer_links_news"></a>
-      <a href="contact.html" data-i18n="footer_links_contact"></a>
-      <span style="opacity:.55">|</span>
-      <a href="mailto:koushinsenji@corevo.co.jp">koushinsenji@corevo.co.jp</a>
-    </div>
-  </div>
-</footer>
-<script>document.getElementById("y").textContent=new Date().getFullYear();</script>
+    <!-- ============================================================ Mission -->
+    <section class="mission container">
+      <div class="mission__inner">
+        <div class="mission__visual reveal--left">
+          <div class="mission__orb-ring">
+            <div class="mission__orb-core">AXION</div>
+          </div>
+          <div class="mission__tag mission__tag--1">// MISSION</div>
+          <div class="mission__tag mission__tag--2">// VISION 2030</div>
+          <div class="mission__tag mission__tag--3">// IMPACT</div>
+        </div>
 
+        <div class="mission__content reveal--right">
+          <p class="section-label">OUR MISSION</p>
+          <h2>
+            エンジニアが輝ける<br>
+            <span>エコシステム</span>を作る
+          </h2>
+          <p>
+            AXIONのミッションは、技術者とビジネスの間に存在する「ミスマッチ」をゼロにすること。
+            優れたエンジニアが適切なプロジェクトで本来の力を発揮できる環境と、
+            企業が必要な技術力を確実に手にできる仕組みを同時に実現します。
+          </p>
+          <p>
+            私たちは単なる人材紹介会社ではありません。エンジニアのキャリアを共に設計し、
+            クライアントのプロジェクトを成功に導くパートナーとして、
+            テクノロジー産業全体の発展に貢献することを使命としています。
+          </p>
+          <p>
+            <strong style="color:var(--text)">ビジョン2030：</strong>
+            <span style="color:var(--cyan)">「テクノロジーで日本の産業競争力を世界トップ水準へ」</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ============================================================ Values -->
+    <section class="values">
+      <div class="container">
+        <div class="text-center reveal" style="max-width:640px;margin:0 auto">
+          <p class="section-label">OUR VALUES</p>
+          <h2 class="section-title">私たちが大切にしている<span>3つの価値観</span></h2>
+          <p class="section-desc" style="margin:0 auto">
+            AXIONのすべての意思決定と行動の根幹には、この3つの価値観があります。
+          </p>
+        </div>
+
+        <div class="values__grid">
+          <div class="value-card reveal reveal-delay-1">
+            <div class="value-card__icon">⚡</div>
+            <p class="value-card__label">VALUE 01</p>
+            <h3 class="value-card__title">Technology First</h3>
+            <p class="value-card__desc">
+              技術の力を最大限に信じ、常に最新かつ最適なソリューションを追求します。
+              トレンドを追うのではなく、本質的な技術力を磨くことを重視します。
+            </p>
+          </div>
+
+          <div class="value-card reveal reveal-delay-2">
+            <div class="value-card__icon">🤝</div>
+            <p class="value-card__label">VALUE 02</p>
+            <h3 class="value-card__title">Engineer-Centric</h3>
+            <p class="value-card__desc">
+              エンジニアがいなければ何も実現しません。働く環境・キャリア・報酬のすべてで
+              エンジニアファーストを徹底し、長期的な成長を支援します。
+            </p>
+          </div>
+
+          <div class="value-card reveal reveal-delay-3">
+            <div class="value-card__icon">🎯</div>
+            <p class="value-card__label">VALUE 03</p>
+            <h3 class="value-card__title">Outcome Obsessed</h3>
+            <p class="value-card__desc">
+              プロセスより成果にこだわります。クライアントのビジネス課題が本当に解決されること、
+              エンジニアが成長していることを、常に確認しながら進めます。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ============================================================ Message -->
+    <section class="message container">
+      <div class="text-center reveal" style="max-width:640px;margin:0 auto 5rem">
+        <p class="section-label">FOUNDER'S MESSAGE</p>
+        <h2 class="section-title">代表メッセージ</h2>
+      </div>
+
+      <div class="message__inner">
+        <div class="message__portrait reveal--left">
+          <div class="message__portrait-frame">
+            <div class="message__portrait-avatar">CEO</div>
+          </div>
+          <div class="message__name">
+            <p class="message__name-ja">田中 翔太</p>
+            <p class="message__name-title">// CEO &amp; Founder</p>
+          </div>
+        </div>
+
+        <div class="reveal--right">
+          <blockquote class="message__quote">
+            技術者の「できる」を<br>ビジネスの「なれる」に変える。
+          </blockquote>
+          <div class="message__body">
+            <p>
+              AXIONを創業した2014年、私はひとりのエンジニアとして感じていた強い違和感がありました。
+              「自分の技術は確かなのに、なぜ本当にやりたいプロジェクトに関われないのか」——。
+              その答えを探すことが、AXIONの始まりでした。
+            </p>
+            <p>
+              今日、テクノロジーはあらゆる産業の根幹となりつつあります。
+              DX推進・AI活用・クラウド移行……企業が求める技術の幅は急速に広がり、
+              質の高いエンジニアリングへのニーズはかつてないほど高まっています。
+            </p>
+            <p>
+              私たちAXIONは、その需要と供給の間に立つ「橋」でありたいと考えています。
+              エンジニアひとりひとりの強みを正確に把握し、最適なプロジェクトへつなぐ。
+              クライアント企業のビジネス課題を深く理解し、本当に必要な技術力を提供する。
+            </p>
+            <p>
+              「技術者が誇りを持って働ける社会」と「テクノロジーで産業が変革される未来」。
+              その両方を同時に実現することが、私たちの使命です。
+            </p>
+          </div>
+          <div class="message__sig">
+            <div class="message__sig-line"></div>
+            <span class="message__sig-text">AXION Inc. CEO &mdash; Shota Tanaka</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ============================================================ Profile -->
+    <section class="profile">
+      <div class="container">
+        <div class="text-center reveal" style="max-width:640px;margin:0 auto 0">
+          <p class="section-label">COMPANY PROFILE</p>
+          <h2 class="section-title">会社概要</h2>
+        </div>
+
+        <div class="profile__table-wrap reveal">
+          <table class="profile__table">
+            <tr>
+              <th>会社名</th>
+              <td>株式会社AXION（Axion Inc.）</td>
+            </tr>
+            <tr>
+              <th>設立</th>
+              <td>2014年4月1日</td>
+            </tr>
+            <tr>
+              <th>代表取締役</th>
+              <td>田中 翔太（Shota Tanaka）</td>
+            </tr>
+            <tr>
+              <th>資本金</th>
+              <td>5,000万円</td>
+            </tr>
+            <tr>
+              <th>従業員数</th>
+              <td>132名（2024年4月現在）</td>
+            </tr>
+            <tr>
+              <th>事業内容</th>
+              <td>
+                エンジニアリングサービス（SES・派遣）<br>
+                システム受託開発<br>
+                クラウドインフラ構築・運用<br>
+                ITコンサルティング・DX支援
+              </td>
+            </tr>
+            <tr>
+              <th>本社所在地</th>
+              <td>〒100-0005<br>東京都千代田区丸の内1丁目1番1号<br>丸の内ビルディング15F</td>
+            </tr>
+            <tr>
+              <th>拠点</th>
+              <td>東京本社・大阪支社・福岡支社</td>
+            </tr>
+            <tr>
+              <th>主要取引先</th>
+              <td>
+                大手通信キャリア / 大手金融機関 / 外資系IT企業 / スタートアップ企業 等
+                （85社以上と取引実績）
+              </td>
+            </tr>
+            <tr>
+              <th>認証・資格</th>
+              <td>
+                プライバシーマーク取得（2015年〜）<br>
+                ISO 27001認証（2017年〜）<br>
+                一般労働者派遣事業許可（派13-XXXXXX号）
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ============================================================ History -->
+    <section class="history container">
+      <div class="text-center reveal" style="max-width:640px;margin:0 auto 0">
+        <p class="section-label">HISTORY</p>
+        <h2 class="section-title">沿革</h2>
+      </div>
+
+      <div class="timeline" style="max-width:760px;margin:4rem auto 0">
+        <div class="timeline__item reveal">
+          <div class="timeline__dot"></div>
+          <p class="timeline__year">2014</p>
+          <h3 class="timeline__title">株式会社AXION 設立</h3>
+          <p class="timeline__desc">
+            東京・千代田区にてSES事業を主軸として創業。エンジニア5名でスタート。
+          </p>
+        </div>
+
+        <div class="timeline__item reveal">
+          <div class="timeline__dot"></div>
+          <p class="timeline__year">2015</p>
+          <h3 class="timeline__title">プライバシーマーク取得 / エンジニア数30名突破</h3>
+          <p class="timeline__desc">
+            情報管理体制を強化。エンジニア採用を積極化し、受託開発事業を本格始動。
+          </p>
+        </div>
+
+        <div class="timeline__item reveal">
+          <div class="timeline__dot"></div>
+          <p class="timeline__year">2016</p>
+          <h3 class="timeline__title">大阪支社開設</h3>
+          <p class="timeline__desc">
+            関西圏のクライアント需要に対応するため大阪支社を設立。エンジニアネットワークを拡大。
+          </p>
+        </div>
+
+        <div class="timeline__item reveal">
+          <div class="timeline__dot"></div>
+          <p class="timeline__year">2017</p>
+          <h3 class="timeline__title">ISO 27001認証取得 / クラウド事業部を新設</h3>
+          <p class="timeline__desc">
+            セキュリティ管理の国際規格を取得。AWSパートナー認定を受けクラウド専門部隊を発足。
+          </p>
+        </div>
+
+        <div class="timeline__item reveal">
+          <div class="timeline__dot"></div>
+          <p class="timeline__year">2019</p>
+          <h3 class="timeline__title">エンジニア数100名突破 / DX支援事業を開始</h3>
+          <p class="timeline__desc">
+            在籍エンジニアが100名を超え、ITコンサルティング・DX支援サービスを提供開始。
+          </p>
+        </div>
+
+        <div class="timeline__item reveal">
+          <div class="timeline__dot"></div>
+          <p class="timeline__year">2021</p>
+          <h3 class="timeline__title">福岡支社開設 / リモートワーク制度全面導入</h3>
+          <p class="timeline__desc">
+            九州エリアへ展開。エンジニアの働き方改革として完全リモートワーク制度を整備。
+          </p>
+        </div>
+
+        <div class="timeline__item reveal">
+          <div class="timeline__dot"></div>
+          <p class="timeline__year">2023</p>
+          <h3 class="timeline__title">生成AI・LLM活用サービス提供開始</h3>
+          <p class="timeline__desc">
+            AI/ML専門エンジニアチームを設立。生成AIの業務活用支援・導入コンサルティングを展開。
+          </p>
+        </div>
+
+        <div class="timeline__item reveal">
+          <div class="timeline__dot"></div>
+          <p class="timeline__year">2024</p>
+          <h3 class="timeline__title">設立10周年 / エンジニア132名・取引先85社超</h3>
+          <p class="timeline__desc">
+            創業10周年を迎え、さらなるサービス拡充と組織強化を推進中。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ CTA Strip -->
+    <section class="cta-strip">
+      <div class="container">
+        <p class="section-label" style="justify-content:center;margin-bottom:1.5rem">JOIN US / WORK WITH US</p>
+        <h2 class="cta-strip__title">AXIONと共に、<br>未来を構築しませんか？</h2>
+        <p class="cta-strip__desc">
+          エンジニア採用・サービス導入・パートナーシップなど、
+          お気軽にご相談ください。
+        </p>
+        <div class="cta-strip__actions">
+          <a href="contact.html" class="btn btn--primary">お問い合わせ</a>
+          <a href="recruit.html" class="btn btn--purple">採用情報を見る</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================ Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="logo" style="margin-bottom:1rem;display:inline-flex">
+            <span class="logo__text">AXI<span>ON</span></span>
+          </a>
+          <p class="footer__tagline">Deploy Elite Engineers.<br>Build the Future.</p>
+        </div>
+        <div>
+          <p class="footer__heading">COMPANY</p>
+          <ul class="footer__links">
+            <li><a href="about.html">会社概要</a></li>
+            <li><a href="services.html">サービス</a></li>
+            <li><a href="recruit.html">採用情報</a></li>
+            <li><a href="contact.html">お問い合わせ</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__heading">SERVICES</p>
+          <ul class="footer__links">
+            <li><a href="services.html#ses">SES / 派遣</a></li>
+            <li><a href="services.html#dev">受託開発</a></li>
+            <li><a href="services.html#cloud">クラウド</a></li>
+            <li><a href="services.html#consulting">コンサルティング</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__heading">CONTACT</p>
+          <ul class="footer__links">
+            <li><a href="mailto:info@axion.co.jp">info@axion.co.jp</a></li>
+            <li><a href="tel:0312345678">03-1234-5678</a></li>
+            <li style="color:var(--text-muted);font-size:0.85rem">〒100-0000<br>東京都千代田区丸の内1-1-1</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2024 AXION Inc. All rights reserved.</span>
+        <span>Engineered with precision.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
