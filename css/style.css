@@ -1,5 +1,5 @@
 /* ============================================================
-   AXION - Global Stylesheet
+   CoRevo - Global Stylesheet
    Design: Tactical Interface / Dark Tech
    ============================================================ */
 
@@ -465,6 +465,43 @@ img { display: block; max-width: 100%; }
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(0, 232, 255, 0.04);
+}
+
+.lang-switch__btn {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.lang-switch__btn:hover {
+  color: var(--text);
+}
+
+.lang-switch__btn.active {
+  background: var(--cyan-dim);
+  color: var(--cyan);
+  border: 1px solid var(--border-mid);
+}
+
+.lang-switch--mobile {
+  display: none;
 }
 
 /* Mobile menu button */
@@ -1026,7 +1063,13 @@ img { display: block; max-width: 100%; }
   .container { padding: 0 1.25rem; }
 
   .nav, .header__cta { display: none; }
+  .header .lang-switch { display: none; }
   .menu-btn { display: flex; }
+  .lang-switch--mobile {
+    display: inline-flex;
+    margin: 0 1.5rem 1rem;
+    align-self: flex-start;
+  }
 
   .grid-2, .grid-3, .grid-4 {
     grid-template-columns: 1fr;

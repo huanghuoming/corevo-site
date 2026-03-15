@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RECRUIT | AXION Inc.</title>
-  <meta name="description" content="AXIONの採用情報。エンジニア積極採用中。スキルアップ支援・リモート対応・充実した福利厚生でキャリアを加速させませんか。">
+  <title>RECRUIT | CoRevo Inc.</title>
+  <meta name="description" content="CoRevoの採用情報。エンジニア積極採用中。スキルアップ支援・リモート対応・充実した福利厚生でキャリアを加速させませんか。">
   <link rel="stylesheet" href="css/style.css">
   <style>
     /* ---- Recruit-specific styles ---- */
@@ -45,6 +45,20 @@
       color: var(--text-dim);
       max-width: 56ch;
       line-height: 1.8;
+    }
+
+    .text-gradient {
+      color: var(--cyan);
+    }
+
+    @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+      .text-gradient {
+        background: linear-gradient(135deg, #8b5cf6, #00e8ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+      }
     }
 
     /* Culture metrics */
@@ -464,7 +478,7 @@
     }
   </style>
 </head>
-<body>
+<body data-page="recruit">
   <!-- ============================================================ Header -->
   <header class="header">
     <div class="header__inner">
@@ -476,7 +490,7 @@
             <circle cx="18" cy="18" r="4" fill="#00e8ff"/>
           </svg>
         </div>
-        <span class="logo__text">AXI<span>ON</span></span>
+        <span class="logo__text">Co<span>Revo</span></span>
       </a>
 
       <nav class="nav">
@@ -512,9 +526,9 @@
     <section class="page-hero container">
       <div class="reveal">
         <p class="page-hero__label">RECRUIT</p>
-        <h1 class="page-hero__title">あなたの技術が、<br><span class="text-gradient" style="background:linear-gradient(135deg,#8b5cf6,#00e8ff)">世界を動かす</span>。</h1>
+        <h1 class="page-hero__title">あなたの技術が、<br><span class="text-gradient">世界を動かす</span>。</h1>
         <p class="page-hero__desc">
-          AXIONは「エンジニアが最も輝ける環境」を追求し続けます。
+          CoRevoは「エンジニアが最も輝ける環境」を追求し続けます。
           成長・挑戦・自由を軸に、あなたのキャリアを全力でサポートします。
         </p>
         <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap">
@@ -529,26 +543,26 @@
     <!-- ============================================================ Metrics -->
     <section class="culture-metrics container">
       <div class="text-center reveal" style="max-width:640px;margin:0 auto 0">
-        <p class="section-label">NUMBERS</p>
-        <h2 class="section-title">数字で見る<span>AXION</span></h2>
+        <p class="section-label">PROMISE</p>
+        <h2 class="section-title">初期フェーズの<span>対応方針</span></h2>
       </div>
 
       <div class="metrics-grid">
         <div class="metric-item reveal">
-          <div class="metric-item__num text-gradient">120<span style="font-size:1.8rem">+</span></div>
-          <div class="metric-item__label">エンジニア在籍数</div>
+          <div class="metric-item__num text-gradient">1<span style="font-size:1.8rem">日</span></div>
+          <div class="metric-item__label">初回返信（営業日）</div>
         </div>
         <div class="metric-item reveal" style="animation-delay:0.1s">
-          <div class="metric-item__num text-gradient">92<span style="font-size:1.8rem">%</span></div>
-          <div class="metric-item__label">リモート勤務比率</div>
+          <div class="metric-item__num text-gradient">5<span style="font-size:1.8rem">日</span></div>
+          <div class="metric-item__label">初期提案まで（最短）</div>
         </div>
         <div class="metric-item reveal" style="animation-delay:0.2s">
-          <div class="metric-item__num text-gradient">48<span style="font-size:1.8rem">h</span></div>
-          <div class="metric-item__label">年間スキルアップ研修</div>
+          <div class="metric-item__num text-gradient">0<span style="font-size:1.8rem">円</span></div>
+          <div class="metric-item__label">相談・見積</div>
         </div>
         <div class="metric-item reveal" style="animation-delay:0.3s">
-          <div class="metric-item__num text-gradient">4.6<span style="font-size:1.8rem">/5</span></div>
-          <div class="metric-item__label">社員満足度スコア</div>
+          <div class="metric-item__num text-gradient">代表直結</div>
+          <div class="metric-item__label">少数精鋭で柔軟対応</div>
         </div>
       </div>
     </section>
@@ -560,7 +574,7 @@
       <div class="container">
         <div class="text-center reveal" style="max-width:640px;margin:0 auto 0">
           <p class="section-label">OUR VALUES</p>
-          <h2 class="section-title">AXIONが大切にする<span>3つの価値観</span></h2>
+          <h2 class="section-title">CoRevoが大切にする<span>3つの価値観</span></h2>
         </div>
 
         <div class="values__grid">
@@ -724,7 +738,7 @@
               <div class="benefit-item__icon">✈️</div>
               <div>
                 <div class="benefit-item__name">年次有給</div>
-                <div class="benefit-item__desc">入社初日から20日付与。有給取得率92%の実績</div>
+                <div class="benefit-item__desc">入社初日から20日付与。取得しやすい運用ルールを整備</div>
               </div>
             </div>
           </div>
@@ -906,9 +920,9 @@
       <div class="footer__grid">
         <div class="footer__brand">
           <a href="index.html" class="logo" style="margin-bottom:1rem;display:inline-flex">
-            <span class="logo__text">AXI<span>ON</span></span>
+            <span class="logo__text">Co<span>Revo</span></span>
           </a>
-          <p class="footer__tagline">Deploy Elite Engineers.<br>Build the Future.</p>
+          <p class="footer__tagline">CoRevo = Cooperation × Revolution<br>「協力（Cooperation）」の力で「革新（Revolution）」を生み出し、新しい価値と未来を創造する。</p>
         </div>
         <div>
           <p class="footer__heading">COMPANY</p>
@@ -931,14 +945,14 @@
         <div>
           <p class="footer__heading">CONTACT</p>
           <ul class="footer__links">
-            <li><a href="mailto:info@axion.co.jp">info@axion.co.jp</a></li>
-            <li><a href="tel:0312345678">03-1234-5678</a></li>
-            <li style="color:var(--text-muted);font-size:0.85rem">〒100-0000<br>東京都千代田区丸の内1-1-1</li>
+            <li><a href="mailto:info@corevo.co.jp">info@corevo.co.jp</a></li>
+            <li><a href="tel:0424480664">04-2448-0664</a></li>
+            <li style="color:var(--text-muted);font-size:0.85rem">東京都中央区銀座1-22-11<br>銀座大竹ビジデンス2F</li>
           </ul>
         </div>
       </div>
       <div class="footer__bottom">
-        <span>© 2024 AXION Inc. All rights reserved.</span>
+        <span>© 2026 CoRevo Inc. All rights reserved.</span>
         <span>Engineered with precision.</span>
       </div>
     </div>
@@ -947,3 +961,4 @@
   <script src="js/main.js"></script>
 </body>
 </html>
+

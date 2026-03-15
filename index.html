@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AXION Inc. - Deploy Elite Engineers</title>
-  <meta name="description" content="AXIONは、最高水準のエンジニアをお客様のプロジェクトに展開するSES・ITソリューション企業です。">
+  <title>CoRevo Inc. - Deploy Elite Engineers</title>
+  <meta name="description" content="CoRevoは、最高水準のエンジニアをお客様のプロジェクトに展開するSES・ITソリューション企業です。">
   <link rel="stylesheet" href="css/style.css">
   <style>
     /* ---- Index-specific styles ---- */
@@ -373,7 +373,7 @@
     }
   </style>
 </head>
-<body>
+<body data-page="index">
   <!-- ============================================================ Header -->
   <header class="header">
     <div class="header__inner">
@@ -385,7 +385,7 @@
             <circle cx="18" cy="18" r="4" fill="#00e8ff"/>
           </svg>
         </div>
-        <span class="logo__text">AXI<span>ON</span></span>
+        <span class="logo__text">Co<span>Revo</span></span>
       </a>
 
       <nav class="nav">
@@ -395,6 +395,12 @@
         <a href="about.html"    class="nav__link" data-index="04">ABOUT</a>
         <a href="contact.html"  class="nav__link" data-index="05">CONTACT</a>
       </nav>
+
+      <div class="lang-switch" aria-label="Language switcher">
+        <button type="button" class="lang-switch__btn" data-lang="ja">JP</button>
+        <button type="button" class="lang-switch__btn" data-lang="en">EN</button>
+        <button type="button" class="lang-switch__btn" data-lang="zh">中文</button>
+      </div>
 
       <div class="header__cta">
         <a href="contact.html" class="btn btn--outline">お問い合わせ</a>
@@ -408,6 +414,11 @@
 
   <!-- Mobile nav -->
   <nav class="nav-mobile">
+    <div class="lang-switch lang-switch--mobile" aria-label="Language switcher">
+      <button type="button" class="lang-switch__btn" data-lang="ja">JP</button>
+      <button type="button" class="lang-switch__btn" data-lang="en">EN</button>
+      <button type="button" class="lang-switch__btn" data-lang="zh">中文</button>
+    </div>
     <a href="index.html"    class="nav__link" data-index="01">TOP</a>
     <a href="services.html" class="nav__link" data-index="02">SERVICES</a>
     <a href="recruit.html"  class="nav__link" data-index="03">RECRUIT</a>
@@ -437,13 +448,13 @@
         </h1>
 
         <div class="hero__terminal">
-          <span class="hero__terminal-prompt">axion@mission:~$</span>
+          <span class="hero__terminal-prompt">corevo@mission:~$</span>
           <span class="hero__terminal-text" data-words='["エンジニアをあなたの現場へ", "最適なチームを構築します", "技術力で未来を切り拓く", "一緒に挑戦しませんか"]'></span>
           <span class="hero__terminal-cursor"></span>
         </div>
 
         <p class="hero__desc">
-          AXIONは、高度なエンジニアリング能力を持つ技術者を厳選し、
+          CoRevoは、高度なエンジニアリング能力を持つ技術者を厳選し、
           お客様のプロジェクトに最適なチームとして展開するSES・ITソリューション企業です。
           技術の最前線で、あなたのビジネスを加速させます。
         </p>
@@ -455,20 +466,20 @@
 
         <div class="hero__stats">
           <div class="stat">
-            <span class="stat__number" data-target="120" data-suffix="+">0</span>
-            <span class="stat__label">在籍エンジニア</span>
+            <span class="stat__number" data-target="1" data-suffix="日">0</span>
+            <span class="stat__label">初回返信（営業日）</span>
           </div>
           <div class="stat">
-            <span class="stat__number" data-target="85" data-suffix="+">0</span>
-            <span class="stat__label">取引企業数</span>
+            <span class="stat__number" data-target="5" data-suffix="日">0</span>
+            <span class="stat__label">初期提案まで（最短）</span>
           </div>
           <div class="stat">
-            <span class="stat__number" data-target="98">0</span>
-            <span class="stat__label" style="white-space:nowrap">顧客継続率 (%)</span>
+            <span class="stat__number" data-target="0" data-suffix="円">0</span>
+            <span class="stat__label" style="white-space:nowrap">相談・見積</span>
           </div>
           <div class="stat">
-            <span class="stat__number" data-target="10" data-suffix="年">0</span>
-            <span class="stat__label">設立からの実績</span>
+            <span class="stat__number">代表直結</span>
+            <span class="stat__label">少数精鋭で対応</span>
           </div>
         </div>
       </div>
@@ -594,10 +605,10 @@
       <div class="container">
         <div class="about-strip__inner">
           <div class="reveal--left">
-            <p class="section-label">ABOUT AXION</p>
+            <p class="section-label">ABOUT CoRevo</p>
             <h2 class="section-title" style="margin-bottom:1.5rem">技術に誠実に、<br><span>人に真剣に</span></h2>
-            <p style="color:var(--text-dim);font-size:0.97rem;margin-bottom:1.5rem;max-width:44ch">
-              「良いエンジニアと良い仕事をつなぐ」というシンプルな信念のもと設立されたAXION。
+            <p class="about-strip__desc" style="color:var(--text-dim);font-size:0.97rem;margin-bottom:1.5rem;max-width:44ch">
+              「良いエンジニアと良い仕事をつなぐ」というシンプルな信念のもと設立されたCoRevo。
               エンジニアのキャリアを真剣に考え、お客様のビジネスに本気で向き合います。
             </p>
             <ul class="about-strip__value-list">
@@ -632,15 +643,15 @@
                 <span class="terminal__dot terminal__dot--r"></span>
                 <span class="terminal__dot terminal__dot--y"></span>
                 <span class="terminal__dot terminal__dot--g"></span>
-                <span class="terminal__title">axion.sh</span>
+                <span class="terminal__title">corevo.sh</span>
               </div>
               <div class="terminal__body">
-                <span class="terminal__line"><span class="term-prompt">$</span> <span class="term-cmd">axion status</span></span>
-                <span class="terminal__line"><span class="term-ok">✓</span> <span class="term-info">Engineers deployed: 120</span></span>
-                <span class="terminal__line"><span class="term-ok">✓</span> <span class="term-info">Active projects: 93</span></span>
-                <span class="terminal__line"><span class="term-ok">✓</span> <span class="term-info">Client satisfaction: 98%</span></span>
+                <span class="terminal__line"><span class="term-prompt">$</span> <span class="term-cmd">corevo status</span></span>
+                <span class="terminal__line"><span class="term-ok">✓</span> <span class="term-info">Initial response: within 1 business day</span></span>
+                <span class="terminal__line"><span class="term-ok">✓</span> <span class="term-info">Proposal lead time: as fast as 5 business days</span></span>
+                <span class="terminal__line"><span class="term-ok">✓</span> <span class="term-info">Consultation & estimate: free</span></span>
                 <span class="terminal__line">&nbsp;</span>
-                <span class="terminal__line"><span class="term-prompt">$</span> <span class="term-cmd">axion deploy --team</span></span>
+                <span class="terminal__line"><span class="term-prompt">$</span> <span class="term-cmd">corevo deploy --team</span></span>
                 <span class="terminal__line"><span class="term-comment"># Analyzing requirements...</span></span>
                 <span class="terminal__line"><span class="term-ok">✓</span> <span class="term-info">Skills matched: Java, AWS, React</span></span>
                 <span class="terminal__line"><span class="term-ok">✓</span> <span class="term-info">Team of 3 engineers ready</span></span>
@@ -697,7 +708,7 @@
           <p class="recruit-cta__badge">// FOR ENGINEERS</p>
           <h2 class="recruit-cta__title">あなたの技術を、<br>最高の舞台で活かしてください。</h2>
           <p class="recruit-cta__desc">
-            AXIONは成長意欲の高いエンジニアを積極採用中です。
+            CoRevoは成長意欲の高いエンジニアを積極採用中です。
             スキルアップ支援・リモート対応・充実した福利厚生で、
             エンジニアとしてのキャリアを全力でサポートします。
           </p>
@@ -732,9 +743,9 @@
       <div class="footer__grid">
         <div class="footer__brand">
           <a href="index.html" class="logo" style="margin-bottom:1rem;display:inline-flex">
-            <span class="logo__text">AXI<span>ON</span></span>
+            <span class="logo__text">Co<span>Revo</span></span>
           </a>
-          <p class="footer__tagline">Deploy Elite Engineers.<br>Build the Future.</p>
+          <p class="footer__tagline">CoRevo = Cooperation × Revolution<br>「協力（Cooperation）」の力で「革新（Revolution）」を生み出し、新しい価値と未来を創造する。</p>
         </div>
         <div>
           <p class="footer__heading">COMPANY</p>
@@ -757,14 +768,14 @@
         <div>
           <p class="footer__heading">CONTACT</p>
           <ul class="footer__links">
-            <li><a href="mailto:info@axion.co.jp">info@axion.co.jp</a></li>
-            <li><a href="tel:0312345678">03-1234-5678</a></li>
-            <li style="color:var(--text-muted);font-size:0.85rem">〒100-0000<br>東京都千代田区丸の内1-1-1</li>
+            <li><a href="mailto:info@corevo.co.jp">info@corevo.co.jp</a></li>
+            <li><a href="tel:0424480664">04-2448-0664</a></li>
+            <li style="color:var(--text-muted);font-size:0.85rem">東京都中央区銀座1-22-11<br>銀座大竹ビジデンス2F</li>
           </ul>
         </div>
       </div>
       <div class="footer__bottom">
-        <span>© 2024 AXION Inc. All rights reserved.</span>
+        <span>© 2026 CoRevo Inc. All rights reserved.</span>
         <span>Engineered with precision.</span>
       </div>
     </div>
@@ -773,3 +784,4 @@
   <script src="js/main.js"></script>
 </body>
 </html>
+
