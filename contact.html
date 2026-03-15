@@ -374,6 +374,13 @@
       gap: 0.75rem;
     }
 
+    .response-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
     /* Direct contact info */
     .contact-info-list {
       list-style: none;
@@ -515,6 +522,10 @@
     }
 
     @media (max-width: 768px) {
+      .page-hero__title {
+        font-size: clamp(2.4rem, 14vw, 4rem);
+      }
+
       .form-row {
         grid-template-columns: 1fr;
       }
@@ -523,7 +534,15 @@
         padding: 1.75rem;
       }
 
+      .sidebar-card {
+        padding: 1.5rem;
+      }
+
       .contact-sidebar {
+        grid-template-columns: 1fr;
+      }
+
+      .response-grid {
         grid-template-columns: 1fr;
       }
 
@@ -809,7 +828,7 @@
             <!-- Response time card -->
             <div class="sidebar-card">
               <p class="sidebar-card__label">// RESPONSE TIME</p>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem">
+              <div class="response-grid">
                 <div style="text-align:center;padding:1rem;background:rgba(0,232,255,0.04);border-radius:0.5rem;border:1px solid rgba(0,232,255,0.1)">
                   <div style="font-family:var(--font-display);font-size:1.5rem;font-weight:900;color:var(--cyan)">2</div>
                   <div style="font-size:0.75rem;color:var(--text-muted);margin-top:0.25rem">営業日以内<br>返信</div>

@@ -352,23 +352,44 @@
     }
 
     @media (max-width: 768px) {
+      .services-preview,
+      .about-strip,
+      .process {
+        padding: 5rem 0;
+      }
+      .services-preview__header {
+        margin-bottom: 2.5rem;
+      }
       .about-strip__inner {
         grid-template-columns: 1fr;
         gap: 3rem;
       }
       .process__steps {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
       }
       .process__steps::before {
         display: none;
       }
+      .process-step {
+        text-align: left;
+        padding: 0;
+      }
+      .process-step__icon {
+        margin: 0 0 1rem;
+      }
       .recruit-cta__inner {
         grid-template-columns: 1fr;
-        padding: 2.5rem;
+        gap: 2rem;
+        padding: 2rem 1.5rem;
       }
       .recruit-cta__actions {
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex-direction: column;
+        width: 100%;
+      }
+      .recruit-cta__actions .btn {
+        width: 100%;
+        justify-content: center;
       }
     }
   </style>

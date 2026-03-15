@@ -372,6 +372,13 @@
       margin-bottom: 2.5rem;
     }
 
+    .pricing-note__actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
     /* FAQ */
     .faq {
       padding: 6rem 0;
@@ -440,11 +447,52 @@
     }
 
     @media (max-width: 768px) {
+      .page-hero__title {
+        font-size: clamp(2.2rem, 12vw, 3.6rem);
+      }
+      .service-section {
+        padding: 4.5rem 0;
+      }
+      .service-panel__header {
+        padding: 1rem 1.25rem;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+      .service-panel__body {
+        padding: 1.5rem 1.25rem;
+      }
       .skill-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
       }
       .stat-row {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+      .stat-item {
+        padding: 0.75rem 0;
+      }
+      .stat-item + .stat-item {
+        border-left: none;
+        border-top: 1px solid var(--border);
+        margin-top: 0.25rem;
+        padding-top: 1rem;
+      }
+      .pricing-note__actions {
+        flex-direction: column;
+      }
+      .pricing-note__actions .btn {
+        width: 100%;
+      }
+      .faq__question {
+        align-items: flex-start;
+        padding: 1.2rem 0;
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .skill-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -824,8 +872,10 @@
             サービスの規模・期間・要件に応じて、月額固定・時間単価・プロジェクト一括など
             複数の料金体系をご用意しています。まずはお気軽にご要件をお聞かせください。
           </p>
-          <a href="contact.html" class="btn btn--primary" style="margin-right:1rem">無料相談・見積もり依頼</a>
-          <a href="contact.html" class="btn btn--ghost">資料ダウンロード</a>
+          <div class="pricing-note__actions">
+            <a href="contact.html" class="btn btn--primary">無料相談・見積もり依頼</a>
+            <a href="contact.html" class="btn btn--ghost">資料ダウンロード</a>
+          </div>
         </div>
       </div>
     </section>

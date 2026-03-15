@@ -1062,6 +1062,21 @@ img { display: block; max-width: 100%; }
   .section { padding: 4.5rem 0; }
   .container { padding: 0 1.25rem; }
 
+  .header__inner {
+    height: 64px;
+    padding: 0 1rem;
+  }
+
+  .logo__mark {
+    width: 32px;
+    height: 32px;
+  }
+
+  .logo__text {
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+  }
+
   .nav, .header__cta { display: none; }
   .header .lang-switch { display: none; }
   .menu-btn { display: flex; }
@@ -1075,8 +1090,75 @@ img { display: block; max-width: 100%; }
     grid-template-columns: 1fr;
   }
 
-  .hero__content { padding: 3rem 1.25rem; }
-  .hero__stats { gap: 2rem; }
+  .nav-mobile {
+    inset: 64px 0 0 0;
+    padding: 1rem 1rem 2rem;
+  }
+
+  .nav-mobile .nav__link {
+    font-size: 0.92rem;
+    padding: 0.9rem 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.5rem, 8vw, 2.2rem);
+  }
+
+  .section-desc,
+  .page-hero__desc {
+    font-size: 0.98rem;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.9rem 1.1rem;
+  }
+
+  .hero {
+    min-height: auto;
+    padding-top: 64px;
+  }
+
+  .hero__content { padding: 2.5rem 0 3.5rem; }
+  .hero__title {
+    font-size: clamp(2.3rem, 11vw, 4rem);
+  }
+  .hero__terminal {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.25rem 0 1.75rem;
+    font-size: 0.78rem;
+  }
+  .hero__desc {
+    font-size: 0.98rem;
+    margin-bottom: 2rem;
+  }
+  .hero__actions {
+    flex-direction: column;
+    margin-bottom: 2.5rem;
+  }
+  .hero__stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem 1rem;
+    padding-top: 2rem;
+  }
+  .stat__number {
+    font-size: 1.6rem;
+  }
+  .stat__label {
+    font-size: 0.6rem;
+  }
+
+  .page-hero {
+    padding: 7.5rem 0 3.5rem;
+  }
+
+  .page-hero__title {
+    font-size: clamp(2rem, 12vw, 3.4rem);
+    line-height: 1;
+  }
 
   .footer__grid {
     grid-template-columns: 1fr;
@@ -1086,6 +1168,28 @@ img { display: block; max-width: 100%; }
     flex-direction: column;
     gap: 0.75rem;
     text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .header__inner {
+    padding: 0 0.9rem;
+  }
+
+  .logo__text {
+    font-size: 0.92rem;
+  }
+
+  .hero__stats {
+    grid-template-columns: 1fr;
+  }
+
+  .btn {
+    font-size: 0.68rem;
   }
 }
 

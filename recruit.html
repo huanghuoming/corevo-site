@@ -47,6 +47,13 @@
       line-height: 1.8;
     }
 
+    .page-hero__actions {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
     .text-gradient {
       color: var(--cyan);
     }
@@ -461,13 +468,22 @@
     }
 
     @media (max-width: 768px) {
+      .page-hero__title {
+        font-size: clamp(2.2rem, 12vw, 3.6rem);
+      }
+      .page-hero__actions {
+        flex-direction: column;
+      }
       .metrics-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
       }
       .values__grid {
         grid-template-columns: 1fr;
       }
       .benefits__grid {
+        grid-template-columns: 1fr;
+      }
+      .recruit-process__steps {
         grid-template-columns: 1fr;
       }
       .job-item {
@@ -531,7 +547,7 @@
           CoRevoは「エンジニアが最も輝ける環境」を追求し続けます。
           成長・挑戦・自由を軸に、あなたのキャリアを全力でサポートします。
         </p>
-        <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap">
+        <div class="page-hero__actions">
           <a href="#jobs" class="btn btn--purple">求人を見る</a>
           <a href="contact.html" class="btn btn--ghost">まず相談する</a>
         </div>
