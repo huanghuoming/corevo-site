@@ -649,7 +649,10 @@
               novalidate
             >
               <input type="hidden" name="form-name" value="contact">
-              <input type="hidden" name="subject" value="New inquiry from CoRevo website" data-remove-prefix="true">
+              <input type="hidden" id="emailSubject" name="subject" value="[CoRevo] お問い合わせありがとうございます" data-remove-prefix="true">
+              <input type="hidden" id="mailAck" name="acknowledgement" value="お問い合わせありがとうございます。">
+              <input type="hidden" id="mailReply" name="reply_note" value="お問い合わせ内容を確認の上、担当者よりできるだけ早くご返信いたします。">
+              <input type="hidden" id="mailEta" name="reply_eta" value="通常2営業日以内を目安にご連絡いたします。">
               <p style="display:none">
                 <label>
                   Do not fill this out:

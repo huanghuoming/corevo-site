@@ -1238,6 +1238,10 @@ typeEffect(typingEl);
       formNote: 'Providing details such as tech stack, team size, period, and desired start date helps us make a smoother proposal.',
       privacyLabel: '<a href="privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a> acknowledged. I agree to the handling of personal information. The information will be used only to respond to your inquiry and provide service guidance.',
       submitNote: 'We usually reply within 2 business days.<br>For urgent cases, phone inquiries are also accepted.',
+      mailSubject: '[CoRevo] Thank you for contacting us',
+      mailAck: 'Thank you for contacting CoRevo.',
+      mailReply: 'We have received your inquiry and will get back to you as soon as possible.',
+      mailEta: 'Our usual response time is within 2 business days.',
       successTitle: 'Your message has been sent',
       successDesc: 'Thank you for your inquiry.<br>Our team will contact you within 2 business days.<br>Please wait for a moment.',
       directLabel: '// DIRECT CONTACT',
@@ -1370,6 +1374,21 @@ typeEffect(typingEl);
       contactEmailHtml: '邮箱：<a href="mailto:info@corevo.co.jp">info@corevo.co.jp</a>',
       contactPhoneHtml: '电话：<a href="tel:0424480664">04-2448-0664</a>',
       enactedDate: '制定日期：2026年3月6日'
+    }
+  };
+
+  const CONTACT_MAIL_META = {
+    en: {
+      subject: '[CoRevo] Thank you for contacting us',
+      ack: 'Thank you for contacting CoRevo.',
+      reply: 'We have received your inquiry and will get back to you as soon as possible.',
+      eta: 'Our usual response time is within 2 business days.'
+    },
+    zh: {
+      subject: '[CoRevo] 感谢您的联系',
+      ack: '感谢您联系 CoRevo。',
+      reply: '我们已经收到您的咨询内容，并会尽快由负责人回复您。',
+      eta: '通常会在 2 个工作日内与您联系。'
     }
   };
 
@@ -1631,6 +1650,7 @@ typeEffect(typingEl);
   function applyContactContent(lang) {
     const t = PAGE_CONTENT.contact[lang];
     if (!t) return;
+    const mailMeta = CONTACT_MAIL_META[lang];
 
     setText('.page-hero__eyebrow', t.heroEyebrow);
     setHtml('.page-hero__title', t.heroTitle);
@@ -1660,6 +1680,13 @@ typeEffect(typingEl);
     setList('.faq-item', t.quickLinks);
     setHtmlList('.contact-sidebar .sidebar-card:nth-child(3) [style*="font-size:0.75rem"]', t.responseCaptions);
     setHtml('.contact-sidebar .sidebar-card:nth-child(3) > p[style*="font-size:0.8rem"]', t.responseNote);
+
+    if (mailMeta) {
+      setAttr('#emailSubject', 'value', mailMeta.subject);
+      setAttr('#mailAck', 'value', mailMeta.ack);
+      setAttr('#mailReply', 'value', mailMeta.reply);
+      setAttr('#mailEta', 'value', mailMeta.eta);
+    }
   }
 
   function applyPrivacyPolicyContent(lang) {
