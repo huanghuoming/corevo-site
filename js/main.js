@@ -1498,7 +1498,7 @@ typeEffect(typingEl);
     });
 
     const sendBtn = document.querySelector('#contactForm button[type="submit"]');
-    if (sendBtn && !sendBtn.disabled) {
+    if (sendBtn) {
       sendBtn.textContent = t.sendButton;
     }
   }
@@ -1736,11 +1736,85 @@ typeEffect(typingEl);
   });
 })();
 
+function encodeFormData(formData) {
+  return new URLSearchParams(formData).toString();
+}
+
+const liveContactForm = document.getElementById('contactForm');
+if (liveContactForm) {
+  const privacyCheckbox = liveContactForm.querySelector('#privacy');
+  const submitBtn = liveContactForm.querySelector('[type="submit"]');
+
+  const syncSubmitState = () => {
+    if (!submitBtn) return;
+    const enabled = !privacyCheckbox || privacyCheckbox.checked;
+    submitBtn.disabled = !enabled;
+    submitBtn.setAttribute('aria-disabled', enabled ? 'false' : 'true');
+  };
+
+  if (privacyCheckbox) {
+    privacyCheckbox.addEventListener('change', syncSubmitState);
+    syncSubmitState();
+  }
+
+  liveContactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (!liveContactForm.checkValidity()) {
+      liveContactForm.reportValidity();
+      return;
+    }
+
+    const btn = liveContactForm.querySelector('[type="submit"]');
+    const original = btn.textContent;
+    const successMsg = document.getElementById('formSuccess');
+    const typeInput = document.getElementById('inquiryType');
+
+    if (typeInput && !typeInput.name) {
+      typeInput.name = 'inquiry_type';
+    }
+
+    btn.textContent = 'SENDING...';
+    btn.disabled = true;
+
+    try {
+      const formData = new FormData(liveContactForm);
+      const response = await fetch(liveContactForm.getAttribute('action') || window.location.pathname, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: encodeFormData(formData)
+      });
+
+      if (!response.ok) {
+        throw new Error('Form submission failed');
+      }
+
+      if (successMsg) {
+        liveContactForm.style.display = 'none';
+        successMsg.style.display = 'block';
+      } else {
+        liveContactForm.reset();
+      }
+    } catch (error) {
+      window.alert('送信に失敗しました。時間をおいて再度お試しください。');
+      btn.textContent = original;
+      btn.disabled = false;
+      return;
+    }
+
+    btn.textContent = original;
+    btn.disabled = false;
+  });
+}
+
+/*
 // ----------------------------------------
 // Form submission (mock)
 // ----------------------------------------
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
+const contactFormLegacy = null;
+if (contactFormLegacy) {
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const btn = contactForm.querySelector('[type="submit"]');
@@ -1765,6 +1839,7 @@ if (contactForm) {
   });
 }
 
+*/
 // ----------------------------------------
 // Smooth hover glow on cards (optional extra)
 // ----------------------------------------

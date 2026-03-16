@@ -636,10 +636,26 @@
                 <button class="inquiry-tab" data-value="partner">パートナー提携</button>
                 <button class="inquiry-tab" data-value="other">その他</button>
               </div>
-              <input type="hidden" id="inquiryType" value="service">
+              <input type="hidden" id="inquiryType" name="inquiry_type" value="service">
             </div>
 
-            <form id="contactForm" novalidate>
+            <form
+              id="contactForm"
+              name="contact"
+              method="POST"
+              action="/"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              novalidate
+            >
+              <input type="hidden" name="form-name" value="contact">
+              <input type="hidden" name="subject" value="New inquiry from CoRevo website">
+              <p style="display:none">
+                <label>
+                  Do not fill this out:
+                  <input name="bot-field" tabindex="-1" autocomplete="off">
+                </label>
+              </p>
               <div class="form-row">
                 <div class="form-group">
                   <label class="form-label" for="name">
@@ -747,7 +763,7 @@
               </div>
 
               <div class="form-submit-row">
-                <button type="submit" class="btn btn--primary">
+                <button type="submit" class="btn btn--primary" disabled aria-disabled="true">
                   送信する →
                 </button>
                 <p class="form-submit-note">
